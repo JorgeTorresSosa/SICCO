@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSICCO"
         mc:Ignorable="d"
-        Title="MainWindow" Height="470" Width="425" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="600" Width="450" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -15,6 +15,38 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid>
+                <materialDesign:ColorZone Mode="PrimaryDark">
+                    <StackPanel HorizontalAlignment="Right">
+                        <Button Width="30" Height="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="Button_Click" >
+                            <materialDesign:PackIcon Kind="WindowClose"/>
+                        </Button>
+                    </StackPanel>
+                </materialDesign:ColorZone>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <materialDesign:ColorZone Mode="PrimaryMid">
+                <TextBlock Text="Crea tu cuenta SICCO" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30 40 0 10" >
+
+                </TextBlock>
+            </materialDesign:ColorZone>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Vertical" Margin="40 20 0 0">
+                <StackPanel Orientation="Vertical">
+
+                    <TextBox x:Name="CajaApellidos" materialDesign:HintAssist.Hint="Apellidos" materialDesign:HintAssist.IsFloating="True" Margin="260,0,0,0" />
+                    <TextBox x:Name="CajaNombre" Width="150" materialDesign:HintAssist.Hint="Nombre(s)" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" />
+
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

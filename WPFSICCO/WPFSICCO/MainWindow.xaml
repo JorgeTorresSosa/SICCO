@@ -49,11 +49,11 @@
                     <PasswordBox x:Name="txt_Contraseña" Width="300" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True"/>
                 </StackPanel>
                 <CheckBox Content="Recordar contraseña" Margin="0 30 0 0"/>
-                <Button x:Name="Button2" Content="Iniciar Sesion" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" Click="Button2_Click"/>
+                <Button Content="Iniciar Sesion" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" />
                 <materialDesign:Card Margin="0 10 10 10" Padding="15" materialDesign:ShadowAssist.ShadowDepth="Depth4">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock><Hyperlink Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Gray">Olvidaste tu contraseña? </Hyperlink></TextBlock>
-                        <TextBlock Margin="70 0 0 0" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"><Hyperlink Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Gray">Registrarse</Hyperlink></TextBlock>
+                        <TextBlock><Hyperlink Click="OlvContr_Click" Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Gray">Olvidaste tu contraseña? </Hyperlink></TextBlock>
+                        <TextBlock Margin="70 0 0 0" ><Hyperlink Click="Ingresar_Click" Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Gray">Registrarse</Hyperlink></TextBlock>
                     </StackPanel>
                     
                 </materialDesign:Card>
