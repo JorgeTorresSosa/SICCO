@@ -28,7 +28,7 @@ namespace WPFSICCO
         {
             InitializeComponent();
         }
-        
+        int valor = 0;
         MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base");
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
