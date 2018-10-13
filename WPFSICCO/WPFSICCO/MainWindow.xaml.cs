@@ -47,7 +47,7 @@ namespace WPFSICCO
             MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base");
             con.Open();
             MySqlCommand comando = new MySqlCommand();
-            comando.CommandText = "Select * from usuario where Nombre_usuarios='" + txt_NombreUsuario.Text + "' and Contraseña='" + txt_Contraseña + "'";
+            comando.CommandText = "Select * from usuario where Nombre_usuarios='" + txt_NombreUsuario.Text + "' and Contraseña='" + txt_Contraseña.Password+ "'";
             comando.Connection = con;
             comando.ExecuteNonQuery();
             DataTable Tabla = new DataTable();
@@ -67,7 +67,9 @@ namespace WPFSICCO
 
         private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            PaginaRegistrarse Ir = new PaginaRegistrarse();
+            this.Hide();
+            Ir.Show();
         }
     }
 }
