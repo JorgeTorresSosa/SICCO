@@ -23,6 +23,7 @@ namespace WPFSICCO
     /// </summary>
     public partial class MainWindow : Window
     {
+        int a = 0;
         public MainWindow()
         {
             InitializeComponent();
