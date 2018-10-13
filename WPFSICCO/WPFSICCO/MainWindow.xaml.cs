@@ -34,5 +34,17 @@ namespace WPFSICCO
         {
             Application.Current.Shutdown();
         }
+
+        private void Ingresar_Click (object sender, RoutedEventArgs e)
+        {
+            PaginaRegistrarse registro = new PaginaRegistrarse();
+            registro.Show();
+            
+        }
+
+        private void OlvContr_Click  (object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
