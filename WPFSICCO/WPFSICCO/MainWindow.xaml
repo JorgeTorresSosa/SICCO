@@ -14,7 +14,53 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid>
+                <materialDesign:ColorZone Mode="PrimaryDark">
+                    <StackPanel HorizontalAlignment="Right">
+                        <Button Width="30" Height="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="Button_Click">
+                            <materialDesign:PackIcon Kind="WindowClose"/>
+                        </Button>
+                    </StackPanel>
+                </materialDesign:ColorZone>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <materialDesign:ColorZone Mode="PrimaryMid">
+                <TextBlock Text="Bienvenidos a SICCO!" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30 40 0 10" > 
+                    
+                </TextBlock>
+            </materialDesign:ColorZone>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Vertical" Margin="40 20 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=txt_NombreUsuario, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                    <TextBox x:Name="txt_NombreUsuario" Width="300" materialDesign:HintAssist.Hint="Usuario" materialDesign:HintAssist.IsFloating="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 40 0 0">
+                    <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=txt_Contraseña, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                    <PasswordBox x:Name="txt_Contraseña" Width="300" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True"/>
+                </StackPanel>
+                <CheckBox Content="Recordar contraseña" Margin="0 30 0 0"/>
+                <Button Content="Iniciar Sesion" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" />
+                <materialDesign:Card Margin="0 10 10 10" Padding="15" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock><Hyperlink Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Gray">Olvidaste tu contraseña? </Hyperlink></TextBlock>
+                        <TextBlock Margin="70 0 0 0"><Hyperlink Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Gray">Registrarse</Hyperlink></TextBlock>
+                    </StackPanel>
+                    
+                </materialDesign:Card>
 
-    <Grid/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+    
     
 </Window>
