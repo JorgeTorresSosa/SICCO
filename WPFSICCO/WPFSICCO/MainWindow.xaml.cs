@@ -13,13 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System.Data;
 
 namespace WPFSICCO
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
+    
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -28,7 +27,8 @@ namespace WPFSICCO
         }
 
         int valor = 0;
-        MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base");
+        
+        MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base; SslMode=none");
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -68,7 +68,6 @@ namespace WPFSICCO
             valor = Convert.ToInt32(Tabla.Rows.Count.ToString());
             if (valor == 0)
             {
-              
                 MessageBox.Show("Error");
             }
             else
