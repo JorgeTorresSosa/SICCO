@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSICCO"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="450" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="500" Width="450" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -70,10 +70,20 @@
                         <PasswordBox x:Name="Contra" Width="135" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 12 0 0" />
                         <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=ConfContra, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="16 0 0 4"/>
                         <PasswordBox x:Name="ConfContra" Width="135" materialDesign:HintAssist.Hint="Confirma Contraseña" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 0 0 0" />
+                        <materialDesign:PackIcon x:Name="IconoOjo" Kind="EyeOff" VerticalAlignment="Bottom" Margin="16 0 0 4"  />
+                        
                     </StackPanel>
-                    <Button Content="Crear cuenta" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0"/>
+                    <Button Content="Crear cuenta" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" Click="CrearCuenta"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
+        <materialDesign:DialogHost IsOpen="False" x:Name="Hecho" Grid.RowSpan="3" >
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel  Margin="15">
+                    <TextBlock x:Name="msgText" Text=""/>
+                    <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=Hecho}" Content="Aceptar" Margin="0 10 0 0" />
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
     </Grid>
 </Window>

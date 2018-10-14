@@ -44,6 +44,7 @@ namespace WPFSICCO
         {
             PaginaRegistrarse registro = new PaginaRegistrarse();
             registro.Show();
+            this.Hide();
             
         }
 
@@ -67,6 +68,7 @@ namespace WPFSICCO
             valor = Convert.ToInt32(Tabla.Rows.Count.ToString());
             if (valor == 0)
             {
+              
                 MessageBox.Show("Error");
             }
             else
