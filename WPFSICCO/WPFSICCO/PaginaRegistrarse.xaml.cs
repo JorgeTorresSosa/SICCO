@@ -23,11 +23,13 @@ using System.Data;
 
 namespace WPFSICCO
 {
+
     /// <summary>
     /// Lógica de interacción para PaginaRegistrarse.xaml
     /// </summary>
     public partial class PaginaRegistrarse : Window
     {
+        int clasificador = 1;
         public PaginaRegistrarse()
         {
             InitializeComponent();
@@ -204,5 +206,36 @@ namespace WPFSICCO
                 MessageBox.Show("Error" + ex);
             }
         }
+
+        private void ConfContra_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (clasificador == 1)
+            {
+                EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.Eye;
+                clasificador = -1;
+                ConfContra.Visibility = System.Windows.Visibility.Collapsed;
+                ConfContraV.Visibility = System.Windows.Visibility.Visible;
+                Contra.Visibility = System.Windows.Visibility.Collapsed;
+                ContraV.Visibility = System.Windows.Visibility.Visible;
+
+                ContraV.Focus();
+                ConfContraV.Focus();
+            }
+            else if (clasificador == -1)
+            {
+                EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.EyeOff;
+                clasificador = 1;
+                ConfContra.Visibility = System.Windows.Visibility.Visible;
+                ConfContraV.Visibility = System.Windows.Visibility.Collapsed;
+                Contra.Visibility = System.Windows.Visibility.Visible;
+                ContraV.Visibility = System.Windows.Visibility.Collapsed;
+
+                Contra.Focus();
+                ConfContra.Focus();
+            }
+
+        }
+
+       
     }
 }
