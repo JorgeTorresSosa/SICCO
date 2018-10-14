@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSICCO"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="450" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="500" Width="450" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -13,11 +13,11 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+        FontFamily="{DynamicResource MaterialDesignFont}" Initialized="Window_Initialized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="90"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
@@ -48,12 +48,24 @@
                     <StackPanel Orientation="Horizontal" Margin="0 12 0 0">
                         <materialDesign:PackIcon Kind="GenderMale" Foreground="{Binding ElementName=CajaApellidoPaterno, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
                         <TextBox x:Name="CajaApellidoPaterno" Width="135" materialDesign:HintAssist.Hint="Apellido Paterno" HorizontalAlignment="Left" materialDesign:HintAssist.IsFloating="True" Margin="0 0 0 0"/>
-                        <materialDesign:PackIcon Kind="GenderFemale" Foreground="{Binding ElementName=CajaApellidoMaterno, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 0 0 4"/>
+                        <materialDesign:PackIcon Kind="GenderFemale" Foreground="{Binding ElementName=CajaApellidoMaterno, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="15 0 0 4"/>
                         <TextBox x:Name="CajaApellidoMaterno" Width="135" materialDesign:HintAssist.Hint="Apellido Materno" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Right" Margin="0 0 0 0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Numeric" Foreground="{Binding ElementName=CajaEdad, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                        <TextBox x:Name="CajaEdad" Width="300" materialDesign:HintAssist.Hint="Edad" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 12 0 0" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Numeric" Foreground="{Binding ElementName=UsuarioRegistro, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
                         <TextBox x:Name="NoControl" Width="300" materialDesign:HintAssist.Hint="Numero de control" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 12 0 0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="SignText" Foreground="{Binding ElementName=Especialidad, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                        <TextBox x:Name="CajaEspecialidad" Width="300" materialDesign:HintAssist.Hint="Especialidad" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="SignText" Foreground="{Binding ElementName=CajaSemestre, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                        <TextBox x:Name="CajaSemestre" Width="300" materialDesign:HintAssist.Hint="Semestre" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Gmail" Foreground="{Binding ElementName=CorreoElc, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
@@ -74,9 +86,18 @@
                         <TextBox x:Name="ConfContraV" Text="{Binding Password, Mode=TwoWay, ElementName=ConfContra}"  Visibility="Collapsed" Height="52" MinHeight="52" Width="130" />
                         <materialDesign:PackIcon x:Name="EyeOff" Kind="EyeOff" VerticalAlignment="Bottom" Margin="20 0 0 4" MouseDown="ConfContra_MouseEnter" Height="Auto" Width="Auto" />
                     </StackPanel>
-                    <Button Content="Crear cuenta" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0"/>
+                    <Button Content="Crear cuenta" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" Click="Button_Click_1"/>
+                    <Button Content="Crear cuenta" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" Click="CrearCuenta"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
+        <materialDesign:DialogHost IsOpen="False" x:Name="Hecho" Grid.RowSpan="3" >
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel  Margin="15">
+                    <TextBlock x:Name="msgText" Text=""/>
+                    <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=Hecho}" Content="Aceptar" Margin="0 10 0 0" />
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
     </Grid>
 </Window>
