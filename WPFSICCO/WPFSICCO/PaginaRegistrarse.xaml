@@ -18,7 +18,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Grid>
@@ -41,10 +41,37 @@
         <Grid Grid.Row="2">
             <StackPanel Orientation="Vertical" Margin="40 20 0 0">
                 <StackPanel Orientation="Vertical">
-
-                    <TextBox x:Name="CajaApellidos" materialDesign:HintAssist.Hint="Apellidos" materialDesign:HintAssist.IsFloating="True" Margin="260,0,0,0" />
-                    <TextBox x:Name="CajaNombre" Width="150" materialDesign:HintAssist.Hint="Nombre(s)" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" />
-
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="SignText" Foreground="{Binding ElementName=CajaNombre, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                        <TextBox x:Name="CajaNombre" Width="300" materialDesign:HintAssist.Hint="Nombre(s)" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 12 0 0">
+                        <materialDesign:PackIcon Kind="GenderMale" Foreground="{Binding ElementName=CajaApellidoPaterno, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                        <TextBox x:Name="CajaApellidoPaterno" Width="135" materialDesign:HintAssist.Hint="Apellido Paterno" HorizontalAlignment="Left" materialDesign:HintAssist.IsFloating="True" Margin="0 0 0 0"/>
+                        <materialDesign:PackIcon Kind="GenderFemale" Foreground="{Binding ElementName=CajaApellidoMaterno, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 0 0 4"/>
+                        <TextBox x:Name="CajaApellidoMaterno" Width="135" materialDesign:HintAssist.Hint="Apellido Materno" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Right" Margin="0 0 0 0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Numeric" Foreground="{Binding ElementName=UsuarioRegistro, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                        <TextBox x:Name="NoControl" Width="300" materialDesign:HintAssist.Hint="Numero de control" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 12 0 0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Gmail" Foreground="{Binding ElementName=CorreoElc, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                        <TextBox x:Name="CorreoElc" Width="300" materialDesign:HintAssist.Hint="Correo electronico" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 12 0 0" />
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=UsuarioRegistro, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                        <TextBox x:Name="UsuarioRegistro" Width="300" materialDesign:HintAssist.Hint="Usuario" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 12 0 0" />
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=Contra, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                        <PasswordBox x:Name="Contra" Width="130" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 12 0 0" />
+                        <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=ConfContra, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="20 0 0 4"/>
+                        <PasswordBox x:Name="ConfContra" Width="130" materialDesign:HintAssist.Hint="Confirma Contraseña" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 0 0 0" />
+                    </StackPanel>
+                    <Button Content="Crear cuenta" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
