@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Xaml;
+using XamlGeneratedNamespace;
 
 namespace WPFSICCO
 {
@@ -22,6 +24,7 @@ namespace WPFSICCO
     /// </summary>
     public partial class MainWindow : Window
     {
+        int clasificador = -1;
         public MainWindow()
         {
             InitializeComponent();
@@ -75,6 +78,34 @@ namespace WPFSICCO
                 MessageBox.Show("Bien");
             }
             con.Close();
+        }
+
+        private void txt_Contrasena_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (clasificador == 1)
+            {
+                EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.Eye;
+                clasificador = -1;
+
+                txt_Contraseña.Visibility = System.Windows.Visibility.Collapsed;
+                txt_Contrasena.Visibility = System.Windows.Visibility.Visible;
+                
+                txt_Contrasena.Focus();
+
+
+            }
+            else if (clasificador == -1)
+            {
+               EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.EyeOff;
+                clasificador = 1;
+
+                txt_Contraseña.Visibility = System.Windows.Visibility.Visible;
+                txt_Contrasena.Visibility = System.Windows.Visibility.Collapsed;
+                
+
+
+                txt_Contraseña.Focus();
+            }
         }
     }
 }

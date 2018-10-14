@@ -59,17 +59,20 @@
                         <materialDesign:PackIcon Kind="Gmail" Foreground="{Binding ElementName=CorreoElc, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
                         <TextBox x:Name="CorreoElc" Width="300" materialDesign:HintAssist.Hint="Correo electronico" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 12 0 0" />
                     </StackPanel>
-                    
+
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=UsuarioRegistro, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
                         <TextBox x:Name="UsuarioRegistro" Width="300" materialDesign:HintAssist.Hint="Usuario" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 12 0 0" />
                     </StackPanel>
-                    
+
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=Contra, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
-                        <PasswordBox x:Name="Contra" Width="130" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 12 0 0" />
+                        <PasswordBox x:Name="Contra" Width="130" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 12 0 0" Height="52" />
+                        <TextBox x:Name="ContraV" Text="{Binding Password, Mode=TwoWay, ElementName=Contra}" Visibility="Collapsed" Height="52" MinHeight="52" Width="130" />
                         <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=ConfContra, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="20 0 0 4"/>
-                        <PasswordBox x:Name="ConfContra" Width="130" materialDesign:HintAssist.Hint="Confirma Contraseña" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 0 0 0" />
+                        <PasswordBox x:Name="ConfContra"  Width="130" materialDesign:HintAssist.Hint="Confirma Contraseña" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin=" 0 0 0 0" MouseEnter="ConfContra_MouseEnter" Height="52"/>
+                        <TextBox x:Name="ConfContraV" Text="{Binding Password, Mode=TwoWay, ElementName=ConfContra}"  Visibility="Collapsed" Height="52" MinHeight="52" Width="130" />
+                        <materialDesign:PackIcon x:Name="EyeOff" Kind="EyeOff" VerticalAlignment="Bottom" Margin="20 0 0 4" MouseDown="ConfContra_MouseEnter" Height="Auto" Width="Auto" />
                     </StackPanel>
                     <Button Content="Crear cuenta" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0"/>
                 </StackPanel>

@@ -46,7 +46,9 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 40 0 0">
                     <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=txt_Contraseña, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
-                    <PasswordBox x:Name="txt_Contraseña" Width="300" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True"/>
+                    <PasswordBox x:Name="txt_Contraseña" Width="300" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" Height="40" MinHeight="52"  />
+                    <TextBox x:Name="txt_Contrasena" Text="{Binding Password, Mode=TwoWay, ElementName=txt_Contraseña}" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" Visibility="Collapsed" Height="40" MinHeight="52" Width="300" />
+                    <materialDesign:PackIcon x:Name="EyeOff" Kind="EyeOff" VerticalAlignment="Bottom" Margin="20 0 0 4" MouseDown="txt_Contrasena_MouseDown" Height="Auto" Width="Auto" />
                 </StackPanel>
                 <CheckBox Content="Recordar contraseña" Margin="0 30 0 0"/>
                 <Button Content="Iniciar Sesion" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" Click="Buttonn_Click_1" />
