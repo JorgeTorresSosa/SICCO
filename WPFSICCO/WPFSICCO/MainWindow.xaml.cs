@@ -55,7 +55,6 @@ namespace WPFSICCO
 
         private void Buttonn_Click_1(object sender, RoutedEventArgs e)
         {
-
             MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base");
             con.Open();
             MySqlCommand comando = new MySqlCommand();
