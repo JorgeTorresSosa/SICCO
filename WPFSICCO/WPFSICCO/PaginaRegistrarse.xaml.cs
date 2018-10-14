@@ -10,11 +10,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Reflection;
-using System.Globalization;
-using System.Text.RegularExpressions;
-using Email;
 
 
 
@@ -30,6 +27,7 @@ namespace WPFSICCO
         {
             InitializeComponent();
         }
+        MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base; SslMode=none");
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -40,26 +38,5 @@ namespace WPFSICCO
         {
             Application.Current.Shutdown();
         }
-
-        private void CrearCuenta (object sender, RoutedEventArgs e)
-        {
-
-            RegexUtilities utilities = new RegexUtilities();
-            if (utilities.IsValidEmail(CorreoElc.Text))
-            {
-                msgText.Text = "Operacion Satisfactoria";
-                Hecho.IsOpen = true;
-                
-                this.Hide();
-
-            }
-            else
-            {
-                msgText.Text = "Error en el correo electronico";
-                Hecho.IsOpen = true;
-            }
-
-        }
-
     }
 }
