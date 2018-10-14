@@ -54,14 +54,17 @@ namespace WPFSICCO
             }
             else
             {
-                if(CajaEdad.Text == "" )
+                int n;
+                bool isNumeric = int.TryParse(CajaEdad.Text, out n);
+                if (CajaEdad.Text == "" || isNumeric == false )
                 {
                     msgText.Text = "Edad no valida";
                     Hecho.IsOpen = true;
                 }
                 else
                 {
-                    if(NoControl.Text == "")
+                    isNumeric = int.TryParse(NoControl.Text, out n);
+                    if (NoControl.Text == "" || isNumeric == false)
                     {
                         msgText.Text = "Numero de control no valido";
                         Hecho.IsOpen = true;

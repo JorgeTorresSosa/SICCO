@@ -1,0 +1,35 @@
+﻿<Window x:Class="WPFSICCO.PantallaInicio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSICCO"
+        mc:Ignorable="d"
+        Title="PantallaInicio" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        xmlns:MaterialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid>
+                <MaterialDesign:ColorZone Mode="PrimaryDark">
+                    <StackPanel HorizontalAlignment="Right">
+                        <Button Width="30" Height="30" MaterialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="Button_Click">
+                            <MaterialDesign:PackIcon Kind="WindowClose"/>
+                        </Button>
+                    </StackPanel>
+                </MaterialDesign:ColorZone>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

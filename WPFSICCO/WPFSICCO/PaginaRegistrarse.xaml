@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSICCO"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="450" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="600" Width="450" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -61,11 +61,24 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="SignText" Foreground="{Binding ElementName=Especialidad, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
-                        <TextBox x:Name="CajaEspecialidad" Width="300" materialDesign:HintAssist.Hint="Especialidad" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="SignText" Foreground="{Binding ElementName=CajaSemestre, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
-                        <TextBox x:Name="CajaSemestre" Width="300" materialDesign:HintAssist.Hint="Semestre" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" />
+                        <ComboBox x:Name="CajaEspecialidad" Width="135" materialDesign:HintAssist.Hint="Especialidad" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="0 12 0 0">
+                            <ComboBoxItem></ComboBoxItem>
+                            <ComboBoxItem>Programacion</ComboBoxItem>
+                            <ComboBoxItem>Electronica</ComboBoxItem>
+                            <ComboBoxItem>Administracion</ComboBoxItem>
+                            <ComboBoxItem>Logistica</ComboBoxItem>
+                        </ComboBox>
+
+                        <materialDesign:PackIcon Kind="SignText" Foreground="{Binding ElementName=CajaSemestre, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="15 0 0 4"/>
+                        <ComboBox x:Name="CajaSemestre" Width="135" materialDesign:HintAssist.Hint="Semestre" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="0 12 0 0">
+                            <ComboBoxItem></ComboBoxItem>
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                            <ComboBoxItem>4</ComboBoxItem>
+                            <ComboBoxItem>5</ComboBoxItem>
+                            <ComboBoxItem>6</ComboBoxItem>
+                        </ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Gmail" Foreground="{Binding ElementName=CorreoElc, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
@@ -85,7 +98,7 @@
                         <materialDesign:PackIcon x:Name="IconoOjo" Kind="EyeOff" VerticalAlignment="Bottom" Margin="16 0 0 4"  />
                         
                     </StackPanel>
-                    <Button Content="Crear cuenta" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" Click="Button_Click_1"/>
+
                     <Button Content="Crear cuenta" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" Click="CrearCuenta"/>
                 </StackPanel>
             </StackPanel>
