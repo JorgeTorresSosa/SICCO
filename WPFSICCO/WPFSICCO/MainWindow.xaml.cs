@@ -47,7 +47,7 @@ namespace WPFSICCO
         {
             PaginaRegistrarse registro = new PaginaRegistrarse();
             registro.Show();
-            this.Hide();
+            this.Close();
             
         }
 
@@ -56,8 +56,31 @@ namespace WPFSICCO
 
         }
 
-
         private void Buttonn_Click_1(object sender, RoutedEventArgs e)
+        {
+            Basededatos();
+        }
+
+        private void txt_Contrasena_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (clasificador == 1)
+            {
+                EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.Eye;
+                clasificador = -1;
+                txt_Contraseña.Visibility = System.Windows.Visibility.Collapsed;
+                txt_Contrasena.Visibility = System.Windows.Visibility.Visible;             
+                txt_Contrasena.Focus();
+            }
+            else if (clasificador == -1)
+            {
+               EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.EyeOff;
+                clasificador = 1;
+                txt_Contraseña.Visibility = System.Windows.Visibility.Visible;
+                txt_Contrasena.Visibility = System.Windows.Visibility.Collapsed;
+                txt_Contraseña.Focus();
+            }
+        }
+        void Basededatos()
         {
             MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base;SslMode=none");
             try
@@ -73,45 +96,31 @@ namespace WPFSICCO
                 valor = Convert.ToInt32(Tabla.Rows.Count.ToString());
                 if (valor == 0)
                 {
-                    MessageBox.Show("Error");
+                    msgText.Text = "Error";
+                    Hecho.IsOpen = true;
                 }
                 else
                 {
-                    MessageBox.Show("Bien");
+                    msgText.Text = "Ingresado correctamente";
+                    Hecho.IsOpen = true;
+                    
                 }
                 con.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("error"+ex);
+                msgText.Text = "Error" + ex;
+                Hecho.IsOpen = true;
             }
         }
 
-        private void txt_Contrasena_MouseDown(object sender, MouseButtonEventArgs e)
+        private void BotonAceptar_Click(object sender, RoutedEventArgs e)
         {
-            if (clasificador == 1)
+            if(msgText.Text == "Ingresado correctamente")
             {
-                EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.Eye;
-                clasificador = -1;
-
-                txt_Contraseña.Visibility = System.Windows.Visibility.Collapsed;
-                txt_Contrasena.Visibility = System.Windows.Visibility.Visible;
-                
-                txt_Contrasena.Focus();
-
-
-            }
-            else if (clasificador == -1)
-            {
-               EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.EyeOff;
-                clasificador = 1;
-
-                txt_Contraseña.Visibility = System.Windows.Visibility.Visible;
-                txt_Contrasena.Visibility = System.Windows.Visibility.Collapsed;
-                
-
-
-                txt_Contraseña.Focus();
+                PantallaInicio iniciar = new PantallaInicio();
+                iniciar.Show();
+                this.Close();
             }
         }
     }

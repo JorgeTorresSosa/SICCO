@@ -17,7 +17,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="100"/>
+            
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
@@ -31,5 +31,9 @@
                 </MaterialDesign:ColorZone>
             </Grid>
         </Border>
+        <Grid Grid.Row="1">
+            
+        </Grid>
+       
     </Grid>
 </Window>
