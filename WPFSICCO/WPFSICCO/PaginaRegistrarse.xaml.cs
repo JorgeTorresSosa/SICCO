@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.Reflection;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using Email;
+using Correo;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 using System.Data;
@@ -46,7 +46,6 @@ namespace WPFSICCO
             Application.Current.Shutdown();
         }
 
-
         private void CrearCuenta (object sender, RoutedEventArgs e)
         {
             if (CajaNombre.Text == "" || CajaApellidoPaterno.Text == "" || CajaApellidoMaterno.Text == "")
@@ -58,7 +57,7 @@ namespace WPFSICCO
             {
                 int n;
                 bool isNumeric = int.TryParse(CajaEdad.Text, out n);
-                if (CajaEdad.Text == "" || isNumeric == false )
+                if (CajaEdad.Text == "" || isNumeric == false)
                 {
                     msgText.Text = "Edad no valida";
                     Hecho.IsOpen = true;
@@ -66,7 +65,7 @@ namespace WPFSICCO
                 else
                 {
                     isNumeric = int.TryParse(NoControl.Text, out n);
-                    if (NoControl.Text == "" || isNumeric == false)
+                    if (NoControl.Text == "" || isNumeric == false )
                     {
                         msgText.Text = "Numero de control no valido";
                         Hecho.IsOpen = true;
@@ -133,43 +132,10 @@ namespace WPFSICCO
             ED = Int32.Parse(CajaEdad.Text);//Edad
             SEM = Int32.Parse(CajaSemestre.Text);//Semestre
             N_CO_LENGHT = NoControl.Text;//Confirmacion de la contraseña
-            
-            
-                //Comparación de la especialidad---Buscar cómo cambiar la cajaespecialidad y semestre por una combobox o algo parecido        
-                switch(CajaEspecialidad.SelectedIndex)
-                {
-                    case 1:
-                        ESP = 1;
-                        break;
-                    case 2:
-                        ESP = 2;
-                        break;
-                    case 3:
-                        ESP = 3;
-                        break;
-                    case 4:
-                        ESP = 4;
-                        break;
-                    default:
-                        Error();
-                        break;
-                    
-                }
-                //Verificación de la longitud del numero de control para validacion de longitud en mysql
-                if(N_CO_LENGHT.Length>15)
-                {
-                    Error();
-                }
-                //error si la confirmacion de contraseña no coincide con la contraseña
-                if(PSS != C_PSS)
-                {
-                    Error();
-                }
 
-                if(SEM<=6 & SEM>=1)
-                {
-                    Error();
-                }
+
+            //Comparación de la especialidad---Buscar cómo cambiar la cajaespecialidad y semestre por una combobox o algo parecido        
+            ESP = CajaEspecialidad.SelectedIndex;
 
             MySqlCommand comando = new MySqlCommand();
             comando.CommandText = "Insert into usuario(Nombre, Apellido_Paterno, Apellido_Materno, Especialidad, Semestre, No_Control, Edad, Nombre_usuarios, Contraseña, Correo) values('" + Nombre + "', '" + AP + "', '" + AM + "',"+ESP+","+SEM+","+NCO+","+ED+",'" + NUS + "', '" + PSS + "', '" + MAIL + "')";
@@ -178,18 +144,17 @@ namespace WPFSICCO
             {
                 con.Open();
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Usuario Registrado Correctamente");
+                msgText.Text = "Usuario registrado correctamente";
+                Hecho.IsOpen = true;
+               
             }
             catch (Exception ex)
             {
-                MessageBox.Show("error" + ex);
+                msgText.Text = "Error:" + ex;
+                Hecho.IsOpen = true;
 
             }
 
-        }
-        void Error()
-        {
-            MessageBox.Show("Error al introducir un dato");
         }
 
         private void Window_Initialized(object sender, EventArgs e)
@@ -197,13 +162,13 @@ namespace WPFSICCO
             try
             {
                 con.Open();
-                MessageBox.Show("Abierto");
                 con.Close();
             }
             catch (Exception ex)
             {
                 con.Close();
-                MessageBox.Show("Error" + ex);
+                msgText.Text = "Error:" + ex;
+                Hecho.IsOpen = true;
             }
         }
 
@@ -217,7 +182,6 @@ namespace WPFSICCO
                 ConfContraV.Visibility = System.Windows.Visibility.Visible;
                 Contra.Visibility = System.Windows.Visibility.Collapsed;
                 ContraV.Visibility = System.Windows.Visibility.Visible;
-
                 ContraV.Focus();
                 ConfContraV.Focus();
             }
@@ -229,13 +193,20 @@ namespace WPFSICCO
                 ConfContraV.Visibility = System.Windows.Visibility.Collapsed;
                 Contra.Visibility = System.Windows.Visibility.Visible;
                 ContraV.Visibility = System.Windows.Visibility.Collapsed;
-
                 Contra.Focus();
                 ConfContra.Focus();
             }
 
         }
 
-       
+        private void BotonAceptar_Click(object sender, RoutedEventArgs e)
+        {
+            if(msgText.Text == "Usuario registrado correctamente")
+            {
+                MainWindow pantalla = new MainWindow();
+                pantalla.Show();
+                this.Close();
+            }
+        }
     }
 }
