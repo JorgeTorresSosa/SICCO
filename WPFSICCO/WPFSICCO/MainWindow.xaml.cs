@@ -31,7 +31,7 @@ namespace WPFSICCO
 
         int valor = 0;
         
-        MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base; SslMode=none");
+        MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=cocsi; SslMode=none");
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -59,7 +59,7 @@ namespace WPFSICCO
 
         private void Buttonn_Click_1(object sender, RoutedEventArgs e)
         {
-            MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base;SslMode=none");
+            MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=cocsi;SslMode=none");
             try
             {
                 con.Open();
