@@ -17,22 +17,25 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Xaml;
 using XamlGeneratedNamespace;
+using System.Net;
+using System.Net.Http;
+using Microsoft.Win32;
+using System.Collections.Specialized;
+using System.IO;
 
 namespace WPFSICCO
 {
     
     public partial class MainWindow : Window
     {
+        UTF8Encoding utf = new UTF8Encoding();
         int clasificador = -1;
         public MainWindow()
         {
             InitializeComponent();
         }
-
-        int valor = 0;
+        WebClient Reg_DB = new WebClient();
         
-        MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base; SslMode=none");
-
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -53,7 +56,9 @@ namespace WPFSICCO
 
         private void OlvContr_Click  (object sender, RoutedEventArgs e)
         {
-
+            Pagina_Articulos articulos = new Pagina_Articulos();
+            articulos.Show();
+            this.Close();
         }
 
         private void Buttonn_Click_1(object sender, RoutedEventArgs e)
@@ -82,46 +87,41 @@ namespace WPFSICCO
         }
         void Basededatos()
         {
-            MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base;SslMode=none");
-            try
+
+
+            NameValueCollection coex_db = new NameValueCollection();
+            coex_db.Add("Nombre_usuarios", txt_NombreUsuario.Text);
+            coex_db.Add("Contraseña", txt_Contraseña.Password);
+            byte[] insertuser = Reg_DB.UploadValues("https://sicco58.000webhostapp.com/ABRIR_CONEX.php", "POST", coex_db);
+
+
+            byte[] html = Reg_DB.DownloadData("https://sicco58.000webhostapp.com/ABRIR_CONEX.php");
+            string res = utf.GetString(html);
+
+            /*if (res == "Exite al menos un registro")
             {
-                con.Open();
-                MySqlCommand comando = new MySqlCommand();
-                comando.CommandText = "Select * from usuario where Nombre_usuarios='" + txt_NombreUsuario.Text + "' and Contraseña='" + txt_Contraseña.Password + "'";
-                comando.Connection = con;
-                comando.ExecuteNonQuery();
-                DataTable Tabla = new DataTable();
-                MySqlDataAdapter Adaptar_Tipo = new MySqlDataAdapter(comando);
-                Adaptar_Tipo.Fill(Tabla);
-                valor = Convert.ToInt32(Tabla.Rows.Count.ToString());
-                if (valor == 0)
-                {
-                    msgText.Text = "Error";
-                    Hecho.IsOpen = true;
-                }
-                else
-                {
-                    msgText.Text = "Ingresado correctamente";
-                    Hecho.IsOpen = true;
-                    
-                }
-                con.Close();
+                Console.WriteLine("AHuevo");
+                MessageBox.Show("Ya jaloooo");
+                
             }
-            catch (Exception ex)
+            else if (res == "No jaló")
             {
-                msgText.Text = "Error" + ex;
-                Hecho.IsOpen = true;
+                Console.WriteLine("Llego mal pero llego");
+                MessageBox.Show("No jaló");
+
             }
+            else
+            {
+                Console.WriteLine("puta madre...");
+                MessageBox.Show("ERROR");
+            }
+            */
+            MessageBox.Show(res);
         }
 
         private void BotonAceptar_Click(object sender, RoutedEventArgs e)
         {
-            if(msgText.Text == "Ingresado correctamente")
-            {
-                PantallaInicio iniciar = new PantallaInicio();
-                iniciar.Show();
-                this.Close();
-            }
+            
         }
     }
 }

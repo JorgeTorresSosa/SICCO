@@ -80,6 +80,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pagina Articulos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PaginaRegistrarse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +94,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pagina Articulos.xaml.cs">
+      <DependentUpon>Pagina Articulos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PaginaRegistrarse.xaml.cs">
       <DependentUpon>PaginaRegistrarse.xaml</DependentUpon>
     </Compile>
