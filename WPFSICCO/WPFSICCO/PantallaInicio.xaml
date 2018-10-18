@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSICCO"
         mc:Ignorable="d"
-        Title="PantallaInicio" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        Title="PantallaInicio" Height="680" Width="800" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
         xmlns:MaterialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -14,26 +14,26 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid>
+    <Grid Height="680" VerticalAlignment="Top" Margin="0,0,0,-100">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Grid>
-                <MaterialDesign:ColorZone Mode="PrimaryDark">
+                <MaterialDesign:ColorZone Mode="PrimaryDark" Background="#FF009688" Height="50" MinWidth="60" Margin="0,0,0,-20" RenderTransformOrigin="0.5,0.5">
                     <StackPanel HorizontalAlignment="Right">
-                        <Button Width="30" Height="30" MaterialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="Button_Click">
+                        <Button Width="100" Height="50" MaterialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="Button_Click">
                             <MaterialDesign:PackIcon Kind="WindowClose"/>
                         </Button>
                     </StackPanel>
                 </MaterialDesign:ColorZone>
             </Grid>
         </Border>
-        <Grid Grid.Row="1">
-            
+        <Grid Width="110" HorizontalAlignment="Left" Background="#FF004D40" Opacity="0.65" Height="615" VerticalAlignment="Bottom" Grid.Row="1" >
+
+            <Button Height="Auto" Margin="0,-65,0,594" Background="#FFC51162" />
         </Grid>
-       
+
     </Grid>
 </Window>
