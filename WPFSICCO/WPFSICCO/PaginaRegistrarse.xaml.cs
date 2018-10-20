@@ -23,6 +23,7 @@ using System.Net;
 using System.Net.Http;
 using Microsoft.Win32;
 using System.Collections.Specialized;
+using System.IO;
 
 namespace WPFSICCO
 {
@@ -135,59 +136,41 @@ namespace WPFSICCO
 
         void RegistrarenDB()
         {
-        //    MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base; SslMode=none");
-            
-            string Nombre, AP, AM, NUS, PSS, MAIL,C_PSS, N_CO_LENGHT;
-            int ESP=0, SEM, ED, NCO;
-                                        //Los comentarios significan el nombre de la variable en la DB
-            Nombre = CajaNombre.Text;   //Nombre
-            AP = CajaApellidoPaterno.Text;//Apellido_Paterno
-            AM = CajaApellidoMaterno.Text;//Apellido_Materno
-            NCO = Int32.Parse(NoControl.Text);//No_Control----Primary Key
-            NUS = UsuarioRegistro.Text;//Nombre_usuarios
-            PSS = Contra.Password;//Contraseña
-            MAIL = CorreoElc.Text;//Correo
-            C_PSS = ConfContra.Password;//
-            ED = Int32.Parse(CajaEdad.Text);//Edad
-            SEM = Int32.Parse(CajaSemestre.Text);//Semestre
-            N_CO_LENGHT = NoControl.Text;//Confirmacion de la contraseña
-        
-            ESP = CajaEspecialidad.SelectedIndex;
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            string postdata = "NOM=" + CajaNombre.Text + "&AP=" + CajaApellidoPaterno.Text + "&AM=" + CajaApellidoMaterno.Text + "&ESP=" + CajaEspecialidad.SelectedIndex + "&SEM=" + CajaSemestre.Text + "&NCO=" + NoControl.Text + "&ED=" + CajaEdad.Text + "&NUS=" + UsuarioRegistro.Text + "&PSS=" + Contra.Password + "&MAIL=" + CorreoElc.Text;
+            byte[] data = encoding.GetBytes(postdata);
+            //"NU=" + txt_NombreUsuario.Text +
+            WebRequest request = WebRequest.Create("https://sicco58.000webhostapp.com/REG_CONEX_1.php");
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
 
-            NameValueCollection a = new NameValueCollection();
-            a.Add("Nombre", CajaNombre.Text);
-            a.Add("Apellido_Paterno", CajaApellidoPaterno.Text);
-            a.Add("Apellido_Materno", CajaApellidoMaterno.Text);
-            a.Add("Especialidad", CajaEspecialidad.SelectedIndex.ToString());
-            a.Add("Semestre", CajaSemestre.Text);
-            a.Add("No_Control", NoControl.Text);
-            a.Add("Edad", CajaEdad.Text);
-            a.Add("Nombre_usuarios", UsuarioRegistro.Text);
-            a.Add("Contraseña", Contra.Password);
-            a.Add("Correo", CorreoElc.Text);
-            byte[] insertuser = aa.UploadValues("https://sicco58.000webhostapp.com/REG_CONEX_1.php", "POST", a);
+            Stream stream = request.GetRequestStream();
+            stream.Write(data, 0, data.Length);
+            stream.Close();
+
+            WebResponse response = request.GetResponse();
+            stream = response.GetResponseStream();
+            StreamReader leer = new StreamReader(stream);
+            string lectura_php = leer.ReadToEnd();
+            MessageBox.Show(lectura_php);
+            leer.Close();
+            stream.Close();
             msgText.Text = "Usuario registrado correctamente";
-
-
-            /*MySqlCommand comando = new MySqlCommand();
-            comando.CommandText = "Insert into usuario(Nombre, Apellido_Paterno, Apellido_Materno, Especialidad, Semestre, No_Control, Edad, Nombre_usuarios, Contraseña, Correo) values('" + Nombre + "', '" + AP + "', '" + AM + "',"+ESP+","+SEM+","+NCO+","+ED+",'" + NUS + "', '" + PSS + "', '" + MAIL + "')";
-            comando.Connection = con;
-            try
+            if (lectura_php.Contains("Registros_generados"))
             {
-                con.Open();
-                comando.ExecuteNonQuery();
-                msgText.Text = "Usuario registrado correctamente";
-                Hecho.IsOpen = true;
-               
+                if (msgText.Text == "Usuario registrado correctamente")
+                {
+                    MainWindow pantalla = new MainWindow();
+                    pantalla.Show();
+                    this.Close();
+                }
             }
-            catch (Exception ex)
+            else if (lectura_php.Contains("usuario ya registrado"))
             {
-                msgText.Text = "Error:" + ex;
-                Hecho.IsOpen = true;
-
+                MessageBox.Show("Uusario ya registrado");
             }
-            
-    */
+
 
         }
 
