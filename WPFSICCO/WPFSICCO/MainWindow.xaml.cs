@@ -17,22 +17,25 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Xaml;
 using XamlGeneratedNamespace;
+using System.Net;
+using System.Net.Http;
+using Microsoft.Win32;
+using System.Collections.Specialized;
+using System.IO;
 
 namespace WPFSICCO
 {
     
     public partial class MainWindow : Window
     {
+        UTF8Encoding utf = new UTF8Encoding();
         int clasificador = -1;
         public MainWindow()
         {
             InitializeComponent();
         }
-
-        int valor = 0;
+        WebClient Reg_DB = new WebClient();
         
-        MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=cocsi; SslMode=none");
-
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -47,44 +50,20 @@ namespace WPFSICCO
         {
             PaginaRegistrarse registro = new PaginaRegistrarse();
             registro.Show();
-            this.Hide();
+            this.Close();
             
         }
 
         private void OlvContr_Click  (object sender, RoutedEventArgs e)
         {
-
+            Pagina_Articulos articulos = new Pagina_Articulos();
+            articulos.Show();
+            this.Close();
         }
-
 
         private void Buttonn_Click_1(object sender, RoutedEventArgs e)
         {
-            MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=cocsi;SslMode=none");
-            try
-            {
-                con.Open();
-                MySqlCommand comando = new MySqlCommand();
-                comando.CommandText = "Select * from usuario where Nombre_usuarios='" + txt_NombreUsuario.Text + "' and Contraseña='" + txt_Contraseña.Password + "'";
-                comando.Connection = con;
-                comando.ExecuteNonQuery();
-                DataTable Tabla = new DataTable();
-                MySqlDataAdapter Adaptar_Tipo = new MySqlDataAdapter(comando);
-                Adaptar_Tipo.Fill(Tabla);
-                valor = Convert.ToInt32(Tabla.Rows.Count.ToString());
-                if (valor == 0)
-                {
-                    MessageBox.Show("Error");
-                }
-                else
-                {
-                    MessageBox.Show("Bien");
-                }
-                con.Close();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("error"+ex);
-            }
+            Basededatos();
         }
 
         private void txt_Contrasena_MouseDown(object sender, MouseButtonEventArgs e)
@@ -93,26 +72,65 @@ namespace WPFSICCO
             {
                 EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.Eye;
                 clasificador = -1;
-
                 txt_Contraseña.Visibility = System.Windows.Visibility.Collapsed;
-                txt_Contrasena.Visibility = System.Windows.Visibility.Visible;
-                
+                txt_Contrasena.Visibility = System.Windows.Visibility.Visible;             
                 txt_Contrasena.Focus();
-
-
             }
             else if (clasificador == -1)
             {
                EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.EyeOff;
                 clasificador = 1;
-
                 txt_Contraseña.Visibility = System.Windows.Visibility.Visible;
                 txt_Contrasena.Visibility = System.Windows.Visibility.Collapsed;
-                
-
-
                 txt_Contraseña.Focus();
             }
+        }
+        void Basededatos()
+        {
+
+
+            string pss = txt_Contraseña.Password;
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            string postdata = "NU=" + txt_NombreUsuario.Text + "&pss=" + pss;
+            byte[] data = encoding.GetBytes(postdata);
+            //"NU=" + txt_NombreUsuario.Text +
+            WebRequest request = WebRequest.Create("https://sicco58.000webhostapp.com/ABRIR_CONEX.php");
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            Stream stream = request.GetRequestStream();
+            stream.Write(data, 0, data.Length);
+            stream.Close();
+
+            WebResponse response = request.GetResponse();
+            stream = response.GetResponseStream();
+            StreamReader leer = new StreamReader(stream);
+            string lectura_php = leer.ReadToEnd();
+            leer.Close();
+            stream.Close();
+            if (lectura_php.Contains("Registros_generados"))
+            {
+                msgText.Text = "Ingresado correctamente";
+            }
+            
+            if (msgText.Text == "Ingresado correctamente")
+            {
+                PantallaInicio iniciar = new PantallaInicio();
+                iniciar.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+
+            
+        }
+
+        private void BotonAceptar_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

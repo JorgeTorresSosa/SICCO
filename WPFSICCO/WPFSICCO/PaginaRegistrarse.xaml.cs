@@ -19,7 +19,11 @@ using Correo;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 using System.Data;
-
+using System.Net;
+using System.Net.Http;
+using Microsoft.Win32;
+using System.Collections.Specialized;
+using System.IO;
 
 namespace WPFSICCO
 {
@@ -29,12 +33,15 @@ namespace WPFSICCO
     /// </summary>
     public partial class PaginaRegistrarse : Window
     {
+        WebClient aa = new WebClient();
+        bool PrimeraVez = false;
+        int valor = 1;
         int clasificador = 1;
         public PaginaRegistrarse()
         {
             InitializeComponent();
         }
-        MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=cocsi; SslMode=none");
+        //MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base; SslMode=none");
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -46,8 +53,24 @@ namespace WPFSICCO
             Application.Current.Shutdown();
         }
 
-        private void CrearCuenta (object sender, RoutedEventArgs e)
+        void Comprobacion_USIARIO()
         {
+          /*   con.Open();
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandText = "Select * from usuario where Nombre_usuarios='" + UsuarioRegistro.Text + "' and Correo='" + CorreoElc.Text + "'";
+                comando.Connection = con;
+                comando.ExecuteNonQuery();
+                DataTable Tabla = new DataTable();
+                MySqlDataAdapter Adaptar_Tipo = new MySqlDataAdapter(comando);
+                Adaptar_Tipo.Fill(Tabla);
+                valor = Convert.ToInt32(Tabla.Rows.Count.ToString());              
+        
+    */}
+
+        private void CrearCuenta(object sender, RoutedEventArgs e)
+        {
+            
+
             if (CajaNombre.Text == "" || CajaApellidoPaterno.Text == "" || CajaApellidoMaterno.Text == "")
             {
                 msgText.Text = "Apellidos o nombre en blanco";
@@ -65,14 +88,14 @@ namespace WPFSICCO
                 else
                 {
                     isNumeric = int.TryParse(NoControl.Text, out n);
-                    if (NoControl.Text == "" || isNumeric == false )
+                    if (NoControl.Text == "" || isNumeric == false)
                     {
                         msgText.Text = "Numero de control no valido";
                         Hecho.IsOpen = true;
                     }
                     else
                     {
-                        if(CajaEspecialidad.Text == "" || CajaSemestre.Text == "" || CajaEspecialidad.SelectedIndex == 0 || CajaSemestre.SelectedIndex == 0)
+                        if (CajaEspecialidad.Text == "" || CajaSemestre.Text == "" || CajaEspecialidad.SelectedIndex == 0 || CajaSemestre.SelectedIndex == 0)
                         {
                             msgText.Text = "Especialidad o semestre no seleccionado";
                             Hecho.IsOpen = true;
@@ -87,13 +110,12 @@ namespace WPFSICCO
                             }
                             else
                             {
-                                if(UsuarioRegistro.Text == "")
+                                if (UsuarioRegistro.Text == "")
                                 {
                                     msgText.Text = "Nombre de usuario no valido";
                                     Hecho.IsOpen = true;
                                 }
                                 else
-                                {
                                     if (Contra.Password == "" || Contra.Password != ConfContra.Password)
                                     {
                                         msgText.Text = "Las contraseñas no coinciden";
@@ -108,68 +130,53 @@ namespace WPFSICCO
                         }
                     }
                 }
-            }
-           
-            
-
+            RegistrarenDB();
         }
+        
 
         void RegistrarenDB()
         {
-            MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base; SslMode=none");
-            
-            string Nombre, AP, AM, NUS, PSS, MAIL,C_PSS, N_CO_LENGHT;
-            int ESP=0, SEM, ED, NCO;
-                                        //Los comentarios significan el nombre de la variable en la DB
-            Nombre = CajaNombre.Text;   //Nombre
-            AP = CajaApellidoPaterno.Text;//Apellido_Paterno
-            AM = CajaApellidoMaterno.Text;//Apellido_Materno
-            NCO = Int32.Parse(NoControl.Text);//No_Control----Primary Key
-            NUS = UsuarioRegistro.Text;//Nombre_usuarios
-            PSS = Contra.Password;//Contraseña
-            MAIL = CorreoElc.Text;//Correo
-            C_PSS = ConfContra.Password;//
-            ED = Int32.Parse(CajaEdad.Text);//Edad
-            SEM = Int32.Parse(CajaSemestre.Text);//Semestre
-            N_CO_LENGHT = NoControl.Text;//Confirmacion de la contraseña
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            string postdata = "NOM=" + CajaNombre.Text + "&AP=" + CajaApellidoPaterno.Text + "&AM=" + CajaApellidoMaterno.Text + "&ESP=" + CajaEspecialidad.SelectedIndex + "&SEM=" + CajaSemestre.Text + "&NCO=" + NoControl.Text + "&ED=" + CajaEdad.Text + "&NUS=" + UsuarioRegistro.Text + "&PSS=" + Contra.Password + "&MAIL=" + CorreoElc.Text;
+            byte[] data = encoding.GetBytes(postdata);
+            //"NU=" + txt_NombreUsuario.Text +
+            WebRequest request = WebRequest.Create("https://sicco58.000webhostapp.com/REG_CONEX_1.php");
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
 
+            Stream stream = request.GetRequestStream();
+            stream.Write(data, 0, data.Length);
+            stream.Close();
 
-            //Comparación de la especialidad---Buscar cómo cambiar la cajaespecialidad y semestre por una combobox o algo parecido        
-            ESP = CajaEspecialidad.SelectedIndex;
-
-            MySqlCommand comando = new MySqlCommand();
-            comando.CommandText = "Insert into usuario(Nombre, Apellido_Paterno, Apellido_Materno, Especialidad, Semestre, No_Control, Edad, Nombre_usuarios, Contraseña, Correo) values('" + Nombre + "', '" + AP + "', '" + AM + "',"+ESP+","+SEM+","+NCO+","+ED+",'" + NUS + "', '" + PSS + "', '" + MAIL + "')";
-            comando.Connection = con;
-            try
+            WebResponse response = request.GetResponse();
+            stream = response.GetResponseStream();
+            StreamReader leer = new StreamReader(stream);
+            string lectura_php = leer.ReadToEnd();
+            MessageBox.Show(lectura_php);
+            leer.Close();
+            stream.Close();
+            msgText.Text = "Usuario registrado correctamente";
+            if (lectura_php.Contains("Registros_generados"))
             {
-                con.Open();
-                comando.ExecuteNonQuery();
-                msgText.Text = "Usuario registrado correctamente";
-                Hecho.IsOpen = true;
-               
+                if (msgText.Text == "Usuario registrado correctamente")
+                {
+                    MainWindow pantalla = new MainWindow();
+                    pantalla.Show();
+                    this.Close();
+                }
             }
-            catch (Exception ex)
+            else if (lectura_php.Contains("usuario ya registrado"))
             {
-                msgText.Text = "Error:" + ex;
-                Hecho.IsOpen = true;
-
+                MessageBox.Show("Uusario ya registrado");
             }
+
 
         }
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            try
-            {
-                con.Open();
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                con.Close();
-                msgText.Text = "Error:" + ex;
-                Hecho.IsOpen = true;
-            }
+            
         }
 
         private void ConfContra_MouseEnter(object sender, MouseEventArgs e)
@@ -207,6 +214,7 @@ namespace WPFSICCO
                 pantalla.Show();
                 this.Close();
             }
+            
         }
     }
 }
