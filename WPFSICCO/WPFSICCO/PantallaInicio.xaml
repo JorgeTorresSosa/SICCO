@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSICCO"
         mc:Ignorable="d"
-        Title="PantallaInicio" Height="800" Width="1200" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        Title="PantallaInicio" Height="600" Width="1100" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
         xmlns:MaterialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -15,36 +15,114 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
-    <Grid>
-        <Grid Background="#FF009688">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="250"/>
-            </Grid.ColumnDefinitions>
-        </Grid>
-        <Border Grid.Row ="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
-            <DockPanel VerticalAlignment="Top" Height="100" HorizontalAlignment="Right" Orientation="Horizontal" Background="#FFC51162">
-                <StackPanel Width="200" Orientation="Horizontal">
-                    <Button Content="g">
-                        <MaterialDesign:PackIcon Kind="Delta" Width="40" Height="40" Foreground="White" Margin="50,0,0,0"/>
-                        <MaterialDesign:PackIcon Kind="Settings" Width="40" Height="40" Foreground="White"/>
-                        <TextBlock Text="Ajustes" Height="50" FontFamily="Adobe Gothic Std B" FontSize="30" FontWeight="Bold" Margin="-80,4" />
-                    </Button>
-                </StackPanel>
-                <StackPanel Width="Auto"> <!--Caja para buscar en net -->
-                    <MaterialDesign:PackIcon Kind="Fire" Height="Auto" Width="40" Margin="0 25 0 0" Foreground="#FFFFFFFF" />
-                    <TextBlock FontSize="22" Height="50" Width="180" Background="Transparent" Foreground="White"  MaterialDesign:HintAssist.Hint="Buscar" MaterialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Text="Buscar" FontFamily="Adobe Gothic Std B" TextAlignment="Left" VerticalAlignment="Center"  Margin="40,-38,0,0" />
+
+    <Grid Margin="-5,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0" VerticalAlignment="Top" Background="#FF009688" HorizontalAlignment="Right" Height="75" Width="1105">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.ColumnSpan="2">
+
+                <!--Imagenes de Sicco (Pendiente)-->
+                <StackPanel>
+                    <Image/>
+                    <Image/>
                 </StackPanel>
 
+                <!--Boton  Categorias-->
+                <MaterialDesign:PackIcon Kind="ChartPie" Foreground="{Binding ElementName=btnCategorias, Path=Foreground}" Height="40" Width="40" RenderTransformOrigin="0.5,0.5">
+                    <MaterialDesign:PackIcon.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="115" Y="35"/>
+                        </TransformGroup>
+                    </MaterialDesign:PackIcon.RenderTransform>
+                </MaterialDesign:PackIcon>
+                <MaterialDesign:PackIcon Kind="Sitemap"  Height="40" Width="40" Foreground="{Binding ElementName=btnCategorias, Path=Foreground}" RenderTransformOrigin="0.5,0.5">
+                    <MaterialDesign:PackIcon.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="115" Y="35"/>
+                        </TransformGroup>
+                    </MaterialDesign:PackIcon.RenderTransform>
+                </MaterialDesign:PackIcon>
+                <Button x:Name="btnCategorias" Content="Categorias" FontSize="22" FontFamily="Adobe Gothic Std B" Height="Auto" 
+                        Width="145" Background="{x:Null}" Margin="0,-40,-98,0" BorderBrush="White" Foreground="#FFC51162"  />
+
+                <!--Boton Ajustes-->
+                <MaterialDesign:PackIcon Kind="Delta" Width="40" Height="40" Foreground="{Binding ElementName=btnAjustar,Path=Foreground}" RenderTransformOrigin="0.5,0.5">
+                    <MaterialDesign:PackIcon.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="125" Y="30"/>
+                        </TransformGroup>
+                    </MaterialDesign:PackIcon.RenderTransform>
+                </MaterialDesign:PackIcon>
+                <MaterialDesign:PackIcon Kind="Settings" Width="40" Height="40" Foreground="{Binding ElementName=btnAjustar, Path=Foreground}" RenderTransformOrigin="0.5,0.5">
+                    <MaterialDesign:PackIcon.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="125" Y="30"/>
+                        </TransformGroup>
+                    </MaterialDesign:PackIcon.RenderTransform>
+                </MaterialDesign:PackIcon>
+                <Button x:Name="btnAjustar" Content="Ajustes" Height="115" Width="130" FontFamily="Adobe Gothic Std B" FontSize="22" 
+                        VerticalAlignment="Top" Margin="20,-40,20,0" Background="{x:Null}" Foreground="#FFC51162"/>
+
+                <!--Buscador de productos-->
+                <StackPanel Width="300">
+                    <TextBox x:Name="Buscar" FontSize="22" Height="75" Foreground="#FFC51162"  MaterialDesign:HintAssist.Hint="Buscar" 
+                             MaterialDesign:HintAssist.IsFloating="True" FontFamily="Adobe Gothic Std B" TextAlignment="Left" VerticalAlignment="Center" 
+                             Margin="49,-38,-94,-38" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFC51162" >
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="35" X="-15"/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+                    </TextBox>
+                    <MaterialDesign:PackIcon Kind="Fire" Height="Auto" Width="40" Margin="0 20"
+                                             Foreground="{Binding ElementName=Buscar, Path=BorderBrush}" />
+                </StackPanel>
+
+                <!--Boton minimizar-->
                 <Button Height="100" Width="80" Padding="0" Background="{x:Null}"  BorderBrush="{x:Null}">
-                    <MaterialDesign:PackIcon Kind="Minus" Height="Auto" Width="40"/>
+                    <MaterialDesign:PackIcon Kind="Minus" Height="Auto" Width="40" Foreground="#FFC51162"/>
                 </Button>
-                <Button Height="100" Width="80" Padding="0" Background="{x:Null}"  BorderBrush="{x:Null}" >
-                    <MaterialDesign:PackIcon Kind="Power" Height="Auto" Width="40"/>
-                </Button>
-            </DockPanel>
-        </Border>
 
+                <!--Boton cerrar programa-->
+                <Button Height="100" Width="80" Padding="0" Background="{x:Null}"  BorderBrush="{x:Null}" >
+                    <MaterialDesign:PackIcon Kind="Close" Height="Auto" Width="40" Foreground="#FFC51162"/>
+                </Button>
+
+            </StackPanel>
+
+        </Grid>
+
+
+        <Grid Grid.Row="1" Background="#FFC51162">
+            <Grid Background="#FFC51162" Width="300" HorizontalAlignment="Left" Margin="-310,0,0,0" Grid.RowSpan="2">
+
+
+            </Grid>
+            <StackPanel x:Name="pnlFormas" Background="White" HorizontalAlignment="Right" Width="1105" Grid.RowSpan="2"/>
+
+
+        </Grid>
 
     </Grid>
 
