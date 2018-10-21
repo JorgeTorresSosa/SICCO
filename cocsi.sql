@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2018 a las 00:47:35
+-- Tiempo de generación: 21-10-2018 a las 03:36:21
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `No_Control` int(15) NOT NULL,
   `Descripcion` text NOT NULL,
   `Precio` int(8) NOT NULL,
+  `imagen` blob NOT NULL,
   PRIMARY KEY (`ID_Producto`),
   KEY `No_Control` (`No_Control`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -53,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `servicio` (
   `Ubicacion` varchar(50) NOT NULL,
   `No_Control` int(15) NOT NULL,
   `Descripcion` text NOT NULL,
+  `imagen` blob NOT NULL,
   PRIMARY KEY (`ID_Clase`),
   KEY `No_Control` (`No_Control`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

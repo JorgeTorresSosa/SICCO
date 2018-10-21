@@ -16,19 +16,22 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Grid>
-        <Grid Background="#FFC51162">
+        <Grid Background="#FF009688">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="250"/>
             </Grid.ColumnDefinitions>
         </Grid>
         <Border Grid.Row ="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
-            <StackPanel VerticalAlignment="Top" Height="100" HorizontalAlignment="Right" Orientation="Horizontal" >
+            <DockPanel VerticalAlignment="Top" Height="100" HorizontalAlignment="Right" Orientation="Horizontal" Background="#FFC51162">
                 <StackPanel Width="200" Orientation="Horizontal">
-                    <MaterialDesign:PackIcon Kind="Delta" Width="40" Height="40" Foreground="White"/>
-                    <MaterialDesign:PackIcon Kind="Settings" Width="40" Height="40" Foreground="White"/>
+                    <Button Content="g">
+                        <MaterialDesign:PackIcon Kind="Delta" Width="40" Height="40" Foreground="White" Margin="50,0,0,0"/>
+                        <MaterialDesign:PackIcon Kind="Settings" Width="40" Height="40" Foreground="White"/>
+                        <TextBlock Text="Ajustes" Height="50" FontFamily="Adobe Gothic Std B" FontSize="30" FontWeight="Bold" Margin="-80,4" />
+                    </Button>
                 </StackPanel>
-                <StackPanel Width="Auto"> <!--Caja para buscar en net-->
+                <StackPanel Width="Auto"> <!--Caja para buscar en net -->
                     <MaterialDesign:PackIcon Kind="Fire" Height="Auto" Width="40" Margin="0 25 0 0" Foreground="#FFFFFFFF" />
                     <TextBlock FontSize="22" Height="50" Width="180" Background="Transparent" Foreground="White"  MaterialDesign:HintAssist.Hint="Buscar" MaterialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Text="Buscar" FontFamily="Adobe Gothic Std B" TextAlignment="Left" VerticalAlignment="Center"  Margin="40,-38,0,0" />
                 </StackPanel>
@@ -39,7 +42,7 @@
                 <Button Height="100" Width="80" Padding="0" Background="{x:Null}"  BorderBrush="{x:Null}" >
                     <MaterialDesign:PackIcon Kind="Power" Height="Auto" Width="40"/>
                 </Button>
-            </StackPanel>
+            </DockPanel>
         </Border>
 
 
