@@ -115,21 +115,21 @@ namespace WPFSICCO
             stream.Close();
             if (lectura_php.Contains("Registros_generados"))
             {
-              
                 msgText.Text = "Ingresado correctamente";
             }
-            else
-            {
-                MessageBox.Show("Error");
-            }
+            
             if (msgText.Text == "Ingresado correctamente")
             {
                 PantallaInicio iniciar = new PantallaInicio();
                 iniciar.Show();
                 this.Close();
             }
+            if (msgText.Text == "Ingresado correctamente")
+            {
+                MessageBox.Show("Error");
+            }
 
-
+            
         }
 
         private void BotonAceptar_Click(object sender, RoutedEventArgs e)
