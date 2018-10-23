@@ -14,22 +14,21 @@ using System.Windows.Shapes;
 
 namespace WPFSICCO
 {
-    public partial class PantallaInicio : Window
+    /// <summary>
+    /// Lógica de interacción para PaginaVendedor.xaml
+    /// </summary>
+    public partial class PaginaVendedor : Window
     {
-        public PantallaInicio()
+        public PaginaVendedor()
         {
             InitializeComponent();
         }
 
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+       void Prueba()
         {
-            DragMove();
             
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
+            
+            
         }
     }
 }

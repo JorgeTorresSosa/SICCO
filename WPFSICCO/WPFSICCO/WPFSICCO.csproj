@@ -69,6 +69,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Registro Articulos.xaml.cs">
+      <DependentUpon>Registro Articulos.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,7 +92,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PaginaVendedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PantallaInicio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Registro Articulos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -100,6 +111,9 @@
     </Compile>
     <Compile Include="PaginaRegistrarse.xaml.cs">
       <DependentUpon>PaginaRegistrarse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaVendedor.xaml.cs">
+      <DependentUpon>PaginaVendedor.xaml</DependentUpon>
     </Compile>
     <Compile Include="PantallaInicio.xaml.cs">
       <DependentUpon>PantallaInicio.xaml</DependentUpon>

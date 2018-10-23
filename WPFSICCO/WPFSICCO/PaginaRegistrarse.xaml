@@ -99,6 +99,7 @@
                         <TextBox x:Name="ConfContraV" Text="{Binding Password, Mode=TwoWay, ElementName=ConfContra}"  Visibility="Collapsed" Height="52" MinHeight="52" Width="130" />
                         <materialDesign:PackIcon x:Name="EyeOff" Kind="EyeOff" VerticalAlignment="Bottom" Margin="20 0 0 4" MouseDown="ConfContra_MouseEnter" Height="Auto" Width="Auto" />
                     </StackPanel>
+                    
 
                     <Button Content="Crear cuenta" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" Click="CrearCuenta"/>
                 </StackPanel>

@@ -53,7 +53,7 @@
                 </StackPanel>
                 <CheckBox Content="Recordar contraseña" Margin="0 30 0 0"/>
                 <Button Content="Iniciar Sesion" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" Click="Buttonn_Click_1" />
-                <materialDesign:Card Margin="0 10 10 10" Padding="15" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                <materialDesign:Card Margin="0 12 10 10" Padding="15" materialDesign:ShadowAssist.ShadowDepth="Depth4">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock><Hyperlink Click="OlvContr_Click" Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Gray">Olvidaste tu contraseña? </Hyperlink></TextBlock>
                         <TextBlock Margin="70 0 0 0" ><Hyperlink Click="Ingresar_Click" Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Gray">Registrarse</Hyperlink></TextBlock>

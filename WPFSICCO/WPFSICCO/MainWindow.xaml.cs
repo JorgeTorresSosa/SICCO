@@ -33,6 +33,9 @@ namespace WPFSICCO
         public MainWindow()
         {
             InitializeComponent();
+            Registro_Articulos aasd = new Registro_Articulos(); 
+
+            aasd.Show();
         }
         WebClient Reg_DB = new WebClient();
         
@@ -44,6 +47,7 @@ namespace WPFSICCO
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+  
         }
 
         private void Ingresar_Click (object sender, RoutedEventArgs e)
@@ -120,7 +124,7 @@ namespace WPFSICCO
                 iniciar.Show();
                 this.Close();
             }
-            else
+            if (msgText.Text == "Ingresado correctamente")
             {
                 MessageBox.Show("Error");
             }
@@ -130,7 +134,12 @@ namespace WPFSICCO
 
         private void BotonAceptar_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (msgText.Text == "Ingresado correctamente")
+            {
+                PantallaInicio iniciar = new PantallaInicio();
+                iniciar.Show();
+                this.Close();
+            }
         }
     }
 }

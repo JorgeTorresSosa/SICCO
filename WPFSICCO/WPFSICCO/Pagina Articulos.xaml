@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSICCO"
         mc:Ignorable="d"
-        Title="Pagina_Articulos" Height="600" Width="1000" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        Title="Pagina_Articulos" Height="725" Width="1200" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -15,29 +15,13 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
     <StackPanel>
-        <Grid Margin="20" VerticalAlignment="Top" Background="White" Height="560">
+        <Grid Margin="20" VerticalAlignment="Top" Background="White" Height="668">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="1"/>
             </Grid.Effect>
-            <Image x:Name="ImagenPrin" Source="Assets/92886_179403_1.jpg" HorizontalAlignment="Left" Margin="226,2,0,204" Width="444" />
-            
-            <ListView Width="80" HorizontalAlignment="Left" Margin="80 50">
-                <ListViewItem Width="60" Height="60">
-                    <Image x:Name="Imagen1" Source="Assets/92886_179403_1.jpg" Stretch="UniformToFill" MouseDown="Imagen1_MouseDown" />
-                </ListViewItem>
-                <ListViewItem Width="60" Height="60">
-                    <Image x:Name="Imagen2" Source="Assets/92886_179403_2.jpg" Stretch="UniformToFill" MouseDown="Imagen2_MouseDown"/>
-                </ListViewItem>
-                <ListViewItem Width="60" Height="60">
-                    <Image x:Name="Imagen3" Source="Assets/92886_179403_3.jpg" Stretch="UniformToFill" MouseDown="Imagen3_MouseDown"/>
-                </ListViewItem>
-                <ListViewItem Width="60" Height="60">
-                    <Image x:Name="Imagen4" Source="Assets/92886_179403_4.jpg" Stretch="UniformToFill" MouseDown="Imagen4_MouseDown"/>
-                </ListViewItem>
-                <ListViewItem Width="60" Height="60">
-                    <Image x:Name="Imagen5" Source="Assets/92886_179403_5.jpg" Stretch="UniformToFill" MouseDown="Imagen5_MouseDown"/>
-                </ListViewItem>
-            </ListView>
+            <Image x:Name="ImagenPrin"  Source="Assets/92886_179403_1.jpg" HorizontalAlignment="Left" Margin="82,2,0,204" Width="588" />
+
+
             <StackPanel Margin="750 70 70 70" HorizontalAlignment="Left">
                 <Label x:Name="NombreVendedor" Content="Vendedor" FontSize="18" Margin="0 5 0 0" Foreground="#FF6A6A6A" />
                 <TextBlock x:Name="NombreArticulo" Text="Articulo" FontSize="22" TextWrapping="Wrap" Foreground="#FF6A6A6A"  Margin="5 5 0 0"/>
@@ -51,6 +35,7 @@
             <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 100">
                 <Label Content="Descripcion:" FontSize="22"/>
                 <TextBlock x:Name="DescripcionArticulo" Height="72" TextWrapping="Wrap" Margin="0,0,460,0" />
+               
             </StackPanel>
         </Grid>
     </StackPanel>

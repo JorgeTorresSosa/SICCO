@@ -34,14 +34,11 @@ namespace WPFSICCO
     public partial class PaginaRegistrarse : Window
     {
         WebClient aa = new WebClient();
-        bool PrimeraVez = false;
-        int valor = 1;
         int clasificador = 1;
         public PaginaRegistrarse()
         {
             InitializeComponent();
-        }
-        //MySqlConnection con = new MySqlConnection("server=localhost; user=root; database=base; SslMode=none");
+        }     
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -52,21 +49,7 @@ namespace WPFSICCO
         {
             Application.Current.Shutdown();
         }
-
-        void Comprobacion_USIARIO()
-        {
-          /*   con.Open();
-                MySqlCommand comando = new MySqlCommand();
-                comando.CommandText = "Select * from usuario where Nombre_usuarios='" + UsuarioRegistro.Text + "' and Correo='" + CorreoElc.Text + "'";
-                comando.Connection = con;
-                comando.ExecuteNonQuery();
-                DataTable Tabla = new DataTable();
-                MySqlDataAdapter Adaptar_Tipo = new MySqlDataAdapter(comando);
-                Adaptar_Tipo.Fill(Tabla);
-                valor = Convert.ToInt32(Tabla.Rows.Count.ToString());              
-        
-    */}
-
+   
         private void CrearCuenta(object sender, RoutedEventArgs e)
         {
             
