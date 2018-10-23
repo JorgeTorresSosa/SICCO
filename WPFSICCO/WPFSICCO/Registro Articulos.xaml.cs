@@ -30,7 +30,8 @@ namespace WPFSICCO
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            Hecho.IsOpen = true;
+
         }
 
         private void BotonExaminar_Click(object sender, RoutedEventArgs e)
@@ -45,6 +46,16 @@ namespace WPFSICCO
                 ImagenArticulo.Source = new BitmapImage(new Uri(op.FileName));
             }
 
+        }
+
+        private void BotonAceptar_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void RegistarArticulo_Click(object sender, RoutedEventArgs e)
+        {
+            Hecho.IsOpen = true;
         }
     }
 }
