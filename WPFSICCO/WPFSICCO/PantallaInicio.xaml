@@ -115,11 +115,117 @@
 
 
         <Grid Grid.Row="1" Background="#FFC51162">
-            <Grid Background="#FFC51162" Width="300" HorizontalAlignment="Left" Margin="-310,0,0,0" Grid.RowSpan="2">
+            
+            <StackPanel x:Name="pnlFormas" Background="White" HorizontalAlignment="Right" Width="1150" Grid.ColumnSpan="2"/>
+            
+
+            <StackPanel  x:Name="StackPanelMenu" Width="250" HorizontalAlignment="Left" Margin="-180 0 0 0" RenderTransformOrigin="0.5,0.5">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="100" HorizontalAlignment="Center">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10">
+                        <MaterialDesign:PackIcon Kind="InformationVariant" Width="40" Height="40" Foreground="#FF009688"/>
+                    </Button>
+                    <Button x:Name="button" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" BorderBrush="{x:Null}" Padding="0" Width="80" Height="80" Margin="10" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                        <Button.Background>
+                            <ImageBrush ImageSource="Assets/FotoUsuario.png" Stretch="UniformToFill"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10">
+                        <MaterialDesign:PackIcon Kind="Menu" Width="40" Height="40" Foreground="#FF009688"/>
+                    </Button>
+                </StackPanel>
+                <ListView>
+                    <ListViewItem x:Name="listViewItem" Height="60" RenderTransformOrigin="0.5,0.5">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="10 0" OpacityMask="Black">
+                            <MaterialDesign:PackIcon Kind="AccountCircle" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
+                            <TextBlock Text="Perfil" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <MaterialDesign:PackIcon Kind="AutoFix" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688" />
+                            <TextBlock Text="Agregar Articulo" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <MaterialDesign:PackIcon Kind="BabyBuggy" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
+                            <TextBlock Text="Mis Compras" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <MaterialDesign:PackIcon Kind="CubeSend" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
+                            <TextBlock Text="Mis Articulos" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="listViewItem4" Height="60" RenderTransformOrigin="0.5,0.5">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <MaterialDesign:PackIcon Kind="MushroomOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
+                            <TextBlock Text="Servicios" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
+                            <MaterialDesign:PackIcon Kind="Incognito" Width="40" Height="40" Foreground="#FF009688" />
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
 
 
-            </Grid>
-            <StackPanel x:Name="pnlFormas" Background="White" HorizontalAlignment="Right" Width="1105" Grid.RowSpan="2"/>
+            
 
 
         </Grid>
