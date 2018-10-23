@@ -33,6 +33,9 @@ namespace WPFSICCO
         public MainWindow()
         {
             InitializeComponent();
+            Registro_Articulos aasd = new Registro_Articulos(); 
+
+            aasd.Show();
         }
         WebClient Reg_DB = new WebClient();
         
@@ -44,6 +47,7 @@ namespace WPFSICCO
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+  
         }
 
         private void Ingresar_Click (object sender, RoutedEventArgs e)
@@ -89,39 +93,53 @@ namespace WPFSICCO
         {
 
 
-            NameValueCollection coex_db = new NameValueCollection();
-            coex_db.Add("Nombre_usuarios", txt_NombreUsuario.Text);
-            coex_db.Add("Contraseña", txt_Contraseña.Password);
-            byte[] insertuser = Reg_DB.UploadValues("https://sicco58.000webhostapp.com/ABRIR_CONEX.php", "POST", coex_db);
+            string pss = txt_Contraseña.Password;
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            string postdata = "NU=" + txt_NombreUsuario.Text + "&pss=" + pss;
+            byte[] data = encoding.GetBytes(postdata);
+            //"NU=" + txt_NombreUsuario.Text +
+            WebRequest request = WebRequest.Create("https://sicco58.000webhostapp.com/ABRIR_CONEX.php");
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
 
+            Stream stream = request.GetRequestStream();
+            stream.Write(data, 0, data.Length);
+            stream.Close();
 
-            byte[] html = Reg_DB.DownloadData("https://sicco58.000webhostapp.com/ABRIR_CONEX.php");
-            string res = utf.GetString(html);
-
-            /*if (res == "Exite al menos un registro")
+            WebResponse response = request.GetResponse();
+            stream = response.GetResponseStream();
+            StreamReader leer = new StreamReader(stream);
+            string lectura_php = leer.ReadToEnd();
+            leer.Close();
+            stream.Close();
+            if (lectura_php.Contains("Registros_generados"))
             {
-                Console.WriteLine("AHuevo");
-                MessageBox.Show("Ya jaloooo");
-                
-            }
-            else if (res == "No jaló")
-            {
-                Console.WriteLine("Llego mal pero llego");
-                MessageBox.Show("No jaló");
-
+              
+                msgText.Text = "Ingresado correctamente";
             }
             else
             {
-                Console.WriteLine("puta madre...");
-                MessageBox.Show("ERROR");
+                MessageBox.Show("Error");
             }
-            */
-            MessageBox.Show(res);
+            if (msgText.Text == "Ingresado correctamente")
+            {
+                PantallaInicio iniciar = new PantallaInicio();
+                iniciar.Show();
+                this.Close();
+            }
+
+
         }
 
         private void BotonAceptar_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (msgText.Text == "Ingresado correctamente")
+            {
+                PantallaInicio iniciar = new PantallaInicio();
+                iniciar.Show();
+                this.Close();
+            }
         }
     }
 }

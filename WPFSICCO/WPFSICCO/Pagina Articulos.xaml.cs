@@ -26,37 +26,12 @@ namespace WPFSICCO
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+             
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Imagen1_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ImagenPrin.Source = Imagen1.Source;
-        }
-
-        private void Imagen2_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ImagenPrin.Source = Imagen2.Source;
-        }
-
-        private void Imagen3_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ImagenPrin.Source = Imagen3.Source;
-        }
-
-        private void Imagen4_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ImagenPrin.Source = Imagen4.Source;
-        }
-
-        private void Imagen5_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ImagenPrin.Source = Imagen5.Source;
+            
         }
     }
 }
