@@ -33,9 +33,9 @@ namespace WPFSICCO
         public MainWindow()
         {
             InitializeComponent();
-            Registro_Articulos aasd = new Registro_Articulos(); 
+            Registro_Articulos PantallaRegistroArticulos_Form = new Registro_Articulos(); 
 
-            aasd.Show();
+           
         }
         WebClient Reg_DB = new WebClient();
         
@@ -136,8 +136,8 @@ namespace WPFSICCO
         {
             if (msgText.Text == "Ingresado correctamente")
             {
-                PantallaInicio iniciar = new PantallaInicio();
-                iniciar.Show();
+                PantallaInicio PantallaInicio_Form = new PantallaInicio();
+                PantallaInicio_Form.Show();
                 this.Close();
             }
         }

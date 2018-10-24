@@ -193,8 +193,8 @@ namespace WPFSICCO
         {
             if(msgText.Text == "Usuario registrado correctamente")
             {
-                MainWindow pantalla = new MainWindow();
-                pantalla.Show();
+                MainWindow pantallaMainWindow_Form = new MainWindow();
+                pantallaMainWindow_Form.Show();
                 this.Close();
             }
             
