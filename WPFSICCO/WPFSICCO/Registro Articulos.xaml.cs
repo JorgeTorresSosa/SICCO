@@ -12,8 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
-
-
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Collections.Specialized;
 
 
 namespace WPFSICCO
@@ -36,6 +38,7 @@ namespace WPFSICCO
 
         private void BotonExaminar_Click(object sender, RoutedEventArgs e)
         {
+            ASCIIEncoding encoding = new ASCIIEncoding();
             OpenFileDialog op = new OpenFileDialog();
             op.Title = "Select a picture";
             op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
@@ -44,6 +47,30 @@ namespace WPFSICCO
             if (op.ShowDialog() == true)
             {
                 ImagenArticulo.Source = new BitmapImage(new Uri(op.FileName));
+                FileStream Lectura_img = new FileStream(op.FileName, FileMode.Open, FileAccess.Read);
+                byte[] Long_imagen = new byte[Lectura_img.Length];
+                Lectura_img.Read(Long_imagen, 0, Convert.ToInt32(Lectura_img.Length));
+                Lectura_img.Close();
+
+                string postdata = "img=" + Long_imagen;
+                byte[] data = encoding.GetBytes(postdata);
+                //"NU=" + txt_NombreUsuario.Text +
+                WebRequest request = WebRequest.Create("https://sicco58.000webhostapp.com/img.php");
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = data.Length;
+
+                Stream stream = request.GetRequestStream();
+                stream.Write(data, 0, data.Length);
+                stream.Close();
+
+                WebResponse response = request.GetResponse();
+                stream = response.GetResponseStream();
+                StreamReader leer = new StreamReader(stream);
+                string lectura_php = leer.ReadToEnd();
+
+                leer.Close();
+                stream.Close();
             }
 
         }
