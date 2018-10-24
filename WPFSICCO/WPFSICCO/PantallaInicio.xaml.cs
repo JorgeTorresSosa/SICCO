@@ -21,15 +21,18 @@ namespace WPFSICCO
             InitializeComponent();
         }
 
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void AbrirMenu_Click(object sender, RoutedEventArgs e)
         {
-            DragMove();
-            
+            AbrirMenu.Visibility = Visibility.Collapsed;
+            CerrarMenu.Visibility = Visibility.Visible ;
+            BtnInfo.Visibility = Visibility.Visible;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CerrarMenu_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            AbrirMenu.Visibility = Visibility.Visible;
+            CerrarMenu.Visibility = Visibility.Collapsed;
+            BtnInfo.Visibility = Visibility.Collapsed;
         }
     }
 }

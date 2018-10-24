@@ -28,14 +28,14 @@ namespace WPFSICCO
     
     public partial class MainWindow : Window
     {
-        
-        Resultado_busqueda rest = new Resultado_busqueda();
         UTF8Encoding utf = new UTF8Encoding();
         int clasificador = -1;
         public MainWindow()
         {
             InitializeComponent();
-            rest.Show();
+            Registro_Articulos PantallaRegistroArticulos_Form = new Registro_Articulos(); 
+
+           
         }
         WebClient Reg_DB = new WebClient();
         
@@ -136,8 +136,8 @@ namespace WPFSICCO
         {
             if (msgText.Text == "Ingresado correctamente")
             {
-                PantallaInicio iniciar = new PantallaInicio();
-                iniciar.Show();
+                PantallaInicio PantallaInicio_Form = new PantallaInicio();
+                PantallaInicio_Form.Show();
                 this.Close();
             }
         }
