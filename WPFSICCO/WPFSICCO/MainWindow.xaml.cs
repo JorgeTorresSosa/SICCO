@@ -28,14 +28,14 @@ namespace WPFSICCO
     
     public partial class MainWindow : Window
     {
+        
+        Resultado_busqueda rest = new Resultado_busqueda();
         UTF8Encoding utf = new UTF8Encoding();
         int clasificador = -1;
         public MainWindow()
         {
             InitializeComponent();
-            Registro_Articulos aasd = new Registro_Articulos(); 
-
-            aasd.Show();
+            rest.Show();
         }
         WebClient Reg_DB = new WebClient();
         

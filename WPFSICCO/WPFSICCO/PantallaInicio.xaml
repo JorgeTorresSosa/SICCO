@@ -132,7 +132,7 @@
                     <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10">
                         <MaterialDesign:PackIcon Kind="InformationVariant" Width="40" Height="40" Foreground="#FF009688"/>
                     </Button>
-                    <Button x:Name="button" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" BorderBrush="{x:Null}" Padding="0" Width="80" Height="80" Margin="10" RenderTransformOrigin="0.5,0.5">
+                    <Button x:Name="button" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" BorderBrush="{x:Null}" Padding="0" Width="80" Height="80" Margin="10" RenderTransformOrigin="0.5,0.5" Background="White">
                         <Button.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -141,9 +141,9 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </Button.RenderTransform>
-                        <Button.Background>
-                            <ImageBrush ImageSource="Assets/FotoUsuario.png" Stretch="UniformToFill"/>
-                        </Button.Background>
+                        
+                            <Image Source="Assets/FotoUsuario.png" Stretch="UniformToFill"/>
+                        
                     </Button>
                     <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10">
                         <MaterialDesign:PackIcon Kind="Menu" Width="40" Height="40" Foreground="#FF009688"/>
