@@ -147,7 +147,7 @@
             <StackPanel x:Name="pnlFormas" Background="White" HorizontalAlignment="Right" Width="1105" Grid.RowSpan="2"/>
 
 
-            <StackPanel  x:Name="StackPanelMenu" Width="60" HorizontalAlignment="Left" Margin="0 0 0 0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" Background="#FFC51162">
+            <StackPanel  x:Name="StackPanelMenu" Width="58" HorizontalAlignment="Left" Margin="0 0 0 0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" Background="#FFC51162">
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="100" Width="Auto" HorizontalAlignment="Right" Margin="5,0,-65,0" >
                     <MaterialDesign:PackIcon Kind='AccountOutline' VerticalAlignment="Center" Padding="0" Width="70" Height="80" Foreground="#FF009688"/>
@@ -189,39 +189,39 @@
                     </Button>
                 </StackPanel>
                 <ListView>
-                    <ListViewItem x:Name="listViewItem" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem x:Name="listViewItem" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Height="60" RenderTransformOrigin="0.5,0.5">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0" OpacityMask="Black">
-                            <MaterialDesign:PackIcon Kind="AccountCircle" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
-                            <TextBlock Text="Perfil" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
+                            <MaterialDesign:PackIcon Kind="AccountCircle" Width="30" Height="30" VerticalAlignment="Center" Margin="-5" Foreground="#FF009688"/>
+                            <TextBlock Text="Perfil" Margin="20 10 10 10" VerticalAlignment="Center" Foreground="#FF009688"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5" >
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <MaterialDesign:PackIcon Kind="AutoFix" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688" />
-                            <TextBlock Text="Agregar Articulo" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
+                            <MaterialDesign:PackIcon Kind="AutoFix" Width="30" Height="30" VerticalAlignment="Center" Margin="-5" Foreground="#FF009688" />
+                            <TextBlock Text="Agregar Articulo" Margin="20 10 10 10" VerticalAlignment="Center" Foreground="#FF009688" />
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <MaterialDesign:PackIcon Kind="BabyBuggy" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
-                            <TextBlock Text="Mis Compras" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
+                            <MaterialDesign:PackIcon Kind="BabyBuggy" Width="30" Height="30" VerticalAlignment="Center" Margin="-5" Foreground="#FF009688"/>
+                            <TextBlock Text="Mis Compras" Margin="20 10 10 10" VerticalAlignment="Center" Foreground="#FF009688"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <MaterialDesign:PackIcon Kind="CubeSend" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
-                            <TextBlock Text="Mis Articulos" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
+                            <MaterialDesign:PackIcon Kind="CubeSend" Width="30" Height="30" VerticalAlignment="Center" Margin="-5" Foreground="#FF009688"/>
+                            <TextBlock Text="Mis Articulos" Margin="20 10 10 10" VerticalAlignment="Center" Foreground="#FF009688"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="listViewItem4" Height="60" RenderTransformOrigin="0.5,0.5">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <MaterialDesign:PackIcon Kind="MushroomOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
-                            <TextBlock Text="Servicios" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
+                            <MaterialDesign:PackIcon Kind="MushroomOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="-5" Foreground="#FF009688"/>
+                            <TextBlock Text="Servicios" Margin="20 10 10 10" VerticalAlignment="Center" Foreground="#FF009688"/>
                             <MaterialDesign:PackIcon Kind="Incognito" Width="40" Height="40" Foreground="#FF009688" />
                         </StackPanel>
                     </ListViewItem>
