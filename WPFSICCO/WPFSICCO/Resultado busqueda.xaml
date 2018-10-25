@@ -24,41 +24,45 @@
             </Grid.Effect>
             <StackPanel  Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="Assets/92886_179403_1.jpg" Height="140" Margin="20 10 10 10"/>
+                    <Image x:Name="imagen1"  Height="140" Width="140" Margin="20 10 10 10"/>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Margin="10" ><Hyperlink  Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Black">Nombre del articulo</Hyperlink></TextBlock>
-                        <TextBlock Text="Aqui ira la descripcion del mismo jajaja" Margin="10"/>
+                        <TextBlock Margin="10 10 0 5" ><Hyperlink  Click="Nombre1_Click" Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Black"><TextBlock Tag="1" x:Name="Nombre1" Text="Nombre del producto"/></Hyperlink></TextBlock>
+                        <TextBlock x:Name="Id1" Text="aqui va el id 1 " Foreground="Gray" Margin="10 0 0 0"/>
+                        <TextBlock x:Name="Descricpcion1" Text="Aqui ira la descripcion del mismo jajaja" Margin="10 5 0 0"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="Assets/92886_179403_1.jpg" Height="140" Margin="20 10 10 10"/>
+                    <Image x:Name="imagen2"  Height="140" Width="140" Margin="20 10 10 10"/>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Margin="10" ><Hyperlink  Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Black">Nombre del articulo</Hyperlink></TextBlock>
-                        <TextBlock Text="Aqui ira la descripcion del mismo jajaja" Margin="10"/>
+                        <TextBlock Margin="10 5 0 5"><Hyperlink   Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Black" Click="Nombre2_Click"><TextBlock Tag="2" x:Name="Nombre2" Text="Nombre del producto"/></Hyperlink></TextBlock>
+                        <TextBlock x:Name="Id2" Text="aqui va el id 2 " Foreground="Gray" Margin="10 0 0 0"/>
+                        <TextBlock x:Name="Descricpcion2" Text="Aqui ira la descripcion del mismo jajaja" Margin="10 5 0 0"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="Assets/92886_179403_1.jpg" Height="140" Margin="20 10 10 10"/>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Margin="10" ><Hyperlink  Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Black">Nombre del articulo</Hyperlink></TextBlock>
-                        <TextBlock Text="Aqui ira la descripcion del mismo jajaja" Margin="10"/>
+                    <Image x:Name="imagen3"  Height="140" Width="140" Margin="20 10 10 10"/>
+                    <StackPanel Orientation="Vertical"> 
+                        <TextBlock Margin="10 5 0 5" ><Hyperlink  Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Black" Click="Nombre3_Click"><TextBlock  x:Name="Nombre3" Text="Nombre del producto"/></Hyperlink></TextBlock>
+                        <TextBlock x:Name="Id3" Text="aqui va el id 3 " Foreground="Gray" Margin="10 0 0 0"/>
+                        <TextBlock x:Name="Descricpcion3" Text="Aqui ira la descripcion del mismo jajaja" Margin="10 5 0 0"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="Assets/92886_179403_1.jpg" Height="140" Margin="20 10 10 10"/>
+                    <Image x:Name="imagen4"  Height="140" Width="140" Margin="20 10 10 10"/>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Margin="10" ><Hyperlink  Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Black">Nombre del articulo</Hyperlink></TextBlock>
-                        <TextBlock Text="Aqui ira la descripcion del mismo jajaja" Margin="10"/>
+                        <TextBlock Margin="10 5 0 5" ><Hyperlink  Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Black" Click="Nombre4_Click"><TextBlock x:Name="Nombre4" Text="Nombre del producto"/></Hyperlink></TextBlock>
+                        <TextBlock x:Name="Id4" Text="aqui va el id 4 " Foreground="Gray" Margin="10 0 0 0"/>
+                        <TextBlock x:Name="Descricpcion4" Text="Aqui ira la descripcion del mismo jajaja" Margin="10 5 0 0"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button HorizontalAlignment="Center" Margin="0 0 10 0">
+                    <Button x:Name="BotonAtras" HorizontalAlignment="Center" Margin="0 0 10 0" Click="BotonAtras_Click">
                         <materialDesign:PackIcon Kind="ArrowLeftThick"/>
                     </Button>
-                    <Button Margin="0 0 10 0">
+                    <Button x:Name="BotonHome" Margin="0 0 10 0" Click="BotonHome_Click">
                         <materialDesign:PackIcon Kind="HomeCircle"/>
                     </Button>
-                    <Button HorizontalAlignment="Center">
+                    <Button x:Name="BotonSiguiente" HorizontalAlignment="Center" Click="BotonSiguiente_Click" >
                         <materialDesign:PackIcon Kind="ArrowRightThick"/>
                     </Button>
                     

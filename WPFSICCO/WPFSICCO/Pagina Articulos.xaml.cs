@@ -19,9 +19,11 @@ namespace WPFSICCO
     /// </summary>
     public partial class Pagina_Articulos : Window
     {
-        public Pagina_Articulos()
+        
+        public Pagina_Articulos(string id)
         {
             InitializeComponent();
+            IDArticulo.Text = "#" + id;
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
