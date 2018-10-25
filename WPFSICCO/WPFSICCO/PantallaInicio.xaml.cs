@@ -34,5 +34,10 @@ namespace WPFSICCO
             CerrarMenu.Visibility = Visibility.Collapsed;
             BtnInfo.Visibility = Visibility.Collapsed;
         }
+
+        private void btnCategorias_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

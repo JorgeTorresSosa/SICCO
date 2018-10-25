@@ -15,6 +15,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
+    <!--Valores a aumentar(StoryBoards)-->
     <Window.Resources>
         <Storyboard x:Key="AbrirMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="StackPanelMenu" >
@@ -30,6 +31,7 @@
         </Storyboard>
     </Window.Resources>
 
+    <!--Accionamiento de StoryBoards-->
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="AbrirMenu">
             <BeginStoryboard Storyboard="{StaticResource AbrirMenu}"/>
@@ -42,14 +44,14 @@
 
     <Grid Margin="-5,0,0,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="75" />
+            <RowDefinition Height="45" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
+        <!--Barra superior-->
+        <Grid Grid.Row="0" VerticalAlignment="Top" Background="#FF009688" HorizontalAlignment="Right" Height="45" Width="1105">
 
-        <Grid Grid.Row="0" VerticalAlignment="Top" Background="#FF009688" HorizontalAlignment="Right" Height="75" Width="1105">
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="815">
 
                 <!--Imagenes de Sicco (Pendiente)-->
                 <StackPanel>
@@ -58,78 +60,98 @@
                 </StackPanel>
 
                 <!--Boton  Categorias-->
-                <MaterialDesign:PackIcon Kind="ChartPie" Foreground="{Binding ElementName=btnCategorias, Path=Foreground}" Height="40" Width="40" RenderTransformOrigin="0.5,0.5">
+                <MaterialDesign:PackIcon Kind="ChartPie" Foreground="{Binding ElementName=btnCategorias, Path=Foreground}" 
+                                         Height="20" Width="20" RenderTransformOrigin="0.5,0.5">
                     <MaterialDesign:PackIcon.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
                             <SkewTransform/>
                             <RotateTransform/>
-                            <TranslateTransform X="115" Y="35"/>
+                            <TranslateTransform X="100" Y="10" />
                         </TransformGroup>
                     </MaterialDesign:PackIcon.RenderTransform>
                 </MaterialDesign:PackIcon>
-                <MaterialDesign:PackIcon Kind="Sitemap"  Height="40" Width="40" Foreground="{Binding ElementName=btnCategorias, Path=Foreground}" RenderTransformOrigin="0.5,0.5">
+                <MaterialDesign:PackIcon Kind="Sitemap" Foreground="{Binding ElementName=btnCategorias, Path=Foreground}" 
+                                         Height="20" Width="20"  RenderTransformOrigin="0.5,0.5">
                     <MaterialDesign:PackIcon.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
                             <SkewTransform/>
                             <RotateTransform/>
-                            <TranslateTransform X="115" Y="35"/>
+                            <TranslateTransform X="100" Y="10"/>
                         </TransformGroup>
                     </MaterialDesign:PackIcon.RenderTransform>
                 </MaterialDesign:PackIcon>
-                <Button x:Name="btnCategorias" Content="Categorias" FontSize="22" FontFamily="Adobe Gothic Std B" Height="Auto" 
-                        Width="145" Background="{x:Null}" Margin="0,-40,-98,0" BorderBrush="White" Foreground="#FFC51162"  />
+                <Button x:Name="btnCategorias" Content="       Categorias"  FontSize="22" FontFamily="Adobe Gothic Std B" Height="45" 
+                        Width="173" Background="{x:Null}" Padding="0" BorderBrush="White" Foreground="#FFC51162" Click="btnCategorias_Click" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5"  >
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="58"/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
 
                 <!--Boton Ajustes-->
-                <MaterialDesign:PackIcon Kind="Delta" Width="40" Height="40" Foreground="{Binding ElementName=btnAjustar,Path=Foreground}" RenderTransformOrigin="0.5,0.5">
+                <MaterialDesign:PackIcon Kind="Delta" Width="20" Height="20" Foreground="{Binding ElementName=btnAjustar,Path=Foreground}" RenderTransformOrigin="0.5,0.5">
                     <MaterialDesign:PackIcon.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
                             <SkewTransform/>
                             <RotateTransform/>
-                            <TranslateTransform X="125" Y="30"/>
+                            <TranslateTransform X="65" Y="10"/>
                         </TransformGroup>
                     </MaterialDesign:PackIcon.RenderTransform>
                 </MaterialDesign:PackIcon>
-                <MaterialDesign:PackIcon Kind="Settings" Width="40" Height="40" Foreground="{Binding ElementName=btnAjustar, Path=Foreground}" RenderTransformOrigin="0.5,0.5">
+                <MaterialDesign:PackIcon Kind="Settings" Width="20" Height="20" Foreground="{Binding ElementName=btnAjustar, Path=Foreground}" RenderTransformOrigin="0.5,0.5">
                     <MaterialDesign:PackIcon.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
                             <SkewTransform/>
                             <RotateTransform/>
-                            <TranslateTransform X="125" Y="30"/>
+                            <TranslateTransform X="65" Y="10"/>
                         </TransformGroup>
                     </MaterialDesign:PackIcon.RenderTransform>
                 </MaterialDesign:PackIcon>
-                <Button x:Name="btnAjustar" Content="Ajustes" Height="115" Width="130" FontFamily="Adobe Gothic Std B" FontSize="22" 
-                        VerticalAlignment="Top" Margin="20,-40,20,0" Background="{x:Null}" Foreground="#FFC51162"/>
+                <Button x:Name="btnAjustar" Content="        Ajustes" Height="45" Width="130" FontFamily="Adobe Gothic Std B" FontSize="22" 
+                        VerticalAlignment="Top" Margin="20,0" Padding="0" Background="{x:Null}" Foreground="#FFC51162"/>
 
                 <!--Buscador de productos-->
-                <StackPanel Width="300">
-                    <TextBox x:Name="Buscar" FontSize="22" Height="75" Foreground="#FFC51162"  MaterialDesign:HintAssist.Hint="Buscar" 
-                             MaterialDesign:HintAssist.IsFloating="True" FontFamily="Adobe Gothic Std B" TextAlignment="Left" VerticalAlignment="Center" 
-                             Margin="49,-38,-94,-38" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFC51162" >
+                <StackPanel Width="300" Height="40" VerticalAlignment="Top">
+                    <TextBox x:Name="Buscar" FontSize="10" Height="40" Width="280" Foreground="#FFC51162"  MaterialDesign:HintAssist.Hint="Buscar" 
+                             MaterialDesign:HintAssist.IsFloating="True" FontFamily="Adobe Gothic Std B" TextAlignment="Left" VerticalAlignment="Top" 
+                              RenderTransformOrigin="0.5,0.5"  BorderBrush="#FFC51162" Margin="10,0,0,0" HorizontalAlignment="Left" >
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
                                 <SkewTransform/>
                                 <RotateTransform/>
-                                <TranslateTransform Y="35" X="-15"/>
+                                <TranslateTransform Y="0" X="10"/>
                             </TransformGroup>
                         </TextBox.RenderTransform>
                     </TextBox>
-                    <MaterialDesign:PackIcon Kind="Fire" Height="Auto" Width="40" Margin="0 20"
-                                             Foreground="{Binding ElementName=Buscar, Path=BorderBrush}" />
+                    <MaterialDesign:PackIcon Kind="Fire" Height="25" Width="25"  Margin="10 0 10 0"
+                                             Foreground="{Binding ElementName=Buscar, Path=BorderBrush}" RenderTransformOrigin="0.5,0.5" >
+                        <MaterialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="-29" X="-13" />
+                            </TransformGroup>
+                        </MaterialDesign:PackIcon.RenderTransform>
+                    </MaterialDesign:PackIcon>
                 </StackPanel>
 
                 <!--Boton minimizar-->
-                <Button Height="100" Width="80" Padding="0" Background="{x:Null}"  BorderBrush="{x:Null}">
+                <Button Height="40" Width="40" Padding="0" Background="{x:Null}"  BorderBrush="{x:Null}" VerticalAlignment="Top">
                     <MaterialDesign:PackIcon Kind="Minus" Height="Auto" Width="40" Foreground="#FFC51162"/>
                 </Button>
 
                 <!--Boton cerrar programa-->
-                <Button Height="100" Width="80" Padding="0" Background="{x:Null}"  BorderBrush="{x:Null}" >
+                <Button Height="40" Width="40" Padding="0" Background="{x:Null}"  BorderBrush="{x:Null}" VerticalAlignment="Top">
                     <MaterialDesign:PackIcon Kind="Close" Height="Auto" Width="40" Foreground="#FFC51162"/>
                 </Button>
 
@@ -137,18 +159,20 @@
 
         </Grid>
 
-
+        <!--Base -->
         <Grid Grid.Row="1" Background="#FFC51162">
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*"/>
                 <RowDefinition Height="31*"/>
             </Grid.RowDefinitions>
 
+            <!--Panel para meter las formas-->
             <StackPanel x:Name="pnlFormas" Background="White" HorizontalAlignment="Right" Width="1105" Grid.RowSpan="2"/>
 
-
+            <!--Menu-->
             <StackPanel  x:Name="StackPanelMenu" Width="60" HorizontalAlignment="Left" Margin="0 0 0 0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" Background="#FFC51162">
 
+                <!--Parte superior (Menu)-->
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="100" Width="Auto" HorizontalAlignment="Right" Margin="5,0,-65,0" >
                     <MaterialDesign:PackIcon Kind='AccountOutline' VerticalAlignment="Center" Padding="0" Width="70" Height="80" Foreground="#FF009688"/>
                     <Grid >
@@ -175,7 +199,6 @@
                             <MaterialDesign:PackIcon Kind="Menu" Width="40" Height="40" Foreground="#FF009688"/>
                         </Button>
                     </Grid>
-
                     <Button x:Name="BtnInfo" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" >
                         <Button.RenderTransform>
                             <TransformGroup>
@@ -188,7 +211,10 @@
                         <MaterialDesign:PackIcon Kind="InformationVariant" Width="40" Height="40" Foreground="#FF009688"/>
                     </Button>
                 </StackPanel>
+
                 <ListView>
+
+                    <!--Boton perfil (Menu)-->
                     <ListViewItem x:Name="listViewItem" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="60" RenderTransformOrigin="0.5,0.5">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0" OpacityMask="Black">
@@ -196,6 +222,8 @@
                             <TextBlock Text="Perfil" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
                         </StackPanel>
                     </ListViewItem>
+
+                    <!--Boton Agregar Articulo (Menu)-->
                     <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
@@ -203,6 +231,8 @@
                             <TextBlock Text="Agregar Articulo" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
                         </StackPanel>
                     </ListViewItem>
+
+                    <!--Boton Mis compras (Menu)-->
                     <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
@@ -210,6 +240,8 @@
                             <TextBlock Text="Mis Compras" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
                         </StackPanel>
                     </ListViewItem>
+
+                    <!--Boton Mis Articulos (Menu)-->
                     <ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
@@ -217,6 +249,8 @@
                             <TextBlock Text="Mis Articulos" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
                         </StackPanel>
                     </ListViewItem>
+
+                    <!--Boton Servicios (Menu)-->
                     <ListViewItem x:Name="listViewItem4" Height="60" RenderTransformOrigin="0.5,0.5">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
@@ -227,10 +261,6 @@
                     </ListViewItem>
                 </ListView>
             </StackPanel>
-
-
-
-
 
         </Grid>
 
