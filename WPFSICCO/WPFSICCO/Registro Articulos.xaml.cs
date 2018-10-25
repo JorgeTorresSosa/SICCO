@@ -47,8 +47,10 @@ namespace WPFSICCO
               "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
               "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
-            {
+            { 
                 aRCHIVO_Seleccionado = true;
+                ImagenArticulo.Source = new BitmapImage(new Uri(op.FileName));
+                
             }
 
         }
@@ -60,44 +62,82 @@ namespace WPFSICCO
 
         private void RegistarArticulo_Click(object sender, RoutedEventArgs e)
         {
-            if(aRCHIVO_Seleccionado)
+            if (aRCHIVO_Seleccionado)
             {
-                ImagenArticulo.Source = new BitmapImage(new Uri(op.FileName));
-                FileStream Lectura_img = new FileStream(op.FileName, FileMode.Open, FileAccess.Read);
-                byte[] Long_imagen = new byte[Lectura_img.Length];
-                Lectura_img.Read(Long_imagen, 0, Convert.ToInt32(Lectura_img.Length));
-                Lectura_img.Close();
+                //string Source = op.FileName;
+                //MessageBox.Show(Source);
+                //string distination = @"C:\Users\Elian Cruz\source\repos\JorgeTorresSosa\SICCO\WPFSICCO\WPFSICCO\Assets\";
+                //File.Copy(Source, distination);
 
-                string postdata = "img=" + Long_imagen;
-                byte[] data = encoding.GetBytes(postdata);
-                //"NU=" + txt_NombreUsuario.Text +
-                WebRequest request = WebRequest.Create("http://sicconviene.com/img.php");
-                request.Method = "POST";
-                request.ContentType = "application/x-www-form-urlencoded";
-                request.ContentLength = data.Length;
+                if (Tipo.SelectedIndex == 0)
+                {
+                    string postdata = "NOM=" + NombreArticulo.Text + "&TIP=" + Tipo.SelectedIndex + "&CAT=" + Categoria.SelectedIndex + "&DES=" + Descripcion.Text + "&PREC=" + Precio.Text;
+                    byte[] data = encoding.GetBytes(postdata);
+                    WebRequest request = WebRequest.Create("http://sicconviene.com/img.php");
+                    request.Method = "POST";
+                    request.ContentType = "application/x-www-form-urlencoded";
+                    request.ContentLength = data.Length;
 
-                Stream stream = request.GetRequestStream();
-                stream.Write(data, 0, data.Length);
-                stream.Close();
+                    Stream stream = request.GetRequestStream();
+                    stream.Write(data, 0, data.Length);
+                    stream.Close();
 
-                WebResponse response = request.GetResponse();
-                stream = response.GetResponseStream();
-                StreamReader leer = new StreamReader(stream);
-                string lectura_php = leer.ReadToEnd();
-                if (lectura_php.Contains("Registrado_bien"))
-                {
-                    Registrado = true;
+                    WebResponse response = request.GetResponse();
+                    stream = response.GetResponseStream();
+                    StreamReader leer = new StreamReader(stream);
+                    string lectura_php = leer.ReadToEnd();
+                    //MessageBox.Show(lectura_php);
+                    if (lectura_php.Contains("Registrado_bien"))
+                    {
+                        Registrado = true;
+                    }
+                    leer.Close();
+                    stream.Close();
+                    if (Registrado)
+                    {
+                        Hecho.IsOpen = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se registró");
+                    }
                 }
-                leer.Close();
-                stream.Close();
-                if(Registrado)
+                else if(Tipo.SelectedIndex==1)
                 {
-                    Hecho.IsOpen = true;
+                    string postdata = "NOM=" + NombreArticulo.Text + "&MAT=" + Categoria.SelectedIndex + "&COS=" + Precio.Text + "&HOR=" + HoraInicio.Text + "-" + HoraFin.Text + "&DES=" + Descripcion.Text;
+                    byte[] data = encoding.GetBytes(postdata);
+                    WebRequest request = WebRequest.Create("http://sicconviene.com/img_2.php");
+                    request.Method = "POST";
+                    request.ContentType = "application/x-www-form-urlencoded";
+                    request.ContentLength = data.Length;
+
+                    Stream stream = request.GetRequestStream();
+                    stream.Write(data, 0, data.Length);
+                    stream.Close();
+
+                    WebResponse response = request.GetResponse();
+                    stream = response.GetResponseStream();
+                    StreamReader leer = new StreamReader(stream);
+                    string lectura_php = leer.ReadToEnd();
+                    //MessageBox.Show(lectura_php);
+                    if (lectura_php.Contains("Registrado_bien"))
+                    {
+                        Registrado = true;
+                    }
+                    leer.Close();
+                    stream.Close();
+                    if (Registrado)
+                    {
+                        Hecho.IsOpen = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se registró");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("No se registró");
-                }
+            
+
+                
                 
             }
             

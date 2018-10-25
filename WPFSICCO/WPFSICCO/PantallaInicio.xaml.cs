@@ -43,12 +43,13 @@ namespace WPFSICCO
         ///////// Menu ////////////
         private void BtnPerfil_Selected(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void BtnAgregarArticulo_Selected(object sender, RoutedEventArgs e)
         {
-
+            
+            
         }
 
         private void BtnMisCompras_Selected(object sender, RoutedEventArgs e)

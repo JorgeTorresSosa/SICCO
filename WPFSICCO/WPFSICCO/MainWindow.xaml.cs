@@ -91,13 +91,11 @@ namespace WPFSICCO
         }
         void Basededatos()
         {
-
-
             string pss = txt_Contraseña.Password;
             ASCIIEncoding encoding = new ASCIIEncoding();
             string postdata = "NU=" + txt_NombreUsuario.Text + "&pss=" + pss;
             byte[] data = encoding.GetBytes(postdata);
-            //"NU=" + txt_NombreUsuario.Text +
+      
             WebRequest request = WebRequest.Create("http://sicconviene.com/ABRIR_CONEX.php");
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
