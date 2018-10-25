@@ -55,7 +55,7 @@ namespace WPFSICCO
                 string postdata = "img=" + Long_imagen;
                 byte[] data = encoding.GetBytes(postdata);
                 //"NU=" + txt_NombreUsuario.Text +
-                WebRequest request = WebRequest.Create("https://sicco58.000webhostapp.com/img.php");
+                WebRequest request = WebRequest.Create("http://sicconviene.com/img.php");
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
                 request.ContentLength = data.Length;
