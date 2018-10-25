@@ -29,7 +29,9 @@ namespace WPFSICCO
         {
             InitializeComponent();
         }
-
+        OpenFileDialog op = new OpenFileDialog();
+        ASCIIEncoding encoding = new ASCIIEncoding();
+        bool aRCHIVO_Seleccionado=false, Registrado = false;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Hecho.IsOpen = true;
@@ -38,13 +40,27 @@ namespace WPFSICCO
 
         private void BotonExaminar_Click(object sender, RoutedEventArgs e)
         {
-            ASCIIEncoding encoding = new ASCIIEncoding();
-            OpenFileDialog op = new OpenFileDialog();
+           
+            
             op.Title = "Select a picture";
             op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
               "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
               "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
+            {
+                aRCHIVO_Seleccionado = true;
+            }
+
+        }
+
+        private void BotonAceptar_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void RegistarArticulo_Click(object sender, RoutedEventArgs e)
+        {
+            if(aRCHIVO_Seleccionado)
             {
                 ImagenArticulo.Source = new BitmapImage(new Uri(op.FileName));
                 FileStream Lectura_img = new FileStream(op.FileName, FileMode.Open, FileAccess.Read);
@@ -55,7 +71,7 @@ namespace WPFSICCO
                 string postdata = "img=" + Long_imagen;
                 byte[] data = encoding.GetBytes(postdata);
                 //"NU=" + txt_NombreUsuario.Text +
-                WebRequest request = WebRequest.Create("https://sicco58.000webhostapp.com/img.php");
+                WebRequest request = WebRequest.Create("http://sicconviene.com/img.php");
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
                 request.ContentLength = data.Length;
@@ -68,21 +84,23 @@ namespace WPFSICCO
                 stream = response.GetResponseStream();
                 StreamReader leer = new StreamReader(stream);
                 string lectura_php = leer.ReadToEnd();
-
+                if (lectura_php.Contains("Registrado_bien"))
+                {
+                    Registrado = true;
+                }
                 leer.Close();
                 stream.Close();
+                if(Registrado)
+                {
+                    Hecho.IsOpen = true;
+                }
+                else
+                {
+                    MessageBox.Show("No se registró");
+                }
+                
             }
-
-        }
-
-        private void BotonAceptar_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-        private void RegistarArticulo_Click(object sender, RoutedEventArgs e)
-        {
-            Hecho.IsOpen = true;
+            
         }
     }
 }

@@ -34,5 +34,41 @@ namespace WPFSICCO
             CerrarMenu.Visibility = Visibility.Collapsed;
             BtnInfo.Visibility = Visibility.Collapsed;
         }
+
+        private void btnCategorias_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        ///////// Menu ////////////
+        private void BtnPerfil_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnAgregarArticulo_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnMisCompras_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnMisArticulos_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnServicios_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnInfo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

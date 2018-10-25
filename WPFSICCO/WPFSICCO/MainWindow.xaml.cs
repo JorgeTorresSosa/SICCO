@@ -96,7 +96,7 @@ namespace WPFSICCO
             string postdata = "NU=" + txt_NombreUsuario.Text + "&pss=" + pss;
             byte[] data = encoding.GetBytes(postdata);
             //"NU=" + txt_NombreUsuario.Text +
-            WebRequest request = WebRequest.Create("https://sicco58.000webhostapp.com/ABRIR_CONEX.php");
+            WebRequest request = WebRequest.Create("http://sicconviene.com/ABRIR_CONEX.php");
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = data.Length;
@@ -122,10 +122,7 @@ namespace WPFSICCO
                 iniciar.Show();
                 this.Close();
             }
-            if (msgText.Text == "Ingresado correctamente")
-            {
-                MessageBox.Show("Error");
-            }
+           
 
             
         }

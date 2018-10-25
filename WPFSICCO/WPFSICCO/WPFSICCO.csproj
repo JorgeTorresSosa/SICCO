@@ -78,6 +78,9 @@
     <Compile Include="Resultado busqueda.xaml.cs">
       <DependentUpon>Resultado busqueda.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PerfilUsuario.xaml.cs">
+      <DependentUpon>PerfilUsuario.xaml</DependentUpon>
+    </Compile>
     <Page Include="Categorias.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resultado busqueda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PerfilUsuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
