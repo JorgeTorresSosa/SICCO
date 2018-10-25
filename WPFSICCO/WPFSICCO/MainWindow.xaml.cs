@@ -28,13 +28,13 @@ namespace WPFSICCO
     
     public partial class MainWindow : Window
     {
+        Resultado_busqueda paginaresult = new Resultado_busqueda();
         UTF8Encoding utf = new UTF8Encoding();
         int clasificador = -1;
         public MainWindow()
         {
             InitializeComponent();
-            Registro_Articulos PantallaRegistroArticulos_Form = new Registro_Articulos(); 
-
+            paginaresult.Show();
            
         }
         WebClient Reg_DB = new WebClient();
@@ -60,9 +60,7 @@ namespace WPFSICCO
 
         private void OlvContr_Click  (object sender, RoutedEventArgs e)
         {
-            Pagina_Articulos articulos = new Pagina_Articulos();
-            articulos.Show();
-            this.Close();
+            
         }
 
         private void Buttonn_Click_1(object sender, RoutedEventArgs e)
