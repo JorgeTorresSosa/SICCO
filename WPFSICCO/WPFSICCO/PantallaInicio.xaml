@@ -165,11 +165,6 @@
                 <ColumnDefinition Width="35*"/>
                 <ColumnDefinition Width="186*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="16*"/>
-                <RowDefinition Height="164*"/>
-            </Grid.RowDefinitions>
 
             <!--Panel para meter las formas-->
             <StackPanel x:Name="pnlFormas" Background="White" HorizontalAlignment="Right" Width="1105" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
