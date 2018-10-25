@@ -123,7 +123,7 @@ namespace WPFSICCO
             string postdata = "NOM=" + CajaNombre.Text + "&AP=" + CajaApellidoPaterno.Text + "&AM=" + CajaApellidoMaterno.Text + "&ESP=" + CajaEspecialidad.SelectedIndex + "&SEM=" + CajaSemestre.Text + "&NCO=" + NoControl.Text + "&ED=" + CajaEdad.Text + "&NUS=" + UsuarioRegistro.Text + "&PSS=" + Contra.Password + "&MAIL=" + CorreoElc.Text;
             byte[] data = encoding.GetBytes(postdata);
             //"NU=" + txt_NombreUsuario.Text +
-            WebRequest request = WebRequest.Create("https://sicco58.000webhostapp.com/REG_CONEX_1.php");
+            WebRequest request = WebRequest.Create("http://sicconviene.com/REG_CONEX_1.php");
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = data.Length;
@@ -151,7 +151,7 @@ namespace WPFSICCO
             }
             else if (lectura_php.Contains("usuario ya registrado"))
             {
-                MessageBox.Show("Uusario ya registrado");
+                MessageBox.Show("Usuario ya registrado");
             }
 
 
