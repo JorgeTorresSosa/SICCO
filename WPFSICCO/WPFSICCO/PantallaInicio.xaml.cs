@@ -37,7 +37,9 @@ namespace WPFSICCO
 
         private void btnCategorias_Click(object sender, RoutedEventArgs e)
         {
-
+            Categorias cat = new Categorias();
+            cat.Show();
+            this.Hide();
         }
 
         ///////// Menu ////////////
@@ -48,7 +50,9 @@ namespace WPFSICCO
 
         private void BtnAgregarArticulo_Selected(object sender, RoutedEventArgs e)
         {
-            
+            Registro_Articulos reg_a = new Registro_Articulos();
+            reg_a.Show();
+            this.Hide();
             
         }
 

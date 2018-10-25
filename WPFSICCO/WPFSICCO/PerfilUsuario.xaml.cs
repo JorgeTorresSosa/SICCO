@@ -22,6 +22,7 @@ namespace WPFSICCO
         public Window1()
         {
             InitializeComponent();
+
         }
     }
 }

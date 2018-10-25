@@ -34,7 +34,7 @@ namespace WPFSICCO
         public MainWindow()
         {
             InitializeComponent();
-            paginaresult.Show();
+            
            
         }
         WebClient Reg_DB = new WebClient();
@@ -112,6 +112,7 @@ namespace WPFSICCO
             if (lectura_php.Contains("Registros_generados"))
             {
                 msgText.Text = "Ingresado correctamente";
+                
             }
             
             if (msgText.Text == "Ingresado correctamente")
