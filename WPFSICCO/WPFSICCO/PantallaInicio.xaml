@@ -53,7 +53,7 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="815">
 
-                <!--Imagenes de Sicco (Pendiente)-->
+                <!--Imagenes de Sicco (Pendiente sainz iba a mandar imagenes de sicco)-->
                 <StackPanel>
                     <Image/>
                     <Image/>
@@ -161,20 +161,27 @@
 
         <!--Base -->
         <Grid Grid.Row="1" Background="#FFC51162">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="186*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="4*"/>
-                <RowDefinition Height="31*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="16*"/>
+                <RowDefinition Height="164*"/>
             </Grid.RowDefinitions>
 
             <!--Panel para meter las formas-->
-            <StackPanel x:Name="pnlFormas" Background="White" HorizontalAlignment="Right" Width="1105" Grid.RowSpan="2"/>
+            <StackPanel x:Name="pnlFormas" Background="White" HorizontalAlignment="Right" Width="1105" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
 
             <!--Menu-->
-            <StackPanel  x:Name="StackPanelMenu" Width="60" HorizontalAlignment="Left" Margin="0 0 0 0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" Background="#FFC51162">
+            <StackPanel  x:Name="StackPanelMenu" Width="60" HorizontalAlignment="Left" Margin="0 0 0 0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3" Background="#FFC51162">
 
                 <!--Parte superior (Menu)-->
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="100" Width="Auto" HorizontalAlignment="Right" Margin="5,0,-65,0" >
-                    <MaterialDesign:PackIcon Kind='AccountOutline' VerticalAlignment="Center" Padding="0" Width="70" Height="80" Foreground="#FF009688"/>
+                    <Button Width="70" Height="80" Background="{x:Null}" >
+                        <Image x:Name="FotoUsuario" Stretch="Fill" Source="Assets/FotoUsuario.png" Width="43"/>
+                    </Button>
                     <Grid >
                         <Button x:Name="CerrarMenu"  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="40,-10" Visibility="Collapsed" Click="CerrarMenu_Click" RenderTransformOrigin="0.5,0.5">
                             <MaterialDesign:PackIcon Kind="Menu" Width="40" Height="40" Foreground="#FF009688"/>
@@ -199,13 +206,14 @@
                             <MaterialDesign:PackIcon Kind="Menu" Width="40" Height="40" Foreground="#FF009688"/>
                         </Button>
                     </Grid>
-                    <Button x:Name="BtnInfo" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" >
+                    <Button x:Name="BtnInfo" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10" 
+                            Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Click="BtnInfo_Click" >
                         <Button.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
                                 <SkewTransform/>
                                 <RotateTransform/>
-                                <TranslateTransform X="-60"/>
+                                <TranslateTransform X="-70"/>
                             </TransformGroup>
                         </Button.RenderTransform>
                         <MaterialDesign:PackIcon Kind="InformationVariant" Width="40" Height="40" Foreground="#FF009688"/>
@@ -215,7 +223,7 @@
                 <ListView>
 
                     <!--Boton perfil (Menu)-->
-                    <ListViewItem x:Name="listViewItem" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem x:Name="BtnPerfil" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnPerfil_Selected" Margin="-5,0,0,0">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0" OpacityMask="Black">
                             <MaterialDesign:PackIcon Kind="AccountCircle" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
@@ -224,7 +232,7 @@
                     </ListViewItem>
 
                     <!--Boton Agregar Articulo (Menu)-->
-                    <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem x:Name="BtnAgregarArticulo" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnAgregarArticulo_Selected" Margin="-5,0,0,0">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <MaterialDesign:PackIcon Kind="AutoFix" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688" />
@@ -233,7 +241,7 @@
                     </ListViewItem>
 
                     <!--Boton Mis compras (Menu)-->
-                    <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem x:Name="BtnMisCompras" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnMisCompras_Selected" Margin="-5,0,0,0">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <MaterialDesign:PackIcon Kind="BabyBuggy" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
@@ -242,7 +250,7 @@
                     </ListViewItem>
 
                     <!--Boton Mis Articulos (Menu)-->
-                    <ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem x:Name="BtnMisArticulos" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnMisArticulos_Selected" Margin="-5,0,0,0">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <MaterialDesign:PackIcon Kind="CubeSend" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
@@ -251,7 +259,7 @@
                     </ListViewItem>
 
                     <!--Boton Servicios (Menu)-->
-                    <ListViewItem x:Name="listViewItem4" Height="60" RenderTransformOrigin="0.5,0.5">
+                    <ListViewItem x:Name="BtnServicios" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnServicios_Selected" Margin="-5,0,0,0">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <MaterialDesign:PackIcon Kind="MushroomOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
