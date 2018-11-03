@@ -72,6 +72,7 @@
     <Compile Include="Categorias.xaml.cs">
       <DependentUpon>Categorias.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Clase_php.cs" />
     <Compile Include="Registro Articulos.xaml.cs">
       <DependentUpon>Registro Articulos.xaml</DependentUpon>
     </Compile>

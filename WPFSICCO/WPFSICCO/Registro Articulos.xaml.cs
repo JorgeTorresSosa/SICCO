@@ -64,14 +64,9 @@ namespace WPFSICCO
         {
             if (aRCHIVO_Seleccionado)
             {
-                //string Source = op.FileName;
-                //MessageBox.Show(Source);
-                //string distination = @"C:\Users\Elian Cruz\source\repos\JorgeTorresSosa\SICCO\WPFSICCO\WPFSICCO\Assets\";
-                //File.Copy(Source, distination);
-
                 if (Tipo.SelectedIndex == 0)
                 {
-                    string postdata = "NOM=" + NombreArticulo.Text + "&TIP=" + Tipo.SelectedIndex + "&CAT=" + Categoria.SelectedIndex + "&DES=" + Descripcion.Text + "&PREC=" + Precio.Text;
+                    string postdata = "NOM=" + NombreArticulo.Text + "&TIP=" + Tipo.SelectedIndex + "&CAT=" + Categoria.SelectedIndex + "&DES=" + Descripcion.Text + "&PREC=" + Precio.Text+"&NCO=" + Clase_php.No_Control_Usuario;
                     byte[] data = encoding.GetBytes(postdata);
                     WebRequest request = WebRequest.Create("http://sicconviene.com/img.php");
                     request.Method = "POST";
@@ -86,7 +81,7 @@ namespace WPFSICCO
                     stream = response.GetResponseStream();
                     StreamReader leer = new StreamReader(stream);
                     string lectura_php = leer.ReadToEnd();
-                    //MessageBox.Show(lectura_php);
+                    MessageBox.Show(lectura_php);
                     if (lectura_php.Contains("Registrado_bien"))
                     {
                         Registrado = true;
@@ -104,7 +99,7 @@ namespace WPFSICCO
                 }
                 else if(Tipo.SelectedIndex==1)
                 {
-                    string postdata = "NOM=" + NombreArticulo.Text + "&MAT=" + Categoria.SelectedIndex + "&COS=" + Precio.Text + "&HOR=" + HoraInicio.Text + "-" + HoraFin.Text + "&DES=" + Descripcion.Text;
+                    string postdata = "NOM=" + NombreArticulo.Text + "&MAT=" + Categoria.SelectedIndex + "&COS=" + Precio.Text + "&HOR=" + HoraInicio.Text + "-" + HoraFin.Text + "&DES=" + Descripcion.Text + "&NCO=" + Clase_php.No_Control_Usuario;
                     byte[] data = encoding.GetBytes(postdata);
                     WebRequest request = WebRequest.Create("http://sicconviene.com/img_2.php");
                     request.Method = "POST";

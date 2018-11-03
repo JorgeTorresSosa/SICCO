@@ -109,8 +109,12 @@ namespace WPFSICCO
             string lectura_php = leer.ReadToEnd();
             leer.Close();
             stream.Close();
-            if (lectura_php.Contains("Registros_generados"))
+            if (lectura_php.Contains("registros_generados"))
             {
+                int inicio, fin;
+                inicio = lectura_php.IndexOf("o");
+                fin = lectura_php.IndexOf("Q")-6;
+                Clase_php.No_Control_Usuario = lectura_php.Substring(inicio+1, fin-1); ;
                 msgText.Text = "Ingresado correctamente";
                 
             }
