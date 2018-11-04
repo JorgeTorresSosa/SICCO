@@ -22,23 +22,23 @@ using System.Net.Http;
 using Microsoft.Win32;
 using System.Collections.Specialized;
 using System.IO;
-
-namespace WPFSICCO
+namespace SICCO
 {
-    
+    /// <summary>
+    /// Lógica de interacción para MainWindow.xaml
+    /// </summary>
     public partial class MainWindow : Window
     {
-        
         UTF8Encoding utf = new UTF8Encoding();
         int clasificador = -1;
         public MainWindow()
         {
             InitializeComponent();
-            
-           
+            Pantalla_inicio pan = new Pantalla_inicio();
+            pan.Show();
         }
         WebClient Reg_DB = new WebClient();
-        
+
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -47,20 +47,20 @@ namespace WPFSICCO
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-  
+
         }
 
-        private void Ingresar_Click (object sender, RoutedEventArgs e)
+        private void Ingresar_Click(object sender, RoutedEventArgs e)
         {
             PaginaRegistrarse registro = new PaginaRegistrarse();
             registro.Show();
             this.Close();
-            
+
         }
 
-        private void OlvContr_Click  (object sender, RoutedEventArgs e)
+        private void OlvContr_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Buttonn_Click_1(object sender, RoutedEventArgs e)
@@ -75,12 +75,12 @@ namespace WPFSICCO
                 EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.Eye;
                 clasificador = -1;
                 txt_Contraseña.Visibility = System.Windows.Visibility.Collapsed;
-                txt_Contrasena.Visibility = System.Windows.Visibility.Visible;             
+                txt_Contrasena.Visibility = System.Windows.Visibility.Visible;
                 txt_Contrasena.Focus();
             }
             else if (clasificador == -1)
             {
-               EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.EyeOff;
+                EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.EyeOff;
                 clasificador = 1;
                 txt_Contraseña.Visibility = System.Windows.Visibility.Visible;
                 txt_Contrasena.Visibility = System.Windows.Visibility.Collapsed;
@@ -116,17 +116,18 @@ namespace WPFSICCO
                 msgText.Text = "Ingresado correctamente";
             }
             Hecho.IsOpen = true;
- 
+
         }
 
         private void BotonAceptar_Click(object sender, RoutedEventArgs e)
         {
-            if (msgText.Text == "Ingresado correctamente")
-            {
-                PantallaInicio PantallaInicio_Form = new PantallaInicio();
+           // if (msgText.Text == "Ingresado correctamente")
+          //  {
+               Pantalla_inicio PantallaInicio_Form = new Pantalla_inicio();
                 PantallaInicio_Form.Show();
                 this.Close();
-            }
+            
+           // }
         }
     }
 }

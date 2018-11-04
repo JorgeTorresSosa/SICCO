@@ -1,0 +1,73 @@
+﻿<Window x:Class="SICCO.MainWindow"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SICCO"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="470" Width="425" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid>
+                <materialDesign:ColorZone Mode="PrimaryDark">
+                    <StackPanel HorizontalAlignment="Right">
+                        <Button Width="30" Height="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="Button_Click">
+                            <materialDesign:PackIcon Kind="WindowClose"/>
+                        </Button>
+                    </StackPanel>
+                </materialDesign:ColorZone>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <materialDesign:ColorZone Mode="PrimaryMid">
+                <TextBlock Text="Bienvenidos a SICCO!" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30 40 0 10" >
+
+                </TextBlock>
+            </materialDesign:ColorZone>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Vertical" Margin="40 20 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=txt_NombreUsuario, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                    <TextBox x:Name="txt_NombreUsuario" Width="300" materialDesign:HintAssist.Hint="Usuario" materialDesign:HintAssist.IsFloating="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 40 0 0">
+                    <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=txt_Contraseña, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                    <PasswordBox x:Name="txt_Contraseña" Width="300" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" Height="40" MinHeight="52"  />
+                    <TextBox x:Name="txt_Contrasena" Text="{Binding Password, Mode=TwoWay, ElementName=txt_Contraseña}" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" Visibility="Collapsed" Height="40" MinHeight="52" Width="300" />
+                    <materialDesign:PackIcon x:Name="EyeOff" Kind="EyeOff" VerticalAlignment="Bottom" Margin="20 0 0 4" MouseDown="txt_Contrasena_MouseDown" Height="Auto" Width="Auto" />
+                </StackPanel>
+                <CheckBox Content="Recordar contraseña" Margin="0 30 0 0"/>
+                <Button Content="Iniciar Sesion" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" Click="Buttonn_Click_1" />
+                <materialDesign:Card Margin="0 12 10 10" Padding="15" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock><Hyperlink Click="OlvContr_Click" Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Gray">Olvidaste tu contraseña? </Hyperlink></TextBlock>
+                        <TextBlock Margin="70 0 0 0" ><Hyperlink Click="Ingresar_Click" Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Gray">Registrarse</Hyperlink></TextBlock>
+                    </StackPanel>
+                </materialDesign:Card>
+            </StackPanel>
+
+            <materialDesign:DialogHost IsOpen="False" x:Name="Hecho" Grid.RowSpan="3" >
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel  Margin="15">
+                        <TextBlock x:Name="msgText" Text=""/>
+                        <Button x:Name="BotonAceptar" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=Hecho}" Content="Aceptar" Margin="0 10 0 0" Click="BotonAceptar_Click" />
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+        </Grid>
+    </Grid>
+</Window>

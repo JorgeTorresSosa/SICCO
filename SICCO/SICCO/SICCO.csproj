@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0839DFB7-3E7D-44B4-8BBB-EF55C4CDEA9E}</ProjectGuid>
+    <ProjectGuid>{2BF80FC6-1A7A-4ED5-9701-CEA674550510}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WPFSICCO</RootNamespace>
-    <AssemblyName>WPFSICCO</AssemblyName>
+    <RootNamespace>SICCO</RootNamespace>
+    <AssemblyName>SICCO</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,20 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Correo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Correo.dll</HintPath>
+    <Reference Include="Correo">
+      <HintPath>..\..\..\..\..\..\OneDrive\Documents\Visual Studio 2017\Projects\Correo\Correo\bin\Debug\Correo.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
-    <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.1.1101, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignThemes.2.4.1.1101\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.0.1205, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.5.0.1205\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.SqlXml" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -62,33 +59,29 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="XamlBuildTask" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Categorias.xaml.cs">
-      <DependentUpon>Categorias.xaml</DependentUpon>
+    <Compile Include="ViewModels\ClassRegistroArticulos.cs" />
+    <Compile Include="ViewModels\ClassResultadoBusqueda.cs" />
+    <Compile Include="Views\UserCategorias.xaml.cs">
+      <DependentUpon>UserCategorias.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Registro Articulos.xaml.cs">
-      <DependentUpon>Registro Articulos.xaml</DependentUpon>
+    <Compile Include="Views\UserPaginaArticulo.xaml.cs">
+      <DependentUpon>UserPaginaArticulo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resultado busqueda.xaml.cs">
-      <DependentUpon>Resultado busqueda.xaml</DependentUpon>
+    <Compile Include="Views\UserPerfilUsuario.xaml.cs">
+      <DependentUpon>UserPerfilUsuario.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PerfilUsuario.xaml.cs">
-      <DependentUpon>PerfilUsuario.xaml</DependentUpon>
+    <Compile Include="Views\UserRegistroArticulos.xaml.cs">
+      <DependentUpon>UserRegistroArticulos.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\ClassRegistro Articulos.cs" />
-    <Compile Include="Views\UserRegistro Articulos.xaml.cs">
-      <DependentUpon>UserRegistro Articulos.xaml</DependentUpon>
+    <Compile Include="Views\UserResultadoBusqueda.xaml.cs">
+      <DependentUpon>UserResultadoBusqueda.xaml</DependentUpon>
     </Compile>
-    <Page Include="Categorias.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -101,51 +94,41 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pagina Articulos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="PaginaRegistrarse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PaginaVendedor.xaml">
+    <Page Include="Pantalla inicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PantallaInicio.xaml">
+    <Page Include="Views\UserCategorias.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Registro Articulos.xaml">
+    <Page Include="Views\UserPaginaArticulo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resultado busqueda.xaml">
+    <Page Include="Views\UserPerfilUsuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PerfilUsuario.xaml">
+    <Page Include="Views\UserRegistroArticulos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UserRegistro Articulos.xaml">
+    <Page Include="Views\UserResultadoBusqueda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pagina Articulos.xaml.cs">
-      <DependentUpon>Pagina Articulos.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PaginaRegistrarse.xaml.cs">
       <DependentUpon>PaginaRegistrarse.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PaginaVendedor.xaml.cs">
-      <DependentUpon>PaginaVendedor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PantallaInicio.xaml.cs">
-      <DependentUpon>PantallaInicio.xaml</DependentUpon>
+    <Compile Include="Pantalla inicio.xaml.cs">
+      <DependentUpon>Pantalla inicio.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -171,12 +154,28 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\92886_179403_1.jpg" />
+    <Resource Include="Assets\92886_179403_2.jpg" />
+    <Resource Include="Assets\92886_179403_3.jpg" />
+    <Resource Include="Assets\92886_179403_4.jpg" />
+    <Resource Include="Assets\92886_179403_5.jpg" />
+    <Resource Include="Assets\92886_179403_6.jpg" />
+    <Resource Include="Assets\FotoUsuario.png" />
+    <Resource Include="Assets\img_1.jpg" />
+    <Resource Include="Assets\img_2.jpg" />
+    <Resource Include="Assets\img_3.jpg" />
+    <Resource Include="Assets\img_4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Letras_1.png" />
+    <Resource Include="Assets\Letras_2.png" />
+    <Resource Include="Assets\Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

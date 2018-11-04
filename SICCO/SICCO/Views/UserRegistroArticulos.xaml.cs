@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
@@ -18,14 +19,14 @@ using System.Net.Http;
 using System.Collections.Specialized;
 
 
-namespace WPFSICCO
+namespace SICCO.Views
 {
     /// <summary>
-    /// Lógica de interacción para Registro_Articulos.xaml
+    /// Lógica de interacción para UserRegistroArticulos.xaml
     /// </summary>
-    public partial class Registro_Articulos : Window
+    public partial class UserRegistroArticulos : UserControl
     {
-        public Registro_Articulos()
+        public UserRegistroArticulos()
         {
             InitializeComponent();
         }
@@ -58,16 +59,6 @@ namespace WPFSICCO
         private void BotonAceptar_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
         }
 
         private void RegistarArticulo_Click(object sender, RoutedEventArgs e)
@@ -107,7 +98,7 @@ namespace WPFSICCO
                     {
                         string id = "";
                         Hecho.IsOpen = true;
-                        Resultado_busqueda resbus = new Resultado_busqueda(id, NombreArticulo.Text, Descripcion.Text, Precio.Text);
+                       
                     }
                     else
                     {
@@ -142,7 +133,7 @@ namespace WPFSICCO
                     {
                         string busqueda = "";
                         Hecho.IsOpen = true;
-                        Resultado_busqueda resbus = new Resultado_busqueda(busqueda, NombreArticulo.Text, Descripcion.Text, Precio.Text);
+                        
                     }
                     else
                     {
@@ -158,3 +149,6 @@ namespace WPFSICCO
         }
     }
 }
+        
+    
+

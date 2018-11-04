@@ -11,21 +11,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SICCO.ViewModels;
+using SICCO.Views;
 
-namespace WPFSICCO
+namespace SICCO 
 {
-    public partial class PantallaInicio : Window
+    public partial class Pantalla_inicio : Window
     {
-      
-        public PantallaInicio()
+
+        public Pantalla_inicio() 
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            DataContext = new UserCategorias();
         }
 
         private void AbrirMenu_Click(object sender, RoutedEventArgs e)
         {
             AbrirMenu.Visibility = Visibility.Collapsed;
-            CerrarMenu.Visibility = Visibility.Visible ;
+            CerrarMenu.Visibility = Visibility.Visible;
             BtnInfo.Visibility = Visibility.Visible;
         }
 
@@ -36,24 +39,23 @@ namespace WPFSICCO
             BtnInfo.Visibility = Visibility.Collapsed;
         }
 
-        
+
         ///////// Menu ////////////
         private void BtnPerfil_Selected(object sender, RoutedEventArgs e)
         {
-
+            DataContext = new UserPerfilUsuario();
         }
 
         private void BtnAgregarArticulo_Selected(object sender, RoutedEventArgs e)
         {
-            UserResgistro_Articulos reg = new UserResgistro_Articulos();
-            pnlFormas.Children.Add(reg);
-            
-            
+            DataContext = new UserRegistroArticulos();
+            BtnAgregarArticulo.IsSelected = false;
+
         }
 
         private void BtnMisCompras_Selected(object sender, RoutedEventArgs e)
         {
-
+            BtnMisCompras.IsSelected = false;
         }
 
         private void BtnMisArticulos_Selected(object sender, RoutedEventArgs e)
@@ -61,9 +63,10 @@ namespace WPFSICCO
 
         }
 
-        private void BtnServicios_Selected(object sender, RoutedEventArgs e)
+        private void BtnCategorias_Selected(object sender, RoutedEventArgs e) 
         {
-
+            DataContext = new UserCategorias();
+            BtnCategorias.IsSelected = false;
         }
 
         private void BtnInfo_Click(object sender, RoutedEventArgs e)
@@ -73,12 +76,23 @@ namespace WPFSICCO
 
         private void Buscar_KeyDown(object sender, KeyEventArgs e)
         {
+            string id = "1";
             if (e.Key == Key.Enter)
             {
-                string nombre="", precio="",descripcion="";
-                Resultado_busqueda result = new Resultado_busqueda(Buscar.Text, nombre, precio, descripcion);
-                result.Show();
+                DataContext = new UserResultadoBusqueda(id,Buscar.Text);
+                
+                
             }
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void Cerrar_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

@@ -16,28 +16,49 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
     <StackPanel>
         <Grid Margin="20" VerticalAlignment="Top" Background="White" Height="668">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="1"/>
             </Grid.Effect>
-            <Image x:Name="ImagenPrin"  Source="Assets/92886_179403_1.jpg" HorizontalAlignment="Left" Margin="82,2,0,204" Width="588" />
+            <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                <Grid>
+                    <materialDesign:ColorZone Mode="PrimaryDark">
+                        <StackPanel HorizontalAlignment="Right">
+                            <Button Width="30" Height="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="Button_Click">
+                                <materialDesign:PackIcon Kind="WindowClose"/>
+                            </Button>
+                        </StackPanel>
+                    </materialDesign:ColorZone>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="2">
+                <Image x:Name="ImagenPrin"  Source="Assets/92886_179403_1.jpg" HorizontalAlignment="Left" Margin="82,2,0,204" Width="588" />
 
 
-            <StackPanel Margin="750 70 70 70" HorizontalAlignment="Left">
-                <Label x:Name="NombreVendedor" Content="Vendedor" FontSize="18" Margin="0 5 0 0" Foreground="#FF6A6A6A" />
-                <TextBlock x:Name="NombreArticulo" Text="Articulo" FontSize="22" TextWrapping="Wrap" Foreground="#FF6A6A6A"  Margin="5 5 0 0"/>
-                <TextBlock x:Name="IDArticulo" Text="item #75684" FontSize="12" Margin=" 5 5 0 0" Foreground="#FFC7C7C7"  />
-                <TextBlock x:Name="PrecioAriculo" Text="$ Precio" FontSize="20" Margin="5 0 0 0" Foreground="#FFC7C7C7"  />
-                <Grid Width="200"/>
-                <Label Content="Horario"/>
-                <TextBlock Margin="5 5 0 0" >El horario disponible</TextBlock>
-                <Button Content="Comprar" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Center" Margin="0 15"  />
-            </StackPanel>
-            <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 100">
-                <Label Content="Descripcion:" FontSize="22"/>
-                <TextBlock x:Name="DescripcionArticulo" Height="72" TextWrapping="Wrap" Margin="0,0,460,0" />
-               
-            </StackPanel>
+                <StackPanel Margin="750 70 70 70" HorizontalAlignment="Left">
+                    <Label x:Name="NombreVendedor" Content="Vendedor" FontSize="18" Margin="0 5 0 0" Foreground="#FF6A6A6A" />
+                    <TextBlock x:Name="NombreArticulo" Text="Articulo" FontSize="22" TextWrapping="Wrap" Foreground="#FF6A6A6A"  Margin="5 5 0 0"/>
+                    <TextBlock x:Name="IDArticulo" Text="item #75684" FontSize="12" Margin=" 5 5 0 0" Foreground="#FFC7C7C7"  />
+                    <TextBlock x:Name="PrecioAriculo" Text="$ Precio" FontSize="20" Margin="5 0 0 0" Foreground="#FFC7C7C7"  />
+                    <Grid Width="200"/>
+                    <Label Content="Horario"/>
+                    <TextBlock Margin="5 5 0 0" >7:00am a 2:30pm</TextBlock>
+                    <Button Content="Comprar" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Center" Margin="0 15"  />
+                </StackPanel>
+                <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 100">
+                    <Label Content="Descripcion:" FontSize="22"/>
+                    <TextBlock x:Name="DescripcionArticulo" Height="72" TextWrapping="Wrap" Margin="0,0,460,0" />
+
+                </StackPanel>
+            </Grid>
         </Grid>
+                
+            
+            
     </StackPanel>
+        
 
 </Window>

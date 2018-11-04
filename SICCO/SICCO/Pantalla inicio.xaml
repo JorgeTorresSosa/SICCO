@@ -1,12 +1,13 @@
-﻿<Window x:Class="WPFSICCO.PantallaInicio"
+﻿<Window x:Class="SICCO.Pantalla_inicio"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFSICCO"
-       
+        xmlns:local="clr-namespace:SICCO"
+        xmlns:viewmodels="clr-namespace:SICCO.ViewModels"
+        xmlns:views="clr-namespace:SICCO.Views"
         mc:Ignorable="d"
-        Title="PantallaInicio" Height="600" Width="1100" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        Title="PantallaInicio" Height="600" Width="1100" WindowStyle="None"  AllowsTransparency="True" WindowStartupLocation="CenterScreen"
         xmlns:MaterialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -18,7 +19,12 @@
 
     <!--Valores a aumentar(StoryBoards)-->
     <Window.Resources>
-        
+      <!---  <DataTemplate x:Name="RegistroArticulos" DataType="{x:Type viewmodels:ClassRegistroArticulos}">
+            <views:UserRegistroArticulos DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="ResultadoBusqueda" DataType="{x:Type viewmodels:ClassResultadoBusqueda}">
+            <views:UserResultadoBusqueda DataContext="{Binding}"/>
+        </DataTemplate> -->
         <Storyboard x:Key="AbrirMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="StackPanelMenu" >
                 <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
@@ -44,22 +50,34 @@
     </Window.Triggers>
 
 
-    <Grid Margin="-5,0,0,0">
+    <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="45" />
-            <RowDefinition />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--Barra superior-->
-        <Grid Grid.Row="0" VerticalAlignment="Top" Background="#FF009688" HorizontalAlignment="Right" Height="45" Width="1105">
+        <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid>
+                <MaterialDesign:ColorZone Mode="PrimaryDark">
+                    <StackPanel HorizontalAlignment="Right">
+                        <Button x:Name="Cerrar" Width="30" Height="30" MaterialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="Cerrar_Click">
+                            <MaterialDesign:PackIcon Kind="WindowClose"/>
+                        </Button>
+                    </StackPanel>
+                </MaterialDesign:ColorZone>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" VerticalAlignment="Top" Background="#FF009688" Height="50" >
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="815">
+            <StackPanel Orientation="Horizontal"  >
 
                 <!--Imagenes de Sicco (Pendiente sainz iba a mandar imagenes de sicco)-->
-                <StackPanel>
-                    <Image/>
-                    <Image/>
-                </StackPanel>
+                
+                    <Image Width="100" Stretch="Fill" Source="/Assets/Logo.png" Margin="10 0 0 0"/>
+                    <Image Width="100" Stretch="Fill" Source="/Assets/Letras_1.png"/>
+                
 
                 <!--Boton  Categorias-->
 
@@ -67,48 +85,21 @@
 
                 <!--Boton Ajustes-->
                 <!--Buscador de productos-->
-                <StackPanel Width="300" Height="40" VerticalAlignment="Top">
-                    <TextBox x:Name="Buscar" FontSize="10" Height="40" Width="280" Foreground="#FFC51162"  MaterialDesign:HintAssist.Hint="Buscar" 
-                             MaterialDesign:HintAssist.IsFloating="True" FontFamily="Adobe Gothic Std B" TextAlignment="Left" VerticalAlignment="Top" 
-                              RenderTransformOrigin="0.5,0.5"  BorderBrush="#FFC51162" Margin="10,0,0,0" HorizontalAlignment="Left" KeyDown="Buscar_KeyDown">
-                        <TextBox.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform Y="0" X="10"/>
-                            </TransformGroup>
-                        </TextBox.RenderTransform>
-                    </TextBox>
-                    <MaterialDesign:PackIcon Kind="Fire" Height="25" Width="25"  Margin="10 0 10 0"
-                                             Foreground="{Binding ElementName=Buscar, Path=BorderBrush}" RenderTransformOrigin="0.5,0.5" >
-                        <MaterialDesign:PackIcon.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform Y="-29" X="-13" />
-                            </TransformGroup>
-                        </MaterialDesign:PackIcon.RenderTransform>
-                    </MaterialDesign:PackIcon>
-                </StackPanel>
+                <MaterialDesign:PackIcon Kind="Fire" Height="25" Width="25"  Margin="600 15 10 0" VerticalAlignment="Top"  Foreground="{Binding BorderBrush, ElementName=Buscar}" />
+                <TextBox x:Name="Buscar" FontSize="10" Height="40" Width="200" Foreground="#FFC51162"  MaterialDesign:HintAssist.Hint="Buscar" 
+                             MaterialDesign:HintAssist.IsFloating="True" FontFamily="Adobe Gothic Std B" 
+                                BorderBrush="#FFC51162"  KeyDown="Buscar_KeyDown" Margin="0,5"/>
 
-                <!--Boton minimizar-->
-                <Button Height="40" Width="40" Padding="0" Background="{x:Null}"  BorderBrush="{x:Null}" VerticalAlignment="Top">
-                    <MaterialDesign:PackIcon Kind="Minus" Height="Auto" Width="40" Foreground="#FFC51162"/>
-                </Button>
 
-                <!--Boton cerrar programa-->
-                <Button Height="40" Width="40" Padding="0" Background="{x:Null}"  BorderBrush="{x:Null}" VerticalAlignment="Top">
-                    <MaterialDesign:PackIcon Kind="Close" Height="Auto" Width="40" Foreground="#FFC51162"/>
-                </Button>
+
 
             </StackPanel>
 
         </Grid>
 
+
         <!--Base -->
-        <Grid Grid.Row="1" Background="#FFC51162">
+        <Grid Grid.Row="2" Background="#FFC51162">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="175*"/>
                 <ColumnDefinition Width="56*"/>
@@ -121,8 +112,8 @@
             </Grid.RowDefinitions>
 
             <!--Panel para meter las formas-->
-            <ContentControl x:Name="pnlFormas" Background="White" HorizontalAlignment="Right" Width="1105" Grid.RowSpan="3" Grid.ColumnSpan="3"/>
-            
+            <ContentControl x:Name="pnlFormas" Content="{Binding}" Background="White" HorizontalAlignment="Right" Width="1105" Grid.RowSpan="3" Grid.ColumnSpan="3" />
+
 
             <!--Menu-->
             <StackPanel  x:Name="StackPanelMenu" Width="60" HorizontalAlignment="Left" Margin="0 0 0 0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3" Background="#FFC51162">
@@ -209,11 +200,11 @@
                     </ListViewItem>
 
                     <!--Boton Servicios (Menu)-->
-                    <ListViewItem x:Name="BtnServicios" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnServicios_Selected" Margin="-5,0,0,0">
+                    <ListViewItem x:Name="BtnCategorias" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnCategorias_Selected" Margin="-5,0,0,0">
 
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <MaterialDesign:PackIcon Kind="MushroomOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
-                            <TextBlock Text="Servicios" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
+                            <TextBlock Text="Categorias" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
                             <MaterialDesign:PackIcon Kind="Incognito" Width="40" Height="40" Foreground="#FF009688" />
                         </StackPanel>
                     </ListViewItem>
