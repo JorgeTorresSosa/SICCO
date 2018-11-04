@@ -89,13 +89,11 @@ namespace WPFSICCO
         }
         void Basededatos()
         {
-
-
             string pss = txt_Contraseña.Password;
             ASCIIEncoding encoding = new ASCIIEncoding();
             string postdata = "NU=" + txt_NombreUsuario.Text + "&pss=" + pss;
             byte[] data = encoding.GetBytes(postdata);
-            //"NU=" + txt_NombreUsuario.Text +
+      
             WebRequest request = WebRequest.Create("http://sicconviene.com/ABRIR_CONEX.php");
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
@@ -111,9 +109,14 @@ namespace WPFSICCO
             string lectura_php = leer.ReadToEnd();
             leer.Close();
             stream.Close();
-            if (lectura_php.Contains("Registros_generados"))
+            if (lectura_php.Contains("registros_generados"))
             {
+                int inicio, fin;
+                inicio = lectura_php.IndexOf("o");
+                fin = lectura_php.IndexOf("Q")-6;
+                Clase_php.No_Control_Usuario = lectura_php.Substring(inicio+1, fin-1); ;
                 msgText.Text = "Ingresado correctamente";
+                
             }
             Hecho.IsOpen = true;
  

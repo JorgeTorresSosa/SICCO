@@ -16,10 +16,9 @@ namespace WPFSICCO
 {
     public partial class PantallaInicio : Window
     {
-      
         public PantallaInicio()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         private void AbrirMenu_Click(object sender, RoutedEventArgs e)
@@ -36,18 +35,24 @@ namespace WPFSICCO
             BtnInfo.Visibility = Visibility.Collapsed;
         }
 
-        
+        private void btnCategorias_Click(object sender, RoutedEventArgs e)
+        {
+            Categorias cat = new Categorias();
+            cat.Show();
+            this.Hide();
+        }
+
         ///////// Menu ////////////
         private void BtnPerfil_Selected(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void BtnAgregarArticulo_Selected(object sender, RoutedEventArgs e)
         {
-            UserResgistro_Articulos reg = new UserResgistro_Articulos();
-            pnlFormas.Children.Add(reg);
-            
+            Registro_Articulos reg_a = new Registro_Articulos();
+            reg_a.Show();
+            this.Hide();
             
         }
 
@@ -69,16 +74,6 @@ namespace WPFSICCO
         private void BtnInfo_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void Buscar_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                string nombre="", precio="",descripcion="";
-                Resultado_busqueda result = new Resultado_busqueda(Buscar.Text, nombre, precio, descripcion);
-                result.Show();
-            }
         }
     }
 }

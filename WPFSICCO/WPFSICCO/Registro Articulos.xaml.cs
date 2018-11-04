@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +31,7 @@ namespace WPFSICCO
         }
         OpenFileDialog op = new OpenFileDialog();
         ASCIIEncoding encoding = new ASCIIEncoding();
-        bool aRCHIVO_Seleccionado = false, Registrado = false;
+        bool aRCHIVO_Seleccionado=false, Registrado = false;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Hecho.IsOpen = true;
@@ -40,48 +40,33 @@ namespace WPFSICCO
 
         private void BotonExaminar_Click(object sender, RoutedEventArgs e)
         {
-
-
+           
+            
             op.Title = "Select a picture";
             op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
               "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
               "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
-            {
+            { 
                 aRCHIVO_Seleccionado = true;
                 ImagenArticulo.Source = new BitmapImage(new Uri(op.FileName));
-
+                
             }
 
         }
 
         private void BotonAceptar_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
+           
         }
 
         private void RegistarArticulo_Click(object sender, RoutedEventArgs e)
         {
             if (aRCHIVO_Seleccionado)
             {
-                //string Source = op.FileName;
-                //MessageBox.Show(Source);
-                //string distination = @"C:\Users\Elian Cruz\source\repos\JorgeTorresSosa\SICCO\WPFSICCO\WPFSICCO\Assets\";
-                //File.Copy(Source, distination);
-
                 if (Tipo.SelectedIndex == 0)
                 {
-                    string postdata = "NOM=" + NombreArticulo.Text + "&TIP=" + Tipo.SelectedIndex + "&CAT=" + Categoria.SelectedIndex + "&DES=" + Descripcion.Text + "&PREC=" + Precio.Text;
+                    string postdata = "NOM=" + NombreArticulo.Text + "&TIP=" + Tipo.SelectedIndex + "&CAT=" + Categoria.SelectedIndex + "&DES=" + Descripcion.Text + "&PREC=" + Precio.Text+"&NCO=" + Clase_php.No_Control_Usuario;
                     byte[] data = encoding.GetBytes(postdata);
                     WebRequest request = WebRequest.Create("http://sicconviene.com/img.php");
                     request.Method = "POST";
@@ -96,7 +81,7 @@ namespace WPFSICCO
                     stream = response.GetResponseStream();
                     StreamReader leer = new StreamReader(stream);
                     string lectura_php = leer.ReadToEnd();
-                    //MessageBox.Show(lectura_php);
+                    MessageBox.Show(lectura_php);
                     if (lectura_php.Contains("Registrado_bien"))
                     {
                         Registrado = true;
@@ -105,18 +90,16 @@ namespace WPFSICCO
                     stream.Close();
                     if (Registrado)
                     {
-                        string id = "";
                         Hecho.IsOpen = true;
-                        Resultado_busqueda resbus = new Resultado_busqueda(id, NombreArticulo.Text, Descripcion.Text, Precio.Text);
                     }
                     else
                     {
                         MessageBox.Show("No se registró");
                     }
                 }
-                else if (Tipo.SelectedIndex == 1)
+                else if(Tipo.SelectedIndex==1)
                 {
-                    string postdata = "NOM=" + NombreArticulo.Text + "&MAT=" + Categoria.SelectedIndex + "&COS=" + Precio.Text + "&HOR=" + HoraInicio.Text + "-" + HoraFin.Text + "&DES=" + Descripcion.Text;
+                    string postdata = "NOM=" + NombreArticulo.Text + "&MAT=" + Categoria.SelectedIndex + "&COS=" + Precio.Text + "&HOR=" + HoraInicio.Text + "-" + HoraFin.Text + "&DES=" + Descripcion.Text + "&NCO=" + Clase_php.No_Control_Usuario;
                     byte[] data = encoding.GetBytes(postdata);
                     WebRequest request = WebRequest.Create("http://sicconviene.com/img_2.php");
                     request.Method = "POST";
@@ -140,21 +123,19 @@ namespace WPFSICCO
                     stream.Close();
                     if (Registrado)
                     {
-                        string busqueda = "";
                         Hecho.IsOpen = true;
-                        Resultado_busqueda resbus = new Resultado_busqueda(busqueda, NombreArticulo.Text, Descripcion.Text, Precio.Text);
                     }
                     else
                     {
-                        MessageBox.Show("Se registró");
+                        MessageBox.Show("No se registró");
                     }
                 }
+            
 
-
-
-
+                
+                
             }
-
+            
         }
     }
 }
