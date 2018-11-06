@@ -33,7 +33,14 @@ namespace SICCO
         int clasificador = -1;
         public MainWindow()
         {
+            
             InitializeComponent();
+            if (Properties.Settings.Default.recordar == true)
+            {
+                txt_NombreUsuario.Text = Properties.Settings.Default.usuario;
+                txt_Contraseña.Password = Properties.Settings.Default.contraseña;
+                Basededatos();
+            }
             Pantalla_inicio pan = new Pantalla_inicio();
             pan.Show();
         }
@@ -60,7 +67,8 @@ namespace SICCO
 
         private void OlvContr_Click(object sender, RoutedEventArgs e)
         {
-
+            OlvideContraseña olvcontra = new OlvideContraseña();
+            olvcontra.ShowDialog();
         }
 
         private void Buttonn_Click_1(object sender, RoutedEventArgs e)
@@ -95,39 +103,64 @@ namespace SICCO
             ASCIIEncoding encoding = new ASCIIEncoding();
             string postdata = "NU=" + txt_NombreUsuario.Text + "&pss=" + pss;
             byte[] data = encoding.GetBytes(postdata);
-            //"NU=" + txt_NombreUsuario.Text +
             WebRequest request = WebRequest.Create("http://sicconviene.com/ABRIR_CONEX.php");
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = data.Length;
-
             Stream stream = request.GetRequestStream();
             stream.Write(data, 0, data.Length);
             stream.Close();
-
             WebResponse response = request.GetResponse();
             stream = response.GetResponseStream();
             StreamReader leer = new StreamReader(stream);
             string lectura_php = leer.ReadToEnd();
             leer.Close();
             stream.Close();
-            if (lectura_php.Contains("Registros_generados"))
+            if (lectura_php.Contains("registros_generados"))
             {
                 msgText.Text = "Ingresado correctamente";
+                if (RecordarContra.IsChecked == true)
+                {
+                    Properties.Settings.Default.usuario = txt_NombreUsuario.Text;
+                    Properties.Settings.Default.Save();
+                    Properties.Settings.Default.contraseña = txt_Contrasena.Text;
+                    Properties.Settings.Default.Save();
+                    Properties.Settings.Default.recordar = true;
+                    Properties.Settings.Default.Save();
+                }
+                else
+                {
+                    Properties.Settings.Default.usuario = "";
+                    Properties.Settings.Default.Save();
+                    Properties.Settings.Default.contraseña = "";
+                    Properties.Settings.Default.Save();
+                    Properties.Settings.Default.recordar = false;
+                    Properties.Settings.Default.Save();
+                }
             }
-            Hecho.IsOpen = true;
+            if (Properties.Settings.Default.recordar == true)
+            {
+                Hecho.IsOpen = true;
+            }
+            else
+            {
+                Pantalla_inicio PantallaInicio_Form = new Pantalla_inicio();
+                PantallaInicio_Form.Show();
+                this.Close();
+            }
+
 
         }
 
         private void BotonAceptar_Click(object sender, RoutedEventArgs e)
         {
-           // if (msgText.Text == "Ingresado correctamente")
-          //  {
-               Pantalla_inicio PantallaInicio_Form = new Pantalla_inicio();
+            if (msgText.Text == "Ingresado correctamente")
+            {
+                Pantalla_inicio PantallaInicio_Form = new Pantalla_inicio();
                 PantallaInicio_Form.Show();
                 this.Close();
-            
-           // }
+
+            }
         }
     }
 }

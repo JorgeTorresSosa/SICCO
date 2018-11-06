@@ -19,7 +19,7 @@
 
     <!--Valores a aumentar(StoryBoards)-->
     <Window.Resources>
-      <!---  <DataTemplate x:Name="RegistroArticulos" DataType="{x:Type viewmodels:ClassRegistroArticulos}">
+        <!---  <DataTemplate x:Name="RegistroArticulos" DataType="{x:Type viewmodels:ClassRegistroArticulos}">
             <views:UserRegistroArticulos DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="ResultadoBusqueda" DataType="{x:Type viewmodels:ClassResultadoBusqueda}">
@@ -30,9 +30,17 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridPanelMenu" >
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CerrarMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="StackPanelMenu" >
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridPanelMenu" >
                 <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
             </DoubleAnimationUsingKeyFrames>
@@ -60,9 +68,12 @@
         <!--Barra superior-->
         <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Grid>
-                <MaterialDesign:ColorZone Mode="PrimaryDark">
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="30" MaterialDesign:ShadowAssist.ShadowDepth="Depth4"/>
+                </Grid.Effect>
+                <MaterialDesign:ColorZone Mode="PrimaryMid">
                     <StackPanel HorizontalAlignment="Right">
-                        <Button x:Name="Cerrar" Width="30" Height="30" MaterialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="Cerrar_Click">
+                        <Button x:Name="Cerrar" Width="30" Height="30" MaterialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="0" Click="Cerrar_Click">
                             <MaterialDesign:PackIcon Kind="WindowClose"/>
                         </Button>
                     </StackPanel>
@@ -70,30 +81,27 @@
             </Grid>
         </Border>
         <Grid Grid.Row="1" VerticalAlignment="Top" Background="#FF009688" Height="50" >
-
-            <StackPanel Orientation="Horizontal"  >
-
-                <!--Imagenes de Sicco (Pendiente sainz iba a mandar imagenes de sicco)-->
-                
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="117*"/>
+                <ColumnDefinition Width="158*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Effect>
+                <DropShadowEffect  MaterialDesign:ShadowAssist.ShadowDepth="Depth4"/>
+            </Grid.Effect>
+            <MaterialDesign:ColorZone Height="50" Mode="PrimaryDark" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2"  >
+                    <!--Imagenes de Sicco -->
                     <Image Width="100" Stretch="Fill" Source="/Assets/Logo.png" Margin="10 0 0 0"/>
-                    <Image Width="100" Stretch="Fill" Source="/Assets/Letras_1.png"/>
-                
-
-                <!--Boton  Categorias-->
-
-
-
-                <!--Boton Ajustes-->
-                <!--Buscador de productos-->
-                <MaterialDesign:PackIcon Kind="Fire" Height="25" Width="25"  Margin="600 15 10 0" VerticalAlignment="Top"  Foreground="{Binding BorderBrush, ElementName=Buscar}" />
-                <TextBox x:Name="Buscar" FontSize="10" Height="40" Width="200" Foreground="#FFC51162"  MaterialDesign:HintAssist.Hint="Buscar" 
-                             MaterialDesign:HintAssist.IsFloating="True" FontFamily="Adobe Gothic Std B" 
-                                BorderBrush="#FFC51162"  KeyDown="Buscar_KeyDown" Margin="0,5"/>
-
-
-
-
-            </StackPanel>
+                    <Image Width="100" Stretch="Fill" Source="/Assets/Letras_2.png"/>
+                    <!--Buscador de productos-->
+                    <MaterialDesign:PackIcon Kind="Fire" Height="25" Width="25"  Margin="540 15 10 0" VerticalAlignment="Top" Foreground="{Binding ElementName=Buscar, Path=BorderBrush}"/>
+                    <TextBox x:Name="Buscar" FontSize="10" Height="40" Width="200" Foreground="White"  MaterialDesign:HintAssist.Hint="Buscar" 
+                              FontFamily="Adobe Gothic Std B"  KeyDown="Buscar_KeyDown" Margin="0,5"/>
+                    <Button x:Name="BotonSalirCuenta" Background="Transparent" Height="40" Width="65" MaterialDesign:HintAssist.Hint="Salir" Click="BotonSalirCuenta_Click" Margin="30 0 0 0">
+                        <MaterialDesign:PackIcon Kind="ExitToApp" Width="35" Height="35"/>
+                    </Button>
+                </StackPanel>
+            </MaterialDesign:ColorZone>
 
         </Grid>
 
@@ -116,100 +124,95 @@
 
 
             <!--Menu-->
-            <StackPanel  x:Name="StackPanelMenu" Width="60" HorizontalAlignment="Left" Margin="0 0 0 0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3" Background="#FFC51162">
+            <Grid x:Name="GridPanelMenu" Width="60" HorizontalAlignment="Left" Margin="0 0 0 0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3" Background="#FFC51162">
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="1"/>
+                </Grid.Effect>
+                <StackPanel x:Name="StackPanelMenu"   Width="60" HorizontalAlignment="Left" Margin="0 0 0 0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3" Background="#FFC51162">
 
-                <!--Parte superior (Menu)-->
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="100" Width="Auto" HorizontalAlignment="Right" Margin="5,0,-65,0" >
-                    <Button Width="70" Height="80" Background="{x:Null}" >
-                        <Image x:Name="FotoUsuario" Stretch="Fill" Source="Assets/FotoUsuario.png" Width="43"/>
-                    </Button>
-                    <Grid >
-                        <Button x:Name="CerrarMenu"  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="40,-10" Visibility="Collapsed" Click="CerrarMenu_Click" RenderTransformOrigin="0.5,0.5">
-                            <MaterialDesign:PackIcon Kind="Menu" Width="40" Height="40" Foreground="#FF009688"/>
-                            <Button.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform X="-27"/>
-                                </TransformGroup>
-                            </Button.RenderTransform>
-                        </Button>
-                        <Button x:Name="AbrirMenu" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="40,25" Click="AbrirMenu_Click" RenderTransformOrigin="0.5,0.5" >
-                            <Button.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform X="-27"/>
-                                </TransformGroup>
-                            </Button.RenderTransform>
-                            <MaterialDesign:PackIcon Kind="Menu" Width="40" Height="40" Foreground="#FF009688"/>
-                        </Button>
-                    </Grid>
-                    <Button x:Name="BtnInfo" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10" 
-                            Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Click="BtnInfo_Click" >
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform X="-70"/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                        <MaterialDesign:PackIcon Kind="InformationVariant" Width="40" Height="40" Foreground="#FF009688"/>
-                    </Button>
+                    <!--Parte superior (Menu)-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="100" Width="Auto" HorizontalAlignment="Right" Margin="5,0,-65,0" >
+
+                        <Image x:Name="FotoUsuario" Stretch="Fill" Source="Assets/FotoUsuario.png" Width="100"/>
+
+                        <Grid >
+
+                            <Button x:Name="CerrarMenu"  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="25" Height="30" Margin="30 -50 120 3" Visibility="Collapsed" Click="CerrarMenu_Click" RenderTransformOrigin="0.5,0.5">
+                                <MaterialDesign:PackIcon Kind="KeyboardBackspace" Width="40" Height="40" Foreground="White"/>
+                                <Button.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-25"/>
+                                    </TransformGroup>
+                                </Button.RenderTransform>
+                            </Button>
+                            <Button x:Name="AbrirMenu" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="40,25" Click="AbrirMenu_Click" RenderTransformOrigin="0.5,0.5" >
+                                <Button.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-27"/>
+                                    </TransformGroup>
+                                </Button.RenderTransform>
+                                <MaterialDesign:PackIcon Kind="Menu" Width="40" Height="40" Foreground="White"/>
+                            </Button>
+                        </Grid>
+
+                    </StackPanel>
+
+                    <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                        <!--Boton perfil (Menu)-->
+                        <ListViewItem x:Name="BtnPerfil"  Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnPerfil_Selected" Margin="-5,0,0,0">
+
+                            <StackPanel Orientation="Horizontal" Margin="10 0" OpacityMask="Black">
+                                <MaterialDesign:PackIcon Kind="AccountCircle" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                                <TextBlock Text="Perfil" Margin="10" VerticalAlignment="Center" Foreground="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <!--Boton Agregar Articulo (Menu)-->
+                        <ListViewItem x:Name="BtnAgregarArticulo" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnAgregarArticulo_Selected" Margin="-5,0,0,0">
+
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <MaterialDesign:PackIcon Kind="AutoFix" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White" />
+                                <TextBlock Text="Agregar Articulo" Margin="10" VerticalAlignment="Center" Foreground="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <!--Boton Mis compras (Menu)-->
+                        <ListViewItem x:Name="BtnMisCompras" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnMisCompras_Selected" Margin="-5,0,0,0">
+
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <MaterialDesign:PackIcon Kind="BabyBuggy" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                                <TextBlock Text="Mis Compras" Margin="10" VerticalAlignment="Center" Foreground="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <!--Boton Mis Articulos (Menu)-->
+                        <ListViewItem x:Name="BtnMisArticulos" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnMisArticulos_Selected" Margin="-5,0,0,0">
+
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <MaterialDesign:PackIcon Kind="CubeSend" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                                <TextBlock Text="Mis Articulos" Margin="10" VerticalAlignment="Center" Foreground="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <!--Boton Servicios (Menu)-->
+                        <ListViewItem x:Name="BtnCategorias" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnCategorias_Selected" Margin="-5,0,0,0">
+
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <MaterialDesign:PackIcon Kind="Category" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                                <TextBlock Text="Categorias" Margin="10" VerticalAlignment="Center" Foreground="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
                 </StackPanel>
 
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
-                    <!--Boton perfil (Menu)-->
-                    <ListViewItem x:Name="BtnPerfil"  Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnPerfil_Selected" Margin="-5,0,0,0">
-
-                        <StackPanel Orientation="Horizontal" Margin="10 0" OpacityMask="Black">
-                            <MaterialDesign:PackIcon Kind="AccountCircle" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
-                            <TextBlock Text="Perfil" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
-                        </StackPanel>
-                    </ListViewItem>
-
-                    <!--Boton Agregar Articulo (Menu)-->
-                    <ListViewItem x:Name="BtnAgregarArticulo" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnAgregarArticulo_Selected" Margin="-5,0,0,0">
-
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <MaterialDesign:PackIcon Kind="AutoFix" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688" />
-                            <TextBlock Text="Agregar Articulo" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
-                        </StackPanel>
-                    </ListViewItem>
-
-                    <!--Boton Mis compras (Menu)-->
-                    <ListViewItem x:Name="BtnMisCompras" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnMisCompras_Selected" Margin="-5,0,0,0">
-
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <MaterialDesign:PackIcon Kind="BabyBuggy" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
-                            <TextBlock Text="Mis Compras" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
-                        </StackPanel>
-                    </ListViewItem>
-
-                    <!--Boton Mis Articulos (Menu)-->
-                    <ListViewItem x:Name="BtnMisArticulos" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnMisArticulos_Selected" Margin="-5,0,0,0">
-
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <MaterialDesign:PackIcon Kind="CubeSend" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
-                            <TextBlock Text="Mis Articulos" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
-                        </StackPanel>
-                    </ListViewItem>
-
-                    <!--Boton Servicios (Menu)-->
-                    <ListViewItem x:Name="BtnCategorias" Height="60" RenderTransformOrigin="0.5,0.5" Selected="BtnCategorias_Selected" Margin="-5,0,0,0">
-
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <MaterialDesign:PackIcon Kind="MushroomOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FF009688"/>
-                            <TextBlock Text="Categorias" Margin="10" VerticalAlignment="Center" Foreground="#FF009688"/>
-                            <MaterialDesign:PackIcon Kind="Incognito" Width="40" Height="40" Foreground="#FF009688" />
-                        </StackPanel>
-                    </ListViewItem>
-                </ListView>
-            </StackPanel>
+            </Grid>
 
         </Grid>
 

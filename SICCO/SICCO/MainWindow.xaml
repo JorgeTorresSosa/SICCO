@@ -50,7 +50,7 @@
                     <TextBox x:Name="txt_Contrasena" Text="{Binding Password, Mode=TwoWay, ElementName=txt_Contraseña}" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" Visibility="Collapsed" Height="40" MinHeight="52" Width="300" />
                     <materialDesign:PackIcon x:Name="EyeOff" Kind="EyeOff" VerticalAlignment="Bottom" Margin="20 0 0 4" MouseDown="txt_Contrasena_MouseDown" Height="Auto" Width="Auto" />
                 </StackPanel>
-                <CheckBox Content="Recordar contraseña" Margin="0 30 0 0"/>
+                <CheckBox x:Name="RecordarContra" Content="Recordar contraseña" Margin="0 30 0 0"/>
                 <Button Content="Iniciar Sesion" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Right" Margin=" 0 20 40 0" Click="Buttonn_Click_1" />
                 <materialDesign:Card Margin="0 12 10 10" Padding="15" materialDesign:ShadowAssist.ShadowDepth="Depth4">
                     <StackPanel Orientation="Horizontal">

@@ -5,41 +5,49 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SICCO.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="520" d:DesignWidth="1000">
-    
-        <Grid Margin="85 20 20 20" VerticalAlignment="Top" Background="White" Height="480">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.Effect>
-                <DropShadowEffect BlurRadius="20" ShadowDepth="1"/>
-            </Grid.Effect>
-            <StackPanel Orientation="Vertical" CanHorizontallyScroll="True">
-                <StackPanel Orientation="Horizontal" Margin="0 25 0 0">
-                    <Button Width="200" Height="200" HorizontalAlignment="Left" Margin="85 0 0 0">
-                        <Image  Source="/Assets/FotoUsuario.png" Stretch="Fill"/>
-                    </Button>
-                    <Button Width="200" Height="200" HorizontalAlignment="Center" Margin="70 0 0 0">
-                        <Image Source="/Assets/FotoUsuario.png" Stretch="Fill"/>
-                    </Button>
-                    <Button Width="200" Height="200" HorizontalAlignment="Right" Margin="70 0 0 0">
-                        <Image Source="/Assets/FotoUsuario.png" Stretch="Fill"/>
-                    </Button>
+             d:DesignHeight="520" d:DesignWidth="900"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid Margin="85 20 20 20" Background="White" x:Name="main">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="20" ShadowDepth="1"/>
+        </Grid.Effect>
+        <StackPanel  Orientation="Vertical" >
+            <StackPanel Orientation="Horizontal" Margin="0 25 0 0">
+                <Button x:Name="BotonArtes" Click="BotonArtes_Click" Width="200" Height="200" HorizontalAlignment="Left" Margin="85 0 0 0" Background="White" BorderBrush="White">
+                    <Image  Source="/Assets/Artes.png" Stretch="Fill"/>
+                </Button>
+                <Button Width="200" Height="200" HorizontalAlignment="Center" Margin="70 0 0 0" Background="White" BorderBrush="White">
+                    <Image Source="/Assets/Ciencias.jpg" Stretch="Fill"/>
+                </Button>
+                <Button Width="200" Height="200" HorizontalAlignment="Right" Margin="70 0 0 0" Background="White" BorderBrush="White" >
+                    <Image Source="/Assets/Cursos.jpg" Stretch="Fill"/>
+                </Button>
 
 
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0 25 0 0">
-                    <Button Width="200" Height="200" HorizontalAlignment="Left" Margin="85 0 0 0">
-                        <Image Source="/Assets/FotoUsuario.png" Stretch="Fill"/>
-                    </Button>
-                    <Button Width="200" Height="200" HorizontalAlignment="Center" Margin="70 0 0 0">
-                        <Image Source="/Assets/FotoUsuario.png" Stretch="Fill"/>
-                    </Button>
-                    <Button Width="200" Height="200" HorizontalAlignment="Right" Margin="70 0 0 0">
-                        <Image Source="/Assets/FotoUsuario.png" Stretch="Fill"/>
-                    </Button>
-                </StackPanel>
             </StackPanel>
-        </Grid>
-    
+            <StackPanel Orientation="Horizontal" Margin="0 25 0 0">
+                <Button Width="200" Height="200" HorizontalAlignment="Left" Margin="85 0 0 0" Background="White" BorderBrush="White">
+                    <Image Source="/Assets/Matematicas.jpg" Stretch="Fill"/>
+                </Button>
+                <Button Width="200" Height="200" HorizontalAlignment="Center" Margin="70 0 0 0" Background="White" BorderBrush="White">
+                    <Image Source="/Assets/Papeleria.jpg" Stretch="Fill"/>
+                </Button>
+                <Button Width="200" Height="200" HorizontalAlignment="Right" Margin="70 0 0 0" Background="White" BorderBrush="White">
+                    <Image Source="/Assets/Otros.jpg" Stretch="Fill"/>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
 </UserControl>

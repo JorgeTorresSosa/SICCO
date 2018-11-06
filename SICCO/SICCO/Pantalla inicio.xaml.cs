@@ -11,15 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Collections.Specialized;
 using SICCO.ViewModels;
 using SICCO.Views;
 
-namespace SICCO 
+namespace SICCO
 {
     public partial class Pantalla_inicio : Window
     {
-
-        public Pantalla_inicio() 
+        
+        public Pantalla_inicio()
         {
             InitializeComponent();
             DataContext = new UserCategorias();
@@ -29,18 +34,18 @@ namespace SICCO
         {
             AbrirMenu.Visibility = Visibility.Collapsed;
             CerrarMenu.Visibility = Visibility.Visible;
-            BtnInfo.Visibility = Visibility.Visible;
+
         }
 
         private void CerrarMenu_Click(object sender, RoutedEventArgs e)
         {
             AbrirMenu.Visibility = Visibility.Visible;
             CerrarMenu.Visibility = Visibility.Collapsed;
-            BtnInfo.Visibility = Visibility.Collapsed;
+
         }
 
 
-        ///////// Menu ////////////
+        ///////// Menu //////////// 
         private void BtnPerfil_Selected(object sender, RoutedEventArgs e)
         {
             DataContext = new UserPerfilUsuario();
@@ -63,7 +68,7 @@ namespace SICCO
 
         }
 
-        private void BtnCategorias_Selected(object sender, RoutedEventArgs e) 
+        private void BtnCategorias_Selected(object sender, RoutedEventArgs e)
         {
             DataContext = new UserCategorias();
             BtnCategorias.IsSelected = false;
@@ -79,9 +84,9 @@ namespace SICCO
             string id = "1";
             if (e.Key == Key.Enter)
             {
-                DataContext = new UserResultadoBusqueda(id,Buscar.Text);
-                
-                
+                DataContext = new UserResultadoBusqueda(id, Buscar.Text);
+
+
             }
         }
 
@@ -93,6 +98,19 @@ namespace SICCO
         private void Cerrar_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void BotonSalirCuenta_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.usuario = "";
+            Properties.Settings.Default.Save();
+            Properties.Settings.Default.contraseña = "";
+            Properties.Settings.Default.Save();
+            Properties.Settings.Default.recordar = false;
+            Properties.Settings.Default.Save();
+            MainWindow ingresar = new MainWindow();
+            ingresar.Show();
+            this.Close();
         }
     }
 }

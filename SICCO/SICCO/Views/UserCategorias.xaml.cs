@@ -24,5 +24,10 @@ namespace SICCO.Views
         {
             InitializeComponent();
         }
+
+        private void BotonArtes_Click(object sender, RoutedEventArgs e)
+        {
+             
+        }
     }
 }
