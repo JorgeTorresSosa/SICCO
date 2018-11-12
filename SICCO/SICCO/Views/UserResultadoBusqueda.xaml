@@ -34,7 +34,7 @@
                 <StackPanel Orientation="Horizontal" >
                     <Image x:Name="imagen2"  Height="90" Width="90" Margin="85 10 10 10"/>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Margin="10 5 0 5"><Hyperlink   Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Black" Click="Nombre2_Click"><TextBlock Tag="2" x:Name="Nombre2" Text=""/></Hyperlink></TextBlock>
+                        <TextBlock Margin="10 5 0 5" Height="30"><Hyperlink   Style="{StaticResource MaterialDesignSubheadingHyperlink}" Foreground="Black" Click="Nombre2_Click" MouseUp="click_2"><TextBlock Tag="2" x:Name="Nombre2" Text="         "/></Hyperlink></TextBlock>
                         <TextBlock x:Name="Id2" Text="" Foreground="Gray" Margin="10 0 0 0"/>
                         <TextBlock x:Name="Descricpcion2" Text="" Margin="10 5 0 0"/>
                     </StackPanel>

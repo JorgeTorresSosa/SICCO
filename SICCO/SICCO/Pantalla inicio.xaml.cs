@@ -81,10 +81,11 @@ namespace SICCO
 
         private void Buscar_KeyDown(object sender, KeyEventArgs e)
         {
-            string id = "1";
+            
             if (e.Key == Key.Enter)
             {
-                DataContext = new UserResultadoBusqueda(id, Buscar.Text);
+                Clase_php.Busqueda = Buscar.Text;
+                DataContext = new UserResultadoBusqueda();
 
 
             }

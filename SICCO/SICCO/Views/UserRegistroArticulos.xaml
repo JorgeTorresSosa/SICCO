@@ -50,8 +50,8 @@
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <TextBox Height="100" Width="900" x:Name="Descripcion" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled" materialDesign:HintAssist.Hint="Descripcion del articulo" materialDesign:HintAssist.IsFloating="True" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Margin=" 12 12 0 0"/>
-            <Button x:Name="RegistarArticulo" Content="Registrar articulo" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Height="100" Margin="760,80,100,0" Click="RegistarArticulo_Click"/>
+            <TextBox Height="41" Width="900" x:Name="Descripcion" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled" materialDesign:HintAssist.Hint="Descripcion del articulo" materialDesign:HintAssist.IsFloating="True" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Margin="12,12,-17,0"/>
+            <Button x:Name="RegistarArticulo" Content="Registrar articulo" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Height="50" Margin="600,50,80,0" Click="RegistarArticulo_Click"/>
         </StackPanel>
         <materialDesign:DialogHost IsOpen="False" x:Name="Hecho" Grid.RowSpan="1" Margin="0,-100,0,100">
             <materialDesign:DialogHost.DialogContent >

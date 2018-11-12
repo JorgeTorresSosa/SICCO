@@ -30,6 +30,9 @@ namespace SICCO.Views
         {
             InitializeComponent();
         }
+        /*FileStream fs;
+        BinaryReader br;
+        byte[] ImageData;*/
         OpenFileDialog op = new OpenFileDialog();
         ASCIIEncoding encoding = new ASCIIEncoding();
         bool aRCHIVO_Seleccionado = false, Registrado = false;
@@ -51,7 +54,11 @@ namespace SICCO.Views
             {
                 aRCHIVO_Seleccionado = true;
                 ImagenArticulo.Source = new BitmapImage(new Uri(op.FileName));
-
+                /*fs = new FileStream(op.FileName, FileMode.Open, FileAccess.Read);
+                br = new BinaryReader(fs);
+                ImageData = br.ReadBytes((int)fs.Length);
+                br.Close();
+                fs.Close();*/
             }
 
         }
@@ -72,7 +79,7 @@ namespace SICCO.Views
 
                 if (Tipo.SelectedIndex == 0)
                 {
-                    string postdata = "NOM=" + NombreArticulo.Text + "&TIP=" + Tipo.SelectedIndex + "&CAT=" + Categoria.SelectedIndex + "&DES=" + Descripcion.Text + "&PREC=" + Precio.Text;
+                    string postdata = "NOM=" + NombreArticulo.Text + "&TIP=" + Tipo.SelectedIndex + "&CAT=" + Categoria.SelectedIndex + "&DES=" + Descripcion.Text + "&PREC=" + Precio.Text + "&NCO=" + Clase_php.No_Control_Usuario;//+ "&img=" + ImageData;
                     byte[] data = encoding.GetBytes(postdata);
                     WebRequest request = WebRequest.Create("http://sicconviene.com/img.php");
                     request.Method = "POST";
@@ -107,7 +114,7 @@ namespace SICCO.Views
                 }
                 else if (Tipo.SelectedIndex == 1)
                 {
-                    string postdata = "NOM=" + NombreArticulo.Text + "&MAT=" + Categoria.SelectedIndex + "&COS=" + Precio.Text + "&HOR=" + HoraInicio.Text + "-" + HoraFin.Text + "&DES=" + Descripcion.Text;
+                    string postdata = "NOM=" + NombreArticulo.Text + "&MAT=" + Categoria.SelectedIndex + "&COS=" + Precio.Text + "&HOR=" + HoraInicio.Text + "-" + HoraFin.Text + "&DES=" + Descripcion.Text + "&NCO=" + Clase_php.No_Control_Usuario;//+ "&img=" + ImageData
                     byte[] data = encoding.GetBytes(postdata);
                     WebRequest request = WebRequest.Create("http://sicconviene.com/img_2.php");
                     request.Method = "POST";

@@ -22,6 +22,7 @@ using System.Net.Http;
 using Microsoft.Win32;
 using System.Collections.Specialized;
 using System.IO;
+using SICCO.Views;
 namespace SICCO
 {
     /// <summary>
@@ -41,8 +42,9 @@ namespace SICCO
                 txt_Contraseña.Password = Properties.Settings.Default.contraseña;
                 Basededatos();
             }
-            Pantalla_inicio pan = new Pantalla_inicio();
-            pan.Show();
+            //Pantalla_inicio pan = new Pantalla_inicio();
+            //pan.Show();
+            DataContext = new UserCategorias();
         }
         WebClient Reg_DB = new WebClient();
 
@@ -118,6 +120,10 @@ namespace SICCO
             stream.Close();
             if (lectura_php.Contains("registros_generados"))
             {
+                int inicio, fin;
+                inicio = lectura_php.IndexOf("o");
+                fin = lectura_php.IndexOf("Q") - 6;
+                Clase_php.No_Control_Usuario = lectura_php.Substring(inicio + 1, fin - 1);
                 msgText.Text = "Ingresado correctamente";
                 if (RecordarContra.IsChecked == true)
                 {

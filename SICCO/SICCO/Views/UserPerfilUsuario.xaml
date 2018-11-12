@@ -55,7 +55,7 @@
                 <TextBox x:Name="CajaNombre" Width="180" Margin="0 24 0 0"/>
                 <TextBox x:Name="CajaNombreUsuario" Width="180" Margin="0 6 0 0"/>
                 <TextBox x:Name="CajaEdad" Width="180" Margin="0 6 0 0"/>
-                <ComboBox x:Name="CajaEspecialidad" MaterialDesign:HintAssist.Hint="Especialidad" MaterialDesign:HintAssist.IsFloating="True" Width="180" Margin="0 15 0 0">
+                <ComboBox x:Name="CajaEspecialidad" MaterialDesign:HintAssist.Hint="Especialidad" MaterialDesign:HintAssist.IsFloating="True"   Width="180" Margin="0 15 0 0" FontWeight="Bold">
                     <ComboBoxItem></ComboBoxItem>
                     <ComboBoxItem>Programacion</ComboBoxItem>
                     <ComboBoxItem>Electronica</ComboBoxItem>
@@ -72,7 +72,7 @@
                     <ComboBoxItem>6</ComboBoxItem>
                 </ComboBox>
                 <TextBox x:Name="CajaCorreoElectronico" Width="180" Margin="0 21 0 0"/>
-                <TextBlock Text="000000000000000" Width="180" Margin="0 15 0 0"/>
+                <TextBlock x:Name="N_US"  Text="000000000000000" Width="180" Margin="0 15 0 0"/>
                 <TextBox x:Name="CajaContraVieja" Width="180" Margin="0 28 0 0"/>
                 <TextBox x:Name="CajaContraNueva" Width="180" Margin="0 6 0 0"/>
                 <TextBox x:Name="CajaConfContraNueva" Width="180" Margin="0 5 0 0"/>
