@@ -27,23 +27,23 @@
                 <Button x:Name="BotonArtes" Click="BotonArtes_Click" Width="200" Height="200" HorizontalAlignment="Left" Margin="85 0 0 0" Background="White" BorderBrush="White">
                     <Image  Source="/Assets/Artes.png" Stretch="Fill"/>
                 </Button>
-                <Button Width="200" Height="200" HorizontalAlignment="Center" Margin="70 0 0 0" Background="White" BorderBrush="White">
+                <Button Width="200" Height="200" HorizontalAlignment="Center" Margin="70 0 0 0" Background="White" BorderBrush="White" Click="BotonCiencias_Click">
                     <Image Source="/Assets/Ciencias.jpg" Stretch="Fill"/>
                 </Button>
-                <Button Width="200" Height="200" HorizontalAlignment="Right" Margin="70 0 0 0" Background="White" BorderBrush="White" >
+                <Button Width="200" Height="200" HorizontalAlignment="Right" Margin="70 0 0 0" Background="White" BorderBrush="White" Click="BotonCursos_Click">
                     <Image Source="/Assets/Cursos.jpg" Stretch="Fill"/>
                 </Button>
 
 
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 25 0 0">
-                <Button Width="200" Height="200" HorizontalAlignment="Left" Margin="85 0 0 0" Background="White" BorderBrush="White">
+                <Button Width="200" Height="200" HorizontalAlignment="Left" Margin="85 0 0 0" Background="White" BorderBrush="White" Click="BotonMatematicas_Click">
                     <Image Source="/Assets/Matematicas.jpg" Stretch="Fill"/>
                 </Button>
-                <Button Width="200" Height="200" HorizontalAlignment="Center" Margin="70 0 0 0" Background="White" BorderBrush="White">
+                <Button Width="200" Height="200" HorizontalAlignment="Center" Margin="70 0 0 0" Background="White" BorderBrush="White" Click="BotonPapeleria_Click">
                     <Image Source="/Assets/Papeleria.jpg" Stretch="Fill"/>
                 </Button>
-                <Button Width="200" Height="200" HorizontalAlignment="Right" Margin="70 0 0 0" Background="White" BorderBrush="White">
+                <Button Width="200" Height="200" HorizontalAlignment="Right" Margin="70 0 0 0" Background="White" BorderBrush="White" Click="BotonOtros_Click">
                     <Image Source="/Assets/Otros.jpg" Stretch="Fill"/>
                 </Button>
             </StackPanel>

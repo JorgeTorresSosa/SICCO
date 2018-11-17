@@ -47,26 +47,52 @@ namespace SICCO.Views
         public UserResultadoBusqueda()
         {
             InitializeComponent();
-            ASCIIEncoding encoding = new ASCIIEncoding();
-            string postdata = "descr=" + Clase_php.Busqueda;
-            byte[] data = encoding.GetBytes(postdata);
-            WebRequest request = WebRequest.Create("http://sicconviene.com/Busqueda.php");
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = data.Length;
+            if (Clase_php.PaginaArticulos)
+            {
+                ASCIIEncoding encoding = new ASCIIEncoding();
+                string postdata = "descr=" + Clase_php.Busqueda;
+                byte[] data = encoding.GetBytes(postdata);
+                WebRequest request = WebRequest.Create("http://sicconviene.com/Busqueda.php");
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = data.Length;
 
-            Stream stream = request.GetRequestStream();
-            stream.Write(data, 0, data.Length);
-            stream.Close();
+                Stream stream = request.GetRequestStream();
+                stream.Write(data, 0, data.Length);
+                stream.Close();
 
-            WebResponse response = request.GetResponse();
-            stream = response.GetResponseStream();
-            StreamReader leer = new StreamReader(stream);
-             lectura_php = leer.ReadToEnd();
-            ind = Convert.ToInt32(lectura_php.Substring(2, 5));
-            MessageBox.Show(lectura_php);
-            Guarda_Arreglos();
-           
+                WebResponse response = request.GetResponse();
+                stream = response.GetResponseStream();
+                StreamReader leer = new StreamReader(stream);
+                lectura_php = leer.ReadToEnd();
+                ind = Convert.ToInt32(lectura_php.Substring(2, 5));
+                MessageBox.Show(lectura_php);
+                Guarda_Arreglos();
+            }
+            else
+            {
+                ASCIIEncoding encoding = new ASCIIEncoding();
+                string postdata = "CAT=" + Clase_php.Categoria;
+                byte[] data = encoding.GetBytes(postdata);
+                WebRequest request = WebRequest.Create("http://sicconviene.com/Busqueda_Categorias.php");
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = data.Length;
+
+                Stream stream = request.GetRequestStream();
+                stream.Write(data, 0, data.Length);
+                stream.Close();
+
+                WebResponse response = request.GetResponse();
+                stream = response.GetResponseStream();
+                StreamReader leer = new StreamReader(stream);
+                lectura_php = leer.ReadToEnd();
+                ind = Convert.ToInt32(lectura_php.Substring(2, 5));
+                MessageBox.Show(lectura_php);
+                Guarda_Arreglos();
+
+            }
+
         }
         bool ra = false;
         void Guarda_Arreglos()
@@ -117,7 +143,11 @@ namespace SICCO.Views
 
         void Desplegar()
         {
-            int indice1=contadortxt-1, indice2, indice3, indice4, indice5;
+            int indice1 = contadortxt-1, indice2, indice3, indice4, indice5;
+            if (ra == true)
+            {
+                 indice1 = 3;
+            }            
             
             while (indice1>=0)
             {

@@ -12,6 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Collections.Specialized;
 
 namespace SICCO.Views
 {
@@ -27,7 +32,39 @@ namespace SICCO.Views
 
         private void BotonArtes_Click(object sender, RoutedEventArgs e)
         {
-             
+            Clase_php.Categoria = 1;
+            Clase_php.PaginaArticulos = false;
+            this.Content = new UserResultadoBusqueda();
         }
+
+        private void BotonCiencias_Click(object sender, RoutedEventArgs e)
+        {
+            Clase_php.Categoria = 2;
+            Clase_php.PaginaArticulos = false;
+            this.Content = new UserResultadoBusqueda();
+        }
+
+        private void BotonCursos_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BotonMatematicas_Click(object sender, RoutedEventArgs e)
+        {
+            Clase_php.Categoria = 3;
+            Clase_php.PaginaArticulos = false;
+            this.Content = new UserResultadoBusqueda();
+        }
+
+        private void BotonPapeleria_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BotonOtros_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

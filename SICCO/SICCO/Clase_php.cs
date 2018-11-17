@@ -11,5 +11,7 @@ namespace SICCO
         public static string No_Control_Usuario = "";
         public static string Busqueda = "";
         public static string Id_Producto = "";
+        public static bool PaginaArticulos = true;
+        public static int Categoria = 1;
     }
 }
