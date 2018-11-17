@@ -59,6 +59,8 @@ namespace SICCO.Views
                 ImageData = br.ReadBytes((int)fs.Length);
                 br.Close();
                 fs.Close();*/
+                
+
             }
 
         }

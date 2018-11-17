@@ -110,7 +110,7 @@ namespace SICCO.Views
            N_US.Text= lectura_php.Substring(indice6 + 1, (indice7 - (indice6 + 1)));
             CajaEdad.Text= lectura_php.Substring(indice7 + 1, (indice8 - (indice7 + 1)));
             CajaNombreUsuario.Text= lectura_php.Substring(indice8 + 1, (indice9 - (indice8 + 1)));
-            CajaCorreoElectronico.Text= lectura_php.Substring(indice10 + 1, (lectura_php.Length - (indice10 + 1)));
+            CajaCorreoElectronico.Text= lectura_php.Substring(indice10 + 1, (lectura_php.Length-4 - (indice10 + 1)));
             CajaContraVieja.Text= lectura_php.Substring(indice9 + 1, (indice10 - (indice9 + 1)));
                
 
@@ -118,22 +118,56 @@ namespace SICCO.Views
 
         void EnviarCambio_Contra()
         {
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            string postdata = "PSSWRD=" + CajaContraNueva.Text+"&OLDPSSWRD="+CajaContraVieja.Text;
+            byte[] data = encoding.GetBytes(postdata);
+            WebRequest request = WebRequest.Create("http://sicconviene.com/New_Password.php");
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
 
+            Stream stream = request.GetRequestStream();
+            stream.Write(data, 0, data.Length);
+            stream.Close();
+
+            WebResponse response = request.GetResponse();
+            stream = response.GetResponseStream();
+            StreamReader leer = new StreamReader(stream);
+            lectura_php = leer.ReadToEnd();
+            MessageBox.Show(lectura_php);
+            ShowUserData();
         }
 
         void CambiarDatos()
         {
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            string postdata = "NOM=" + CajaNombre.Text + "&ESP=" + CajaEspecialidad.SelectedIndex+1+"&SEM=" + CajaSemestre.SelectedIndex +"&NCO="+Clase_php.No_Control_Usuario +"&ED="+CajaEdad.Text+"&NUS=" + CajaNombreUsuario.Text + "&MAIL="+CajaCorreoElectronico.Text;
+            byte[] data = encoding.GetBytes(postdata);
+            WebRequest request = WebRequest.Create("http://sicconviene.com/ChangeUser_Info.php");
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
 
+            Stream stream = request.GetRequestStream();
+            stream.Write(data, 0, data.Length);
+            stream.Close();
+
+            WebResponse response = request.GetResponse();
+            stream = response.GetResponseStream();
+            StreamReader leer = new StreamReader(stream);
+            lectura_php = leer.ReadToEnd();
+            MessageBox.Show(lectura_php);
+            ShowUserData();
         }
 
         private void BotonCambiarContra_Click(object sender, RoutedEventArgs e)
         {
-            cambiarcontra = true;
+            EnviarCambio_Contra();
         }
 
         private void EnviarDatos_Click(object sender, RoutedEventArgs e)
         {
-            datos = true;
+            CambiarDatos();
         }
     }
 }

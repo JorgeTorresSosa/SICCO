@@ -33,7 +33,7 @@
                 </Grid>
             </Border>
             <Grid Grid.Row="2">
-                <Image x:Name="ImagenPrin"  Source="/Assets/92886_179403_1.jpg" HorizontalAlignment="Left" Margin="82,2,0,204" Width="588" />
+                <Image x:Name="ImagenPrin"  Source="/Assets/92886_179403_1.jpg" HorizontalAlignment="Left" Margin="140,4,0,311" Width="491" />
 
 
                 <StackPanel Margin="750 70 70 70" HorizontalAlignment="Left">
@@ -47,8 +47,8 @@
                     <Button Content="Comprar" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Width="120" HorizontalAlignment="Center" Margin="0 15"  />
                 </StackPanel>
                 <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 100">
-                    <Label Content="Descripcion:" FontSize="22"/>
-                    <TextBlock x:Name="DescripcionArticulo" Height="72" TextWrapping="Wrap" Margin="0,0,460,0" />
+                    <TextBlock x:Name="DescripcionArticulo" Height="72" TextWrapping="Wrap" Margin="170,0,200,-150" />
+                    <Label Content="Descripcion:" FontSize="22" Height="213" HorizontalAlignment="Right" Width="800"/>
 
                 </StackPanel>
             </Grid>

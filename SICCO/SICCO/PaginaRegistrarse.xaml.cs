@@ -136,7 +136,7 @@ namespace SICCO
             stream = response.GetResponseStream();
             StreamReader leer = new StreamReader(stream);
             string lectura_php = leer.ReadToEnd();
-            MessageBox.Show(lectura_php);
+           
             leer.Close();
             stream.Close();
             msgText.Text = "Usuario registrado correctamente";
@@ -164,7 +164,7 @@ namespace SICCO
 
         private void ConfContra_MouseEnter(object sender, MouseEventArgs e)
         {
-            if (clasificador == 1)
+            /*if (clasificador == 1)
             {
                 EyeOff.Kind = MaterialDesignThemes.Wpf.PackIconKind.Eye;
                 clasificador = -1;
@@ -185,7 +185,7 @@ namespace SICCO
                 ContraV.Visibility = System.Windows.Visibility.Collapsed;
                 Contra.Focus();
                 ConfContra.Focus();
-            }
+            }*/
 
         }
 

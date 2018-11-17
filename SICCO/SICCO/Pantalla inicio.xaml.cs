@@ -65,7 +65,7 @@ namespace SICCO
 
         private void BtnMisArticulos_Selected(object sender, RoutedEventArgs e)
         {
-
+           
         }
 
         private void BtnCategorias_Selected(object sender, RoutedEventArgs e)

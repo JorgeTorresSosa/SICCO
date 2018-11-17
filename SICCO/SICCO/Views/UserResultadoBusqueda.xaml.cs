@@ -37,6 +37,7 @@ namespace SICCO.Views
         string[] queries2 = new string[4];
         string[] queries3 = new string[4];
         int contador = 0, limite = 4, i;
+        int contadortxt = 0;
         bool sdn=false;
         private void click_2(object sender, MouseButtonEventArgs e)
         {
@@ -72,14 +73,14 @@ namespace SICCO.Views
         {
            
 
-            int contadortxt = 0;
+           
 
                 StreamWriter file =
-            new StreamWriter(@"C:\PryctSolorio.txt");
+            new StreamWriter(@"C:\Datos\PryctSolorio.txt");
                 file.WriteLine(lectura_php);
                 file.Close();
 
-                StreamReader Leer = new StreamReader(@"C:\PryctSolorio.txt");
+                StreamReader Leer = new StreamReader(@"C:\Datos\PryctSolorio.txt");
             string linea = Leer.ReadLine();
             while (linea != null)
                 {
@@ -116,7 +117,7 @@ namespace SICCO.Views
 
         void Desplegar()
         {
-            int indice1=3, indice2, indice3, indice4, indice5;
+            int indice1=contadortxt-1, indice2, indice3, indice4, indice5;
             
             while (indice1>=0)
             {
@@ -128,28 +129,28 @@ namespace SICCO.Views
                 {
                     case 1:
                         Nombre2.Text = queries[indice1].Substring(indice2 + 1, indice3 - 8);
-                        Id2.Text= queries[indice1].Substring(indice5+1,2);
+                        Id2.Text= queries[indice1].Substring(indice5+1,indice4-(indice5+1));
                         Descricpcion2.Text = queries[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
                         break;
                     case 2:
                         Nombre3.Text = queries[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion3.Text = queries[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
-                        Id3.Text = queries[indice1].Substring(indice5+1,2);
+                        Id3.Text = queries[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
                         break;
                     case 3:
                         Nombre4.Text = queries[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion4.Text = queries[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
-                        Id4.Text = queries[indice1].Substring(indice5+1,2);
+                        Id4.Text = queries[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
                         break;
                     case 0:
                         Nombre1.Text = queries[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion1.Text = queries[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
-                        Id1.Text = queries[indice1].Substring(indice5+1,2);
+                        Id1.Text = queries[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
                         break;
                     default:
                         Nombre1.Text = queries[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion1.Text = queries[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
-                        Id1.Text = queries[indice1].Substring(indice5+1,2);
+                        Id1.Text = queries[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
                         break;
                 }
                
@@ -161,7 +162,7 @@ namespace SICCO.Views
 
         void Desplegar2()
         {
-            int indice1 = 3, indice2, indice3, indice4, indice5;
+            int indice1 = contadortxt-1, indice2, indice3, indice4, indice5;
 
             while (indice1 >= 0)
             {
@@ -173,28 +174,28 @@ namespace SICCO.Views
                 {
                     case 1:
                         Nombre2.Text = queries2[indice1].Substring(indice2 + 1, indice3 - 8);
-                        Id2.Text = queries2[indice1].Substring(indice5 + 1, 2);
+                        Id2.Text = queries2[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
                         Descricpcion2.Text = queries2[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
                         break;
                     case 2:
                         Nombre3.Text = queries2[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion3.Text = queries2[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
-                        Id3.Text = queries2[indice1].Substring(indice5 + 1, 2);
+                        Id3.Text = queries2[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
                         break;
                     case 3:
                         Nombre4.Text = queries2[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion4.Text = queries2[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
-                        Id4.Text = queries2[indice1].Substring(indice5 + 1, 2);
+                        Id4.Text = queries2[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
                         break;
                     case 0:
                         Nombre1.Text = queries2[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion1.Text = queries2[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
-                        Id1.Text = queries2[indice1].Substring(indice5 + 1, 2);
+                        Id1.Text = queries2[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
                         break;
                     default:
                         Nombre1.Text = queries2[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion1.Text = queries2[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
-                        Id1.Text = queries2[indice1].Substring(indice5 + 1, 2);
+                        Id1.Text = queries2[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
                         break;
                 }
 
@@ -211,7 +212,10 @@ namespace SICCO.Views
 
         private void BotonSiguiente_Click(object sender, RoutedEventArgs e)
         {
-            Desplegar2();
+            if (queries2[0] != null)
+            {
+                Desplegar2();
+            }
 
 
         }
@@ -221,43 +225,37 @@ namespace SICCO.Views
 
         private void BotonAtras_Click(object sender, RoutedEventArgs e)
         {
-            i = 3;
-            limite -= 4;
-            while (contador < limite)
-             {
-                 //imagenes[i].Source = new BitmapImage(new Uri(@"C:\Users\tosoj\Desktop\Fotos\Instagram\IMG_20180629_201403_209.jpg"));
-                 descripciones[i].Text = contador.ToString();
-                 nombres[i].Text = contador.ToString();
-                 nombres[i].Tag = contador.ToString();
-                 contador--;
-                 i--;
-             }
+            if (queries2[0]!=null)
+            {
+                Desplegar2();
+            }
+           
              
              
         }
 
         private void Nombre4_Click(object sender, RoutedEventArgs e)
         {
-           
-          
+            Clase_php.Id_Producto = Id4.Text;
+            this.Content = new UserPaginaArticulo();
         }
 
         private void Nombre3_Click(object sender, RoutedEventArgs e)
         {
-           
-            
+            Clase_php.Id_Producto = Id3.Text;
+            this.Content = new UserPaginaArticulo();
         }
 
         private void Nombre2_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new UserPaginaArticulo();
-
+            Clase_php.Id_Producto = Id2.Text;
+            this.Content = new UserPaginaArticulo();
         }
 
         private void Nombre1_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+            Clase_php.Id_Producto = Id1.Text;
+            this.Content = new UserPaginaArticulo();
         }
     }
 }
