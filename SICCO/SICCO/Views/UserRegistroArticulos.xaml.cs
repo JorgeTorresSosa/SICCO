@@ -17,7 +17,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Collections.Specialized;
-
+using System.Reflection;
 
 namespace SICCO.Views
 {
@@ -34,6 +34,9 @@ namespace SICCO.Views
         BinaryReader br;
         byte[] ImageData;*/
         OpenFileDialog op = new OpenFileDialog();
+        byte[] data1;
+        FileStream file;
+        string path;
         ASCIIEncoding encoding = new ASCIIEncoding();
         bool aRCHIVO_Seleccionado = false, Registrado = false;
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -54,13 +57,32 @@ namespace SICCO.Views
             {
                 aRCHIVO_Seleccionado = true;
                 ImagenArticulo.Source = new BitmapImage(new Uri(op.FileName));
-                /*fs = new FileStream(op.FileName, FileMode.Open, FileAccess.Read);
-                br = new BinaryReader(fs);
-                ImageData = br.ReadBytes((int)fs.Length);
-                br.Close();
-                fs.Close();*/
-                
-
+                using (var stream = new FileStream(op.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    using (var reader = new BinaryReader(stream))
+                    {
+                        using (StreamReader sr = new StreamReader(op.FileName))
+                        {
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                sr.BaseStream.CopyTo(ms);
+                                data1 = ms.ToArray();
+                            }
+                        }
+                    }
+                    stream.Close();
+                }
+            }
+            Random a = new Random();
+            int NUM = a.Next(1, 1000000000);
+            string executableLocation = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            path = "iew" + NUM + ".jpg";
+            string xslLocation = System.IO.Path.Combine(executableLocation, path);
+            path = @"\\" + path;
+            using (file = new FileStream(xslLocation, FileMode.Create))
+            {
+                file.Write(data1, 0, data1.Count());
+              
             }
 
         }
@@ -74,14 +96,9 @@ namespace SICCO.Views
         {
             if (aRCHIVO_Seleccionado)
             {
-                //string Source = op.FileName;
-                //MessageBox.Show(Source);
-                //string distination = @"C:\Users\Elian Cruz\source\repos\JorgeTorresSosa\SICCO\WPFSICCO\WPFSICCO\Assets\";
-                //File.Copy(Source, distination);
-
                 if (Tipo.SelectedIndex == 0)
                 {
-                    string postdata = "NOM=" + NombreArticulo.Text + "&TIP=" + Tipo.SelectedIndex + "&CAT=" + Categoria.SelectedIndex + "&DES=" + Descripcion.Text + "&PREC=" + Precio.Text + "&NCO=" + Clase_php.No_Control_Usuario;//+ "&img=" + ImageData;
+                    string postdata = "NOM=" + NombreArticulo.Text + "&TIP=" + Tipo.SelectedIndex + "&CAT=" + Categoria.SelectedIndex + "&DES=" + Descripcion.Text + "&PREC=" + Precio.Text + "&NCO=" + Clase_php.No_Control_Usuario+ "&img=" +path;
                     byte[] data = encoding.GetBytes(postdata);
                     WebRequest request = WebRequest.Create("http://sicconviene.com/img.php");
                     request.Method = "POST";
@@ -116,7 +133,7 @@ namespace SICCO.Views
                 }
                 else if (Tipo.SelectedIndex == 1)
                 {
-                    string postdata = "NOM=" + NombreArticulo.Text + "&MAT=" + Categoria.SelectedIndex + "&COS=" + Precio.Text + "&HOR=" + HoraInicio.Text + "-" + HoraFin.Text + "&DES=" + Descripcion.Text + "&NCO=" + Clase_php.No_Control_Usuario;//+ "&img=" + ImageData
+                    string postdata = "NOM=" + NombreArticulo.Text + "&MAT=" + Categoria.SelectedIndex + "&COS=" + Precio.Text + "&HOR=" + HoraInicio.Text + "-" + HoraFin.Text + "&DES=" + Descripcion.Text + "&NCO=" + Clase_php.No_Control_Usuario + "&img=" + path;
                     byte[] data = encoding.GetBytes(postdata);
                     WebRequest request = WebRequest.Create("http://sicconviene.com/img_2.php");
                     request.Method = "POST";

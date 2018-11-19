@@ -17,6 +17,8 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Collections.Specialized;
+using System.Reflection;
+
 
 namespace SICCO.Views
 {
@@ -66,7 +68,7 @@ namespace SICCO.Views
                 StreamReader leer = new StreamReader(stream);
                 lectura_php = leer.ReadToEnd();
                 ind = Convert.ToInt32(lectura_php.Substring(2, 5));
-                MessageBox.Show(lectura_php);
+                
                 Guarda_Arreglos();
             }
             else
@@ -143,7 +145,8 @@ namespace SICCO.Views
 
         void Desplegar()
         {
-            int indice1 = contadortxt-1, indice2, indice3, indice4, indice5;
+            string executableLocation = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), sa=@"\";
+            int indice1 = contadortxt-1, indice2, indice3, indice4, indice5, indice6;
             if (ra == true)
             {
                  indice1 = 3;
@@ -155,32 +158,74 @@ namespace SICCO.Views
                 indice3 = queries[indice1].IndexOf("#");
                 indice4 = queries[indice1].IndexOf("%");
                 indice5 = queries[indice1].IndexOf("+");
+                indice6 = queries[indice1].IndexOf("^");
                 switch (indice1)
                 {
                     case 1:
                         Nombre2.Text = queries[indice1].Substring(indice2 + 1, indice3 - 8);
                         Id2.Text= queries[indice1].Substring(indice5+1,indice4-(indice5+1));
                         Descricpcion2.Text = queries[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
+                        MessageBox.Show(lectura_php);
+                        if (queries[indice1].Substring(indice6 + 1).StartsWith(sa))
+                        {
+                            imagen2.Source = new BitmapImage(new Uri(executableLocation +sa+ queries[indice1].Substring(indice6 + 1) , UriKind.Absolute));
+                        }
+                        else
+                        {
+                            imagen2.Source = new BitmapImage(new Uri(@"" + queries[indice1].Substring(indice6 + 1) + "", UriKind.Absolute));
+                        }
                         break;
                     case 2:
                         Nombre3.Text = queries[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion3.Text = queries[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
                         Id3.Text = queries[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
+                        if (queries[indice1].Substring(indice6 + 1).StartsWith(sa))
+                        {
+                            imagen3.Source = new BitmapImage(new Uri(executableLocation + sa + queries[indice1].Substring(indice6 + 1), UriKind.Absolute));
+                        }
+                        else
+                        {
+                            imagen3.Source = new BitmapImage(new Uri(@"" + queries[indice1].Substring(indice6 + 1) + "", UriKind.Absolute));
+                        }
                         break;
                     case 3:
                         Nombre4.Text = queries[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion4.Text = queries[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
                         Id4.Text = queries[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
+                        if (queries[indice1].Substring(indice6 + 1).StartsWith(sa))
+                        {
+                            imagen4.Source = new BitmapImage(new Uri(executableLocation + sa + queries[indice1].Substring(indice6 + 1), UriKind.Absolute));
+                        }
+                        else
+                        {
+                            imagen4.Source = new BitmapImage(new Uri(@"" + queries[indice1].Substring(indice6 + 1) + "", UriKind.Absolute));
+                        }
                         break;
                     case 0:
                         Nombre1.Text = queries[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion1.Text = queries[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
                         Id1.Text = queries[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
+                        if (queries[indice1].Substring(indice6 + 1).StartsWith(sa))
+                        {
+                            imagen1.Source = new BitmapImage(new Uri(executableLocation + sa + queries[indice1].Substring(indice6 + 1), UriKind.Absolute));
+                        }
+                        else
+                        {
+                            imagen1.Source = new BitmapImage(new Uri(@"" + queries[indice1].Substring(indice6 + 1) + "", UriKind.Absolute));
+                        }
                         break;
                     default:
                         Nombre1.Text = queries[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion1.Text = queries[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
                         Id1.Text = queries[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
+                        if (queries[indice1].Substring(indice6 + 1).StartsWith(sa))
+                        {
+                            imagen1.Source = new BitmapImage(new Uri(executableLocation + sa + queries[indice1].Substring(indice6 + 1), UriKind.Absolute));
+                        }
+                        else
+                        {
+                            imagen1.Source = new BitmapImage(new Uri(@"" + queries[indice1].Substring(indice6 + 1) + "", UriKind.Absolute));
+                        }
                         break;
                 }
                
@@ -192,7 +237,8 @@ namespace SICCO.Views
 
         void Desplegar2()
         {
-            int indice1 = contadortxt-1, indice2, indice3, indice4, indice5;
+            string executableLocation = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), sa = @"\";
+            int indice1 = contadortxt-1, indice2, indice3, indice4, indice5, indice6;
 
             while (indice1 >= 0)
             {
@@ -200,32 +246,73 @@ namespace SICCO.Views
                 indice3 = queries2[indice1].IndexOf("#");
                 indice4 = queries2[indice1].IndexOf("%");
                 indice5 = queries2[indice1].IndexOf("+");
+                indice6 = queries2[indice1].IndexOf("^");
                 switch (indice1)
                 {
                     case 1:
                         Nombre2.Text = queries2[indice1].Substring(indice2 + 1, indice3 - 8);
                         Id2.Text = queries2[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
                         Descricpcion2.Text = queries2[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
+                        if (queries2[indice1].Substring(indice6 + 1).StartsWith(sa))
+                        {
+                            imagen2.Source = new BitmapImage(new Uri(executableLocation + sa + queries2[indice1].Substring(indice6 + 1), UriKind.Absolute));
+                        }
+                        else
+                        {
+                            imagen2.Source = new BitmapImage(new Uri(@"" + queries2[indice1].Substring(indice6 + 1) + "", UriKind.Absolute));
+                        }
                         break;
                     case 2:
                         Nombre3.Text = queries2[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion3.Text = queries2[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
                         Id3.Text = queries2[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
+                        if (queries2[indice1].Substring(indice6 + 1).StartsWith(sa))
+                        {
+                            imagen3.Source = new BitmapImage(new Uri(executableLocation + sa + queries2[indice1].Substring(indice6 + 1), UriKind.Absolute));
+                        }
+                        else
+                        {
+                            imagen3.Source = new BitmapImage(new Uri(@"" + queries2[indice1].Substring(indice6 + 1) + "", UriKind.Absolute));
+                        }
                         break;
                     case 3:
                         Nombre4.Text = queries2[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion4.Text = queries2[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
                         Id4.Text = queries2[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
+                        if (queries2[indice1].Substring(indice6 + 1).StartsWith(sa))
+                        {
+                            imagen4.Source = new BitmapImage(new Uri(executableLocation + sa + queries2[indice1].Substring(indice6 + 1), UriKind.Absolute));
+                        }
+                        else
+                        {
+                            imagen4.Source = new BitmapImage(new Uri(@"" + queries2[indice1].Substring(indice6 + 1) + "", UriKind.Absolute));
+                        }
                         break;
                     case 0:
                         Nombre1.Text = queries2[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion1.Text = queries2[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
                         Id1.Text = queries2[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
+                        if (queries2[indice1].Substring(indice6 + 1).StartsWith(sa))
+                        {
+                            imagen1.Source = new BitmapImage(new Uri(executableLocation + sa + queries2[indice1].Substring(indice6 + 1), UriKind.Absolute));
+                        }
+                        else
+                        {
+                            imagen1.Source = new BitmapImage(new Uri(@"" + queries2[indice1].Substring(indice6 + 1) + "", UriKind.Absolute));
+                        }
                         break;
                     default:
                         Nombre1.Text = queries2[indice1].Substring(indice2 + 1, indice3 - 8);
                         Descricpcion1.Text = queries2[indice1].Substring(indice3 + 3, (indice5 - (indice3 + 3)));
                         Id1.Text = queries2[indice1].Substring(indice5 + 1, indice4 - (indice5 + 1));
+                        if (queries2[indice1].Substring(indice6 + 1).StartsWith(sa))
+                        {
+                            imagen1.Source = new BitmapImage(new Uri(executableLocation + sa + queries2[indice1].Substring(indice6 + 1), UriKind.Absolute));
+                        }
+                        else
+                        {
+                            imagen1.Source = new BitmapImage(new Uri(@"" + queries2[indice1].Substring(indice6 + 1) + "", UriKind.Absolute));
+                        }
                         break;
                 }
 

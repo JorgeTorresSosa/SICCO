@@ -17,6 +17,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Collections.Specialized;
+using System.Reflection;
 
 namespace SICCO.Views
 {
@@ -55,16 +56,26 @@ namespace SICCO.Views
 
         void Leer()
         {
-            int indice1, indice2, indice3, indice4, indice5;
+            int indice1, indice2, indice3, indice4, indice5, indice6;
+            string executableLocation = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), sa = @"\";
             indice1 = lectura_php.IndexOf("o");
             indice2 = lectura_php.IndexOf("$");
             indice3 = lectura_php.IndexOf("+");
             indice4 = lectura_php.IndexOf("%");
             indice5 = lectura_php.IndexOf("*");
+            indice6 = lectura_php.IndexOf("^");
             NombreArticulo.Text = lectura_php.Substring(indice1+1, (indice2-(indice1+1)));
             DescripcionArticulo.Text = lectura_php.Substring(indice2+1, (indice3-(indice2+1)));
             IDArticulo.Text = "Item: "+lectura_php.Substring(indice3+1, (indice4-(indice3+1)));
-            PrecioAriculo.Text ="$"+ lectura_php.Substring(indice4+1, (indice5-(indice4+1)));
+            PrecioAriculo.Text ="$"+ lectura_php.Substring(indice4+1, (indice6-(indice4+1)));
+            if (lectura_php.Substring(indice6+1, (indice5-(indice6+1))).Contains(sa))
+            {
+                ImagenPrin.Source = new BitmapImage(new Uri(executableLocation + sa + lectura_php.Substring(indice6+1, (indice5 - (indice6 + 1))), UriKind.Absolute));
+            }
+            else
+            {
+                ImagenPrin.Source = new BitmapImage(new Uri(@"" + lectura_php.Substring(indice6 + 1, (indice5 - (indice6 + 1))) + "", UriKind.Absolute));
+            }
             NombreVendedor.Content = "Vendedor: " + lectura_php.Substring(indice5+1);
 
         }

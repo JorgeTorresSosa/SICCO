@@ -85,6 +85,7 @@ namespace SICCO
             if (e.Key == Key.Enter)
             {
                 Clase_php.Busqueda = Buscar.Text;
+                Clase_php.PaginaArticulos = true;
                 DataContext = new UserResultadoBusqueda();
 
 

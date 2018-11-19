@@ -13,5 +13,6 @@ namespace SICCO
         public static string Id_Producto = "";
         public static bool PaginaArticulos = true;
         public static int Categoria = 1;
+        public static bool Path_img = false;
     }
 }
